@@ -10,52 +10,71 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    //@Query private var records: [SKRecord]
+    //@Query private var accounts: [SKAccount]
 
+    @State private var selectedMenu: SKMenu? = .transactions
+    @State private var selectedRecord: SKRecord?
+    @State private var selectedAccount: SKAccount?
+    
+    @State private var presentAlert = false
+    
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        GeometryReader { geometry in
+            NavigationSplitView {
+                List(selection: $selectedMenu) {
+                    ForEach(SKMenu.allCases) { menu in
+                        NavigationLink(value: menu){
+                            Text(menu.rawValue)
+                        }
                     }
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+            } content: {
+                switch selectedMenu {
+                case .transactions:
+                    RecordListView(selectedRecord: $selectedRecord)
+                case .accounts:
+                    AccountListView(selectedAccount: $selectedAccount)
+                case nil:
+                    Text("Select a menu")
                 }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+            } detail: {
+                switch selectedMenu {
+                case .transactions:
+                    if let record = selectedRecord {
+                        RecordDetailView(record: record, account: findAccount(of: record))
+                            .id(record.uid)
                     }
+                case .accounts:
+                    if let account = selectedAccount {
+                        AccountDetailView(account: account)
+                            .id(account.uid)
+                    }
+                case nil:
+                    Text("Select a menu")
                 }
             }
-        } detail: {
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+            .navigationSplitViewStyle(.balanced)
+            .alert("Can't find an account", isPresented: $presentAlert) {
+                Button("Dismiss") {
+                    presentAlert = false
+                }
             }
         }
     }
-}
+    
+    private func findAccount(of record: SKRecord) -> SKAccount? {
+        var account: SKAccount?
+        do {
+            if let accountId = record.accountId {
+                let descriptor = FetchDescriptor<SKAccount>(predicate: #Predicate {$0.uid == accountId} )
+                let accounts = try modelContext.fetch(descriptor)
+                account = accounts.first
+            }
+        } catch {
+            presentAlert = true
+        }
+        return account
+    }
 
-#Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }

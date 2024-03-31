@@ -12,7 +12,7 @@ import SwiftData
 struct SpendingKeeperApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            SKAccount.self, SKRecord.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
