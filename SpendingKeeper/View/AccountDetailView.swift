@@ -12,15 +12,10 @@ struct AccountDetailView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State var account: SKAccount
-    @State private var presentAlert = false
     
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                header
-                
-                Divider()
-                
                 Grid(alignment: .leading, horizontalSpacing: 10, verticalSpacing: 10) {
                     GridRow {
                         Text("Name")
@@ -47,46 +42,7 @@ struct AccountDetailView: View {
                 Spacer()
             }
             .padding()
-            .alert("Save failed", isPresented: $presentAlert) {
-                Button("Dismiss") {
-                    presentAlert = false
-                }
-            }
         }
     }
     
-    private func update() {
-        if modelContext.hasChanges {
-            account.updated = .now
-            do {
-                try modelContext.save()
-            } catch {
-                presentAlert = true
-            }
-        }
-        
-        dismiss()
-    }
-    
-    private var header: some View {
-        HStack {
-            Button {
-                dismiss()
-            } label: {
-                Text("Cancel")
-            }
-            
-            Spacer()
-            
-            Text("Add a new transaction")
-            
-            Spacer()
-            
-            Button {
-                update()
-            } label: {
-                Text("Save")
-            }
-        }
-    }
 }

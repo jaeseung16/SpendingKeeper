@@ -16,15 +16,10 @@ struct RecordDetailView: View {
     
     @State var record: SKRecord
     @State var account: SKAccount?
-    @State private var presentAlert = false
     
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                header
-                
-                Divider()
-                
                 Grid(alignment: .leading, horizontalSpacing: 10, verticalSpacing: 10) {
                     GridRow {
                         Text("Income/Spending")
@@ -35,6 +30,27 @@ struct RecordDetailView: View {
                         }
                         .pickerStyle(.segmented)
                         .gridColumnAlignment(.center)
+                    }
+                    
+                    GridRow {
+                        Text("Date & Time")
+                        DatePicker("", selection: $record.recordDate, displayedComponents: [.date, .hourAndMinute])
+                    }
+                    
+                    GridRow {
+                        Text("Amount")
+                        TextField("", value: $record.amount, format: .number)
+                            .textFieldStyle(.roundedBorder)
+                            .multilineTextAlignment(.trailing)
+                    }
+                    
+                    GridRow {
+                        Text("Description")
+                        TextField(text: $record.recordDescription) {
+                            Text("Description")
+                        }
+                        .textFieldStyle(.roundedBorder)
+                        .multilineTextAlignment(.trailing)
                     }
                     
                     GridRow {
@@ -49,81 +65,12 @@ struct RecordDetailView: View {
                         }
                     }
                     
-                    GridRow {
-                        Text("Description")
-                        TextField(text: $record.recordDescription) {
-                            Text("Description")
-                        }
-                        .textFieldStyle(.roundedBorder)
-                        .multilineTextAlignment(.trailing)
-                    }
-                    
-                    GridRow {
-                        Text("Amount")
-                        TextField("", value: $record.amount, format: .number)
-                            .textFieldStyle(.roundedBorder)
-                            .multilineTextAlignment(.trailing)
-                    }
-                    
-                    GridRow {
-                        Text("Date & Time")
-                        DatePicker("", selection: $record.recordDate, displayedComponents: [.date, .hourAndMinute])
-                    }
                 }
                 
                 Spacer()
             }
             .padding()
-            .alert("Save failed", isPresented: $presentAlert) {
-                Button("Dismiss") {
-                    presentAlert = false
-                }
-            }
         }
     }
-    
-    private func update() {
-        if let account = account {
-            if account.uid != record.accountId {
-                record.accountId = account.uid
-            }
-            
-            if account.name != record.accountName {
-                record.accountName = account.name
-            }
-        }
-        
-        if modelContext.hasChanges {
-            record.updated = .now
-            do {
-                try modelContext.save()
-            } catch {
-                presentAlert = true
-            }
-        }
-        
-        dismiss()
-    }
-    
-    private var header: some View {
-        HStack {
-            Button {
-                dismiss()
-            } label: {
-                Text("Cancel")
-            }
-            
-            Spacer()
-            
-            Text("Add a new transaction")
-            
-            Spacer()
-            
-            Button {
-                update()
-            } label: {
-                Text("Save")
-            }
-        }
-    }
+
 }
