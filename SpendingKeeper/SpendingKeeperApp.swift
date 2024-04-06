@@ -28,5 +28,6 @@ struct SpendingKeeperApp: App {
             ContentView()
         }
         .modelContainer(sharedModelContainer)
+        .environmentObject(SKViewModel(modelContext: sharedModelContainer.mainContext))
     }
 }

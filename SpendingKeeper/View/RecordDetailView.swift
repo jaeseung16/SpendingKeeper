@@ -12,7 +12,7 @@ struct RecordDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     
-    @Query private var accounts: [SKAccount]
+    @Query(sort: \SKAccount.name) private var accounts: [SKAccount]
     
     @State var record: SKRecord
     @State var account: SKAccount?
@@ -33,8 +33,12 @@ struct RecordDetailView: View {
                     }
                     
                     GridRow {
-                        Text("Date & Time")
-                        DatePicker("", selection: $record.recordDate, displayedComponents: [.date, .hourAndMinute])
+                        Text("Description")
+                        TextField(text: $record.recordDescription) {
+                            Text("Description")
+                        }
+                        .textFieldStyle(.roundedBorder)
+                        .multilineTextAlignment(.trailing)
                     }
                     
                     GridRow {
@@ -45,12 +49,8 @@ struct RecordDetailView: View {
                     }
                     
                     GridRow {
-                        Text("Description")
-                        TextField(text: $record.recordDescription) {
-                            Text("Description")
-                        }
-                        .textFieldStyle(.roundedBorder)
-                        .multilineTextAlignment(.trailing)
+                        Text("Date & Time")
+                        DatePicker("", selection: $record.recordDate, displayedComponents: [.date, .hourAndMinute])
                     }
                     
                     GridRow {

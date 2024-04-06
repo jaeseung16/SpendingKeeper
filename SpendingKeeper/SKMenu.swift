@@ -10,7 +10,7 @@ import Foundation
 enum SKMenu: String, CaseIterable, Identifiable {
     case transactions
     case accounts
-    //case stats
+    case trends
     
     var id: Self { self }
 }

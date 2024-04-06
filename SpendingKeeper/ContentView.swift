@@ -10,12 +10,14 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject private var viewModel: SKViewModel
     //@Query private var records: [SKRecord]
     //@Query private var accounts: [SKAccount]
 
     @State private var selectedMenu: SKMenu? = .transactions
     @State private var selectedRecord: SKRecord?
     @State private var selectedAccount: SKAccount?
+    @State private var selectedTrend: SKTrend?
     
     @State private var presentAlert = false
     
@@ -35,6 +37,8 @@ struct ContentView: View {
                     RecordListView(selectedRecord: $selectedRecord)
                 case .accounts:
                     AccountListView(selectedAccount: $selectedAccount)
+                case .trends:
+                    TrendsListView(selectedTrend: $selectedTrend)
                 case nil:
                     Text("Select a menu")
                 }
@@ -49,6 +53,12 @@ struct ContentView: View {
                     if let account = selectedAccount {
                         AccountDetailView(account: account)
                             .id(account.uid)
+                    }
+                case .trends:
+                    if let trend = selectedTrend {
+                        TrendsDetailView(trend: trend)
+                            .id(trend)
+                            .environmentObject(viewModel)
                     }
                 case nil:
                     Text("Select a menu")

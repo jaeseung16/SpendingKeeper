@@ -20,11 +20,16 @@ struct RecordRowView: View {
                 Image(systemName: "cart")
             }
 
-            Text(record.recordDate, format: Date.FormatStyle(date: .abbreviated, time: .omitted))
+            Text(record.recordDescription)
             
             Spacer()
             
-            Text(record.amount, format: .number)
+            // TODO: - currency code
+            Text(record.amount, format: .currency(code: "USD"))
+            
+            Text(record.recordDate, format: Date.FormatStyle(date: .numeric, time: .omitted))
+                .font(.caption)
+            
         }
     }
 }

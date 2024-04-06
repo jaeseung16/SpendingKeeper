@@ -12,6 +12,7 @@
 		906C9D1A2BB861200031139D /* SKMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D192BB861200031139D /* SKMenu.swift */; };
 		906C9D1C2BB8900C0031139D /* RecordRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D1B2BB8900C0031139D /* RecordRowView.swift */; };
 		906C9D1E2BB8902B0031139D /* RecordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D1D2BB8902B0031139D /* RecordDetailView.swift */; };
+		9080C01B2BC1C70100F88FA8 /* SKPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9080C01A2BC1C70100F88FA8 /* SKPeriod.swift */; };
 		908598702BB36EB600208AEE /* SpendingKeeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9085986F2BB36EB600208AEE /* SpendingKeeperApp.swift */; };
 		908598722BB36EB600208AEE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908598712BB36EB600208AEE /* ContentView.swift */; };
 		908598742BB36EB600208AEE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908598732BB36EB600208AEE /* Item.swift */; };
@@ -22,12 +23,17 @@
 		9085988F2BB36EB800208AEE /* SpendingKeeperUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9085988E2BB36EB700208AEE /* SpendingKeeperUITestsLaunchTests.swift */; };
 		908B146D2BB9A8B8004E53D9 /* AccountRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908B146C2BB9A8B8004E53D9 /* AccountRowView.swift */; };
 		908B146F2BB9A8C4004E53D9 /* AccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908B146E2BB9A8C4004E53D9 /* AccountDetailView.swift */; };
+		908B14712BBA11CD004E53D9 /* TrendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908B14702BBA11CD004E53D9 /* TrendsListView.swift */; };
+		908B14732BBA11F6004E53D9 /* SKTrend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908B14722BBA11F6004E53D9 /* SKTrend.swift */; };
+		908B14752BBA135D004E53D9 /* TrendsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908B14742BBA135D004E53D9 /* TrendsDetailView.swift */; };
+		908B14772BBA1C7E004E53D9 /* SKStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908B14762BBA1C7E004E53D9 /* SKStats.swift */; };
 		908BF7E12BB76C7900740266 /* SKRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908BF7E02BB76C7900740266 /* SKRecord.swift */; };
 		908BF7E32BB76D7C00740266 /* SKTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908BF7E22BB76D7C00740266 /* SKTransaction.swift */; };
 		908BF7E52BB76DC000740266 /* SKAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908BF7E42BB76DC000740266 /* SKAccount.swift */; };
 		908BF7E72BB7748500740266 /* SKAccountHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908BF7E62BB7748500740266 /* SKAccountHistory.swift */; };
 		908BF7EA2BB7762700740266 /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908BF7E92BB7762700740266 /* AddAccountView.swift */; };
 		908BF7EC2BB7773E00740266 /* AddRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908BF7EB2BB7773E00740266 /* AddRecordView.swift */; };
+		90D96E2F2BBCC1E300DB4C01 /* SKViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +59,7 @@
 		906C9D192BB861200031139D /* SKMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKMenu.swift; sourceTree = "<group>"; };
 		906C9D1B2BB8900C0031139D /* RecordRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRowView.swift; sourceTree = "<group>"; };
 		906C9D1D2BB8902B0031139D /* RecordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailView.swift; sourceTree = "<group>"; };
+		9080C01A2BC1C70100F88FA8 /* SKPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPeriod.swift; sourceTree = "<group>"; };
 		9085986C2BB36EB600208AEE /* SpendingKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpendingKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9085986F2BB36EB600208AEE /* SpendingKeeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingKeeperApp.swift; sourceTree = "<group>"; };
 		908598712BB36EB600208AEE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,12 +73,17 @@
 		9085988E2BB36EB700208AEE /* SpendingKeeperUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingKeeperUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		908B146C2BB9A8B8004E53D9 /* AccountRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRowView.swift; sourceTree = "<group>"; };
 		908B146E2BB9A8C4004E53D9 /* AccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailView.swift; sourceTree = "<group>"; };
+		908B14702BBA11CD004E53D9 /* TrendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsListView.swift; sourceTree = "<group>"; };
+		908B14722BBA11F6004E53D9 /* SKTrend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTrend.swift; sourceTree = "<group>"; };
+		908B14742BBA135D004E53D9 /* TrendsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsDetailView.swift; sourceTree = "<group>"; };
+		908B14762BBA1C7E004E53D9 /* SKStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKStats.swift; sourceTree = "<group>"; };
 		908BF7E02BB76C7900740266 /* SKRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKRecord.swift; sourceTree = "<group>"; };
 		908BF7E22BB76D7C00740266 /* SKTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTransaction.swift; sourceTree = "<group>"; };
 		908BF7E42BB76DC000740266 /* SKAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAccount.swift; sourceTree = "<group>"; };
 		908BF7E62BB7748500740266 /* SKAccountHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAccountHistory.swift; sourceTree = "<group>"; };
 		908BF7E92BB7762700740266 /* AddAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountView.swift; sourceTree = "<group>"; };
 		908BF7EB2BB7773E00740266 /* AddRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordView.swift; sourceTree = "<group>"; };
+		90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +134,7 @@
 		9085986E2BB36EB600208AEE /* SpendingKeeper */ = {
 			isa = PBXGroup;
 			children = (
+				90D96E2D2BBCC1D100DB4C01 /* ViewModel */,
 				908BF7E82BB7761800740266 /* View */,
 				908BF7DF2BB76C4200740266 /* Model */,
 				9085986F2BB36EB600208AEE /* SpendingKeeperApp.swift */,
@@ -165,7 +178,10 @@
 				908BF7E42BB76DC000740266 /* SKAccount.swift */,
 				908BF7E02BB76C7900740266 /* SKRecord.swift */,
 				908BF7E22BB76D7C00740266 /* SKTransaction.swift */,
+				908B14722BBA11F6004E53D9 /* SKTrend.swift */,
 				908BF7E62BB7748500740266 /* SKAccountHistory.swift */,
+				908B14762BBA1C7E004E53D9 /* SKStats.swift */,
+				9080C01A2BC1C70100F88FA8 /* SKPeriod.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -181,8 +197,18 @@
 				906C9D172BB860700031139D /* RecordListView.swift */,
 				906C9D1B2BB8900C0031139D /* RecordRowView.swift */,
 				906C9D1D2BB8902B0031139D /* RecordDetailView.swift */,
+				908B14702BBA11CD004E53D9 /* TrendsListView.swift */,
+				908B14742BBA135D004E53D9 /* TrendsDetailView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		90D96E2D2BBCC1D100DB4C01 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,11 +344,14 @@
 				906C9D1E2BB8902B0031139D /* RecordDetailView.swift in Sources */,
 				908BF7EA2BB7762700740266 /* AddAccountView.swift in Sources */,
 				906C9D182BB860700031139D /* RecordListView.swift in Sources */,
+				908B14752BBA135D004E53D9 /* TrendsDetailView.swift in Sources */,
 				906C9D1A2BB861200031139D /* SKMenu.swift in Sources */,
 				908BF7E32BB76D7C00740266 /* SKTransaction.swift in Sources */,
 				908BF7E52BB76DC000740266 /* SKAccount.swift in Sources */,
 				908BF7E72BB7748500740266 /* SKAccountHistory.swift in Sources */,
+				908B14732BBA11F6004E53D9 /* SKTrend.swift in Sources */,
 				906C9D162BB85E060031139D /* AccountListView.swift in Sources */,
+				9080C01B2BC1C70100F88FA8 /* SKPeriod.swift in Sources */,
 				906C9D1C2BB8900C0031139D /* RecordRowView.swift in Sources */,
 				908598722BB36EB600208AEE /* ContentView.swift in Sources */,
 				908598742BB36EB600208AEE /* Item.swift in Sources */,
@@ -330,7 +359,10 @@
 				908BF7EC2BB7773E00740266 /* AddRecordView.swift in Sources */,
 				908B146F2BB9A8C4004E53D9 /* AccountDetailView.swift in Sources */,
 				908598702BB36EB600208AEE /* SpendingKeeperApp.swift in Sources */,
+				908B14772BBA1C7E004E53D9 /* SKStats.swift in Sources */,
 				908B146D2BB9A8B8004E53D9 /* AccountRowView.swift in Sources */,
+				90D96E2F2BBCC1E300DB4C01 /* SKViewModel.swift in Sources */,
+				908B14712BBA11CD004E53D9 /* TrendsListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
