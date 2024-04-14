@@ -15,6 +15,7 @@ class SKAccount {
     var name: String
     var balance: Double
     var balanceDate: Date
+    var statementFrequency: SKAccountStatementFrequency
     var created: Date
     var updated: Date
     
@@ -22,12 +23,14 @@ class SKAccount {
          name: String,
          balance: Double = 0.0,
          balanceDate: Date = .now,
+         statementFrequency: SKAccountStatementFrequency = .monthly,
          created: Date = .now,
          updated: Date = .now) {
         self.uid = uid
         self.name = name
         self.balance = balance
         self.balanceDate = balanceDate
+        self.statementFrequency = statementFrequency
         self.created = created
         self.updated = updated
     }

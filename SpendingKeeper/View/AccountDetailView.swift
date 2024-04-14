@@ -37,9 +37,20 @@ struct AccountDetailView: View {
                         Text("Date & Time")
                         DatePicker("", selection: $account.balanceDate, displayedComponents: [.date, .hourAndMinute])
                     }
+                    
+                    GridRow {
+                        Text("Statement Frequency")
+                        Picker("", selection: $account.statementFrequency) {
+                            ForEach(SKAccountStatementFrequency.allCases) { statementFrequency in
+                                Text(statementFrequency.rawValue)
+                            }
+                        }
+                    }
                 }
                 
                 Spacer()
+                
+                // Balance or Recent activities
             }
             .padding()
         }
