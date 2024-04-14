@@ -112,7 +112,7 @@ class SKViewModel: NSObject, ObservableObject {
         return stats
     }
     
-    func fetchRecords(from: Date, to: Date) -> [SKRecord] {
+    private func fetchRecords(from: Date, to: Date) -> [SKRecord] {
         var records = [SKRecord]()
         do {
             let descriptor = FetchDescriptor<SKRecord>(

@@ -25,7 +25,7 @@ struct RecordRowView: View {
             Spacer()
             
             // TODO: - currency code
-            Text(record.amount, format: .currency(code: "USD"))
+            Text(record.amount, format: .currency(code: Locale.current.currency?.identifier ?? ""))
             
             Text(record.recordDate, format: Date.FormatStyle(date: .numeric, time: .omitted))
                 .font(.caption)
