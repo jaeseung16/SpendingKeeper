@@ -33,7 +33,7 @@
 		908BF7E72BB7748500740266 /* SKAccountHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908BF7E62BB7748500740266 /* SKAccountHistory.swift */; };
 		908BF7EA2BB7762700740266 /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908BF7E92BB7762700740266 /* AddAccountView.swift */; };
 		908BF7EC2BB7773E00740266 /* AddRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908BF7EB2BB7773E00740266 /* AddRecordView.swift */; };
-		909B9E3D2BCC84290053A61D /* SKAccountStatementFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B9E3C2BCC84290053A61D /* SKAccountStatementFrequency.swift */; };
+		909B9E3D2BCC84290053A61D /* SKAccountStatementDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B9E3C2BCC84290053A61D /* SKAccountStatementDate.swift */; };
 		90D96E2F2BBCC1E300DB4C01 /* SKViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,7 +84,7 @@
 		908BF7E62BB7748500740266 /* SKAccountHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAccountHistory.swift; sourceTree = "<group>"; };
 		908BF7E92BB7762700740266 /* AddAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountView.swift; sourceTree = "<group>"; };
 		908BF7EB2BB7773E00740266 /* AddRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordView.swift; sourceTree = "<group>"; };
-		909B9E3C2BCC84290053A61D /* SKAccountStatementFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAccountStatementFrequency.swift; sourceTree = "<group>"; };
+		909B9E3C2BCC84290053A61D /* SKAccountStatementDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAccountStatementDate.swift; sourceTree = "<group>"; };
 		90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,7 +184,7 @@
 				908BF7E62BB7748500740266 /* SKAccountHistory.swift */,
 				908B14762BBA1C7E004E53D9 /* SKStats.swift */,
 				9080C01A2BC1C70100F88FA8 /* SKPeriod.swift */,
-				909B9E3C2BCC84290053A61D /* SKAccountStatementFrequency.swift */,
+				909B9E3C2BCC84290053A61D /* SKAccountStatementDate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -344,7 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				909B9E3D2BCC84290053A61D /* SKAccountStatementFrequency.swift in Sources */,
+				909B9E3D2BCC84290053A61D /* SKAccountStatementDate.swift in Sources */,
 				906C9D1E2BB8902B0031139D /* RecordDetailView.swift in Sources */,
 				908BF7EA2BB7762700740266 /* AddAccountView.swift in Sources */,
 				906C9D182BB860700031139D /* RecordListView.swift in Sources */,

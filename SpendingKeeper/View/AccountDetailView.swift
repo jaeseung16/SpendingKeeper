@@ -27,22 +27,10 @@ struct AccountDetailView: View {
                     }
                     
                     GridRow {
-                        Text("Balance")
-                        TextField("", value: $account.balance, format: .number)
-                            .textFieldStyle(.roundedBorder)
-                            .multilineTextAlignment(.trailing)
-                    }
-                    
-                    GridRow {
-                        Text("Date & Time")
-                        DatePicker("", selection: $account.balanceDate, displayedComponents: [.date, .hourAndMinute])
-                    }
-                    
-                    GridRow {
-                        Text("Statement Frequency")
-                        Picker("", selection: $account.statementFrequency) {
-                            ForEach(SKAccountStatementFrequency.allCases) { statementFrequency in
-                                Text(statementFrequency.rawValue)
+                        Text("Statement Date")
+                        Picker("", selection: $account.statementDate) {
+                            ForEach(SKAccountStatementDate.allCases) { date in
+                                Text(date.rawValue)
                             }
                         }
                     }

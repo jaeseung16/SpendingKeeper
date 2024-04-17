@@ -14,7 +14,7 @@ struct AddAccountView: View {
     @State private var name: String = ""
     @State private var balance: Double = 0.0
     @State private var balanceDate: Date = .now
-    @State private var statementFrequency: SKAccountStatementFrequency = .monthly
+    @State private var statementDate: SKAccountStatementDate = .eom
     
     var body: some View {
         VStack {
@@ -34,25 +34,10 @@ struct AddAccountView: View {
                 }
                 
                 GridRow {
-                    Text("Balance")
-                    TextField(value: $balance, format: .number) {
-                        Text("Balance")
-                    }
-                    .textFieldStyle(.roundedBorder)
-                    .multilineTextAlignment(.trailing)
-                    .gridColumnAlignment(.center)
-                }
-                
-                GridRow {
-                    Text("Balance Date")
-                    DatePicker("", selection: $balanceDate, displayedComponents: [.date, .hourAndMinute])
-                }
-                
-                GridRow {
-                    Text("Statement Frequency")
-                    Picker("", selection: $statementFrequency) {
-                        ForEach(SKAccountStatementFrequency.allCases) { statementFrequency in
-                            Text(statementFrequency.rawValue)
+                    Text("Statement Date")
+                    Picker("", selection: $statementDate) {
+                        ForEach(SKAccountStatementDate.allCases) { statementDate in
+                            Text(statementDate.rawValue)
                         }
                     }
                 }
@@ -64,7 +49,7 @@ struct AddAccountView: View {
     
     private func add() {
         withAnimation {
-            let newAccount = SKAccount(name: name, balance: balance,  statementFrequency: statementFrequency)
+            let newAccount = SKAccount(name: name, statementDate: statementDate)
             modelContext.insert(newAccount)
             dismiss()
         }

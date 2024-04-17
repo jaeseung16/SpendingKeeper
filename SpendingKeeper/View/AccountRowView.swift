@@ -17,9 +17,6 @@ struct AccountRowView: View {
 
             Spacer()
             
-            Text(account.balance, format: .number)
-            
-            Text(account.balanceDate, format: Date.FormatStyle(date: .abbreviated, time: .omitted))
         }
     }
 }
