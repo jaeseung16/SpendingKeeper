@@ -70,6 +70,12 @@ struct RecordDetailView: View {
                 Spacer()
             }
             .padding()
+            .onChange(of: account) { _, newValue in
+                if let account = newValue {
+                    record.accountId = account.uid
+                    record.accountName = account.name
+                }
+            }
         }
     }
 
