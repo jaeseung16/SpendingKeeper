@@ -14,7 +14,7 @@ struct AddAccountView: View {
     @State private var name: String = ""
     @State private var balance: Double = 0.0
     @State private var balanceDate: Date = .now
-    @State private var statementDate: SKAccountStatementDate = .eom
+    @State private var statementDay: SKAccountStatementDay = .eom
     
     var body: some View {
         VStack {
@@ -35,9 +35,9 @@ struct AddAccountView: View {
                 
                 GridRow {
                     Text("Statement Date")
-                    Picker("", selection: $statementDate) {
-                        ForEach(SKAccountStatementDate.allCases) { statementDate in
-                            Text(statementDate.rawValue)
+                    Picker("", selection: $statementDay) {
+                        ForEach(SKAccountStatementDay.allCases) { statementDay in
+                            Text(statementDay.rawValue)
                         }
                     }
                 }
@@ -49,7 +49,7 @@ struct AddAccountView: View {
     
     private func add() {
         withAnimation {
-            let newAccount = SKAccount(name: name, statementDate: statementDate)
+            let newAccount = SKAccount(name: name, statementDay: statementDay)
             modelContext.insert(newAccount)
             dismiss()
         }

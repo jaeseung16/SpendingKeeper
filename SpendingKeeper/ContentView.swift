@@ -51,8 +51,9 @@ struct ContentView: View {
                     }
                 case .accounts:
                     if let account = selectedAccount {
-                        AccountDetailView(account: account)
+                        AccountDetailView(account: account, startDate: viewModel.latestStatementDate(account.statementDay))
                             .id(account.uid)
+                            .environmentObject(viewModel)
                     }
                 case .trends:
                     if let trend = selectedTrend {

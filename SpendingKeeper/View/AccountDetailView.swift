@@ -6,12 +6,35 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AccountDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var viewModel: SKViewModel
     
     @State var account: SKAccount
+    @State var startDate: Date
+    @Query private var records: [SKRecord]
+    
+    init(account: SKAccount, startDate: Date) {
+        let uid = account.uid
+        
+        self.account = account
+        self.startDate = startDate
+        self._records = Query(filter: #Predicate<SKRecord> {
+            if $0.recordDate > startDate {
+                if let accountId = $0.accountId {
+                    return accountId == uid
+                } else {
+                    return false
+                }
+            } else {
+                return false
+            }
+        }, sort: \SKRecord.recordDate, order: .reverse)
+
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -27,9 +50,9 @@ struct AccountDetailView: View {
                     }
                     
                     GridRow {
-                        Text("Statement Date")
-                        Picker("", selection: $account.statementDate) {
-                            ForEach(SKAccountStatementDate.allCases) { date in
+                        Text("Statement Day")
+                        Picker("", selection: $account.statementDay) {
+                            ForEach(SKAccountStatementDay.allCases) { date in
                                 Text(date.rawValue)
                             }
                         }
@@ -37,10 +60,32 @@ struct AccountDetailView: View {
                 }
                 
                 Spacer()
+
+                HStack {
+                    Text("Transactions since ")
+                    Text(startDate, format: Date.FormatStyle(date: .numeric, time: .omitted))
+                    Spacer()
+                }
                 
-                // Balance or Recent activities
+                Table(records) {
+                    TableColumn("Description", value: \.recordDescription)
+                    
+                    TableColumn("Date") { record in
+                        Text(record.recordDate, format: Date.FormatStyle(date: .numeric, time: .omitted))
+                            .foregroundColor(.secondary)
+                    }
+                    
+                    TableColumn("Amount") { record in
+                        Text(record.amount, format: .currency(code: Locale.current.currency?.identifier ?? ""))
+                            .foregroundColor(.primary)
+                    }
+                    .alignment(.numeric)
+                }
             }
             .padding()
+            .onChange(of: account.statementDay) { oldValue, newValue in
+                startDate = viewModel.latestStatementDate(newValue)
+            }
         }
     }
     

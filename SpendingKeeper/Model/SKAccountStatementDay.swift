@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SKAccountStatementDate: String, CaseIterable, Identifiable, Codable {
+enum SKAccountStatementDay: String, CaseIterable, Identifiable, Codable {
     case one = "1"
     case two = "2"
     case three = "3"
@@ -42,4 +42,14 @@ enum SKAccountStatementDate: String, CaseIterable, Identifiable, Codable {
     case quarterly = "Quarterly"
     
     var id: Self { self }
+    
+    func convertToInt() -> Int {
+        if self == .eom {
+            return 31
+        } else if self == .quarterly {
+            return 0
+        } else {
+            return Int(self.rawValue) ?? 0
+        }
+    }
 }

@@ -17,6 +17,8 @@ class SKViewModel: NSObject, ObservableObject {
     
     init(modelContext: ModelContext) {
         self.modelContext = modelContext
+        
+        logger.log("autosaveEnabled=\(modelContext.autosaveEnabled)")
     }
     
     func generate(trend: SKTrend, from: Date, to: Date) -> [SKStats] {
@@ -125,5 +127,20 @@ class SKViewModel: NSObject, ObservableObject {
             logger.log("Fetch failed")
         }
         return records
+    }
+    
+    // TODO:- Add tests
+    func latestStatementDate(_ statementDay: SKAccountStatementDay) -> Date {
+        let matchingDateComponents = statementDay.convertToInt() > 0 ? dateComponents(matching: statementDay.convertToInt()) : dateComponentsMatchingFirstDayOfQuater(for: Calendar.current.component(.month, from: .now))
+        return Calendar.current.nextDate(after: .now, matching: matchingDateComponents, matchingPolicy: .nextTime, direction: .backward)!
+    }
+    
+    private func dateComponents(matching day: Int) -> DateComponents {
+        return DateComponents(day: day, hour: 0, minute: 0, second: 0)
+    }
+    
+    private func dateComponentsMatchingFirstDayOfQuater(for month: Int) -> DateComponents {
+        let firstMonthOfQuater = (month/3) * 3 + 1
+        return DateComponents(month: firstMonthOfQuater, day: 1, hour: 0, minute: 0, second: 0)
     }
 }

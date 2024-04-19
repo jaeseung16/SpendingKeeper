@@ -13,18 +13,18 @@ class SKAccount {
 
     var uid: UUID
     var name: String
-    var statementDate: SKAccountStatementDate
+    var statementDay: SKAccountStatementDay
     var created: Date
     var updated: Date
     
     init(uid: UUID = .init(), 
          name: String,
-         statementDate: SKAccountStatementDate = .eom,
+         statementDay: SKAccountStatementDay = .eom,
          created: Date = .now,
          updated: Date = .now) {
         self.uid = uid
         self.name = name
-        self.statementDate = statementDate
+        self.statementDay = statementDay
         self.created = created
         self.updated = updated
     }
