@@ -18,6 +18,23 @@ struct TrendsDetailView: View {
     
     @State var trend: SKTrend
     @State var stats = [SKStats]()
+    @State private var cumulative = false
+    
+    private var cumulativeStats: [SKStats] {
+        var previousSum = 0.0
+        var currentSum = 0.0
+        return stats.map { stat in
+            var cumulativeStat: SKStats
+            if stat.period == .previous {
+                previousSum += stat.value
+                cumulativeStat = SKStats(date: stat.date, value: previousSum, period: .previous)
+            } else {
+                currentSum += stat.value
+                cumulativeStat = SKStats(date: stat.date, value: currentSum, period: .current)
+            }
+            return cumulativeStat
+        }
+    }
     
     var body: some View {
         VStack {
@@ -28,14 +45,30 @@ struct TrendsDetailView: View {
                 case .monthly:
                     Text("This Year vs. Last Year")
                 }
+                
+                Spacer()
+                
+                Toggle(isOn: $cumulative) {
+                    Text("cumulative")
+                }
+                .toggleStyle(.button)
             }
             
-            Chart(stats, id: \.date) { stat in
-                LineMark(x: .value("Date", stat.date, unit: unit),
-                        y: .value("Count", stat.value))
-                .foregroundStyle(by: .value("Month", stat.period.rawValue))
+            if (cumulative) {
+                Chart(cumulativeStats, id: \.date) { stat in
+                    LineMark(x: .value("Date", stat.date, unit: unit),
+                            y: .value("Count", stat.value))
+                    .foregroundStyle(by: .value("Month", stat.period.rawValue))
+                    .interpolationMethod(.stepCenter)
+                }
+            } else {
+                Chart(stats, id: \.date) { stat in
+                    LineMark(x: .value("Date", stat.date, unit: unit),
+                            y: .value("Count", stat.value))
+                    .foregroundStyle(by: .value("Month", stat.period.rawValue))
+                    .interpolationMethod(.stepCenter)
+                }
             }
-            Spacer()
         }
     }
     
