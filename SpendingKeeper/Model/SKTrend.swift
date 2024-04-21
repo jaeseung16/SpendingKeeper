@@ -10,7 +10,6 @@ import Foundation
 enum SKTrend: String, CaseIterable, Identifiable, Codable {
     case daily
     case monthly
-    case yearly
     
     var id: Self { self }
 }

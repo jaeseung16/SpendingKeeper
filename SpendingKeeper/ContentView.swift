@@ -57,7 +57,7 @@ struct ContentView: View {
                     }
                 case .trends:
                     if let trend = selectedTrend {
-                        TrendsDetailView(trend: trend)
+                        TrendsDetailView(trend: trend, stats: viewModel.stats(for: trend))
                             .id(trend)
                             .environmentObject(viewModel)
                     }

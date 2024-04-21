@@ -21,81 +21,66 @@ class SKViewModel: NSObject, ObservableObject {
         logger.log("autosaveEnabled=\(modelContext.autosaveEnabled)")
     }
     
-    func generate(trend: SKTrend, from: Date, to: Date) -> [SKStats] {
-        var dates = [Date]()
-        var stats = [SKStats]()
-        
-        var matchingDateComponents: DateComponents
-        var aMonthAgo: Date?
-        var aYearAgo: Date?
-        var start: Date?
-        var granularity: Calendar.Component
-        switch trend {
-        case .daily:
-            matchingDateComponents = DateComponents(hour:0, minute: 0, second: 0)
-            aMonthAgo = calendar.date(byAdding: .month, value: -1, to: to)
-            if let aMonthAgo = aMonthAgo, let firstDayOfLastMonth = calendar.nextDate(after: aMonthAgo, matching: DateComponents(day: 1), matchingPolicy: .nextTime, direction: .backward) {
-                start = calendar.date(byAdding: .day, value: -1, to: firstDayOfLastMonth)
-            }
-            granularity = .day
-        case .monthly:
-            matchingDateComponents = DateComponents(day: 1, hour:0, minute: 0, second: 0)
-            aYearAgo = calendar.date(byAdding: .year, value: -1, to: to)
-            if let aYearAgo = aYearAgo, let firstDayOfLastYear = calendar.nextDate(after: aYearAgo, matching: DateComponents(month: 1, day: 1), matchingPolicy: .nextTime, direction: .backward) {
-                logger.log("firstDayOfLastYear=\(firstDayOfLastYear)")
-                start = calendar.date(byAdding: .day, value: -1, to: firstDayOfLastYear)
-            }
-            granularity = .month
-        case .yearly:
-            matchingDateComponents = DateComponents(month: 1, day: 1, hour:0, minute: 0, second: 0)
-            start = calendar.date(byAdding: .year, value: -1, to: from)
-            granularity = .year
-        }
-        
-        guard let start = start else {
+    func stats(for trend: SKTrend) -> [SKStats] {
+        guard let start = calendar.date(byAdding: .day, value: -1, to: firstDateOfPreviousPeriod(for: trend)) else {
             return [SKStats]()
         }
+        return stats(from: start, to: .now, trend: trend)
+    }
+    
+    private func stats(from start: Date, to end: Date, trend: SKTrend) -> [SKStats] {
+        let dates = dates(from: start, to: end, trend: trend)
+        let records = fetchRecords(from: start, to: end)
         
-        calendar.enumerateDates(startingAfter: start, matching: matchingDateComponents, matchingPolicy: .nextTime) { result, exactMatch, stop in
-            guard let result = result else {
-                return
+        var stats = [SKStats]()
+        var index = 0
+        
+        var aDateInPreviousPeriod: Date
+        var previousPeriod: Calendar.Component
+        var period: Calendar.Component
+        switch trend {
+        case .daily:
+            guard let oneMonthAgo = oneMonthAgo(from: end) else {
+                return [SKStats]()
             }
-            
-            if result > to {
-                stop = true
-            } else {
-                dates.append(result)
+            aDateInPreviousPeriod = oneMonthAgo
+            previousPeriod = .month
+            period = .day
+        case .monthly:
+            guard let oneYearAgo = oneYearAgo(from: end) else {
+                return [SKStats]()
             }
+            aDateInPreviousPeriod = oneYearAgo
+            previousPeriod = .year
+            period = .month
         }
         
-        logger.log("start=\(String(describing: start)), aYearAgo=\(String(describing: aYearAgo))")
-        
-        let records = fetchRecords(from: start, to: to)
-        
-        var index = 0
         for date in dates {
             var stat: SKStats
-            
-            if let aMonthAgo = aMonthAgo, calendar.isDate(date, equalTo: aMonthAgo, toGranularity: .month) {
-                if let aMonthAfter = calendar.date(byAdding: .month, value: 1, to: date) {
-                    stat = SKStats(date: aMonthAfter, value: 0.0, period: .previous)
-                } else if let startOfMonth = calendar.date(bySetting: .day, value: 1, of: date),
-                          let lastDayOfPreviousMonth = calendar.nextDate(after: startOfMonth, matching: DateComponents(hour:0, minute: 0, second: 0), matchingPolicy: .nextTime, direction: .backward) {
-                    stat = SKStats(date: lastDayOfPreviousMonth, value: 0.0, period: .previous)
-                } else {
-                    stat = SKStats(date: date, value: 0.0, period: .previous)
+            if areDatesInTheSamePeriod(date, otherDate: aDateInPreviousPeriod, period: previousPeriod) {
+                var statDate: Date
+                switch trend {
+                case .daily:
+                    if let oneMonthLater = oneMonthLater(from: date) {
+                        statDate = oneMonthLater
+                    } else if let lastDayOfPreviousMonth = lastDayOfPreviousMonth(from: date) {
+                        statDate = lastDayOfPreviousMonth
+                    } else {
+                        statDate = date
+                    }
+                case .monthly:
+                    if let oneYearAfter = oneYearAfter(from: date) {
+                        statDate = oneYearAfter
+                    } else {
+                        statDate = date
+                    }
                 }
-            } else if let aYearAgo = aYearAgo, calendar.isDate(date, equalTo: aYearAgo, toGranularity: .year) {
-                if let aYearAfter = calendar.date(byAdding: .year, value: 1, to: date) {
-                    stat = SKStats(date: aYearAfter, value: 0.0, period: .previous)
-                } else {
-                    stat = SKStats(date: date, value: 0.0, period: .previous)
-                }
+                stat = SKStats(date: statDate, value: 0.0, period: .previous)
             } else {
                 stat = SKStats(date: date, value: 0.0, period: .current)
             }
             
-            while index < records.count && calendar.isDate(records[index].recordDate, equalTo: date, toGranularity: granularity) {
+            while index < records.count && areDatesInTheSamePeriod(records[index].recordDate, otherDate: date, period: period) {
                 if records[index].transactionType == .spending {
                     stat.value += records[index].amount
                 }
@@ -109,9 +94,72 @@ class SKViewModel: NSObject, ObservableObject {
             }
         }
         
-        logger.log("stats=\(stats)")
-        
         return stats
+    }
+    
+    private func dates(from start: Date, to end: Date, trend: SKTrend) -> [Date] {
+        var dates = [Date]()
+        
+        var matchingDateComponents: DateComponents
+        switch trend {
+        case .daily:
+            matchingDateComponents = DateComponents(hour:0, minute: 0, second: 0)
+        case .monthly:
+            matchingDateComponents = DateComponents(day: 1, hour:0, minute: 0, second: 0)
+        }
+        
+        calendar.enumerateDates(startingAfter: start, matching: matchingDateComponents, matchingPolicy: .nextTime) { result, exactMatch, stop in
+            guard let result = result else {
+                return
+            }
+            
+            if result > end {
+                stop = true
+            } else {
+                dates.append(result)
+            }
+        }
+        
+        return dates
+    }
+    
+    private func firstDateOfPreviousPeriod(for trend: SKTrend) -> Date {
+        var start: Date?
+        switch trend {
+        case .daily:
+            start = firstDayOfLastMonth()
+        case .monthly:
+            start = firstDayOfLastYear()
+        }
+        return start ?? .now
+    }
+    
+    func firstDayOfLastMonth(from date: Date = .now) -> Date? {
+        guard let aMonthAgo = oneMonthAgo(from: date) else {
+            return nil
+        }
+        guard let firstDayOfLastMonth = calendar.nextDate(after: aMonthAgo, matching: DateComponents(day: 1), matchingPolicy: .nextTime, direction: .backward) else {
+            return nil
+        }
+        return firstDayOfLastMonth
+    }
+    
+    private func oneMonthAgo(from date: Date) -> Date? {
+        return calendar.date(byAdding: .month, value: -1, to: date)
+    }
+    
+    func firstDayOfLastYear(from date: Date = .now) -> Date? {
+        guard let oneYearAgo = oneYearAgo(from: date) else {
+            return nil
+        }
+        guard let firstDayOfLastYear = calendar.nextDate(after: oneYearAgo, matching: DateComponents(month: 1, day: 1), matchingPolicy: .nextTime, direction: .backward) else {
+            return nil
+        }
+        return firstDayOfLastYear
+    }
+    
+    private func oneYearAgo(from date: Date) -> Date? {
+        return calendar.date(byAdding: .year, value: -1, to: date)
     }
     
     private func fetchRecords(from: Date, to: Date) -> [SKRecord] {
@@ -127,6 +175,29 @@ class SKViewModel: NSObject, ObservableObject {
             logger.log("Fetch failed")
         }
         return records
+    }
+    
+    private func areDatesInTheSamePeriod(_ date: Date, otherDate: Date, period: Calendar.Component) -> Bool {
+        return calendar.isDate(date, equalTo: otherDate, toGranularity: period)
+    }
+    
+    private func oneMonthLater(from date: Date) -> Date? {
+        return calendar.date(byAdding: .month, value: 1, to: date)
+    }
+    
+    private func lastDayOfPreviousMonth(from date: Date) -> Date? {
+        guard let startOfMonth = startOfMonth(from: date) else {
+            return nil
+        }
+        return calendar.nextDate(after: startOfMonth, matching: DateComponents(hour:0, minute: 0, second: 0), matchingPolicy: .nextTime, direction: .backward)
+    }
+    
+    private func startOfMonth(from date: Date) -> Date? {
+        return calendar.date(bySetting: .day, value: 1, of: date)
+    }
+    
+    private func oneYearAfter(from date: Date) -> Date? {
+        return calendar.date(byAdding: .year, value: 1, to: date)
     }
     
     // TODO:- Add tests

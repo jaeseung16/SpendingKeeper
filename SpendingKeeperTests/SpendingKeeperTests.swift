@@ -56,7 +56,43 @@ final class SpendingKeeperTests: XCTestCase {
 
         XCTAssertEqual(actualDate, expectedDate)
     }
+    
+    @MainActor func testFirstDayOfLastMonth() throws {
+        let viewModel = SKViewModel(modelContext: testContainer.mainContext)
+        
+        let dateComponents = DateComponents(year: 2024, month: 4, day: 20)
+        let dateComponentsFirstDayOfLastMonth = DateComponents(year: 2024, month: 3, day: 1)
+        
+        let actualDate = viewModel.firstDayOfLastMonth(from: Calendar.current.date(from: dateComponents)!)!
+        let expectedDate = Calendar.current.date(from: dateComponentsFirstDayOfLastMonth)!
 
+        XCTAssertEqual(actualDate, expectedDate)
+    }
+    
+    @MainActor func testFirstDayOfLastYear() throws {
+        let viewModel = SKViewModel(modelContext: testContainer.mainContext)
+        
+        let dateComponents = DateComponents(year: 2024, month: 4, day: 20)
+        let dateComponentsFirstDayOfLastMonth = DateComponents(year: 2023, month: 1, day: 1)
+        
+        let actualDate = viewModel.firstDayOfLastYear(from: Calendar.current.date(from: dateComponents)!)!
+        let expectedDate = Calendar.current.date(from: dateComponentsFirstDayOfLastMonth)!
+
+        XCTAssertEqual(actualDate, expectedDate)
+    }
+
+    func testOneMonthLater() throws {
+        let dateComponents = DateComponents(year: 2024, month: 1, day: 30)
+        let dateComponentsOneMonthLater = DateComponents(year: 2024, month: 2, day: 29)
+        
+        let today = Calendar.current.date(from: dateComponents)!
+        let oneMonthLater = Calendar.current.date(byAdding: .month, value: 1, to: today)!
+        let expectedDate = Calendar.current.date(from: dateComponentsOneMonthLater)!
+        
+        XCTAssertEqual(oneMonthLater, expectedDate)
+    }
+    
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
