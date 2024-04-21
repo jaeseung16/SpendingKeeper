@@ -23,53 +23,62 @@ struct ContentView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            NavigationSplitView {
-                List(selection: $selectedMenu) {
-                    ForEach(SKMenu.allCases) { menu in
-                        NavigationLink(value: menu){
-                            Text(menu.rawValue)
+            VStack {
+                NavigationSplitView {
+                    List(selection: $selectedMenu) {
+                        ForEach(SKMenu.allCases) { menu in
+                            NavigationLink(value: menu){
+                                Text(menu.rawValue)
+                            }
                         }
                     }
-                }
-            } content: {
-                switch selectedMenu {
-                case .transactions:
-                    RecordListView(selectedRecord: $selectedRecord)
-                case .accounts:
-                    AccountListView(selectedAccount: $selectedAccount)
-                case .trends:
-                    TrendsListView(selectedTrend: $selectedTrend)
-                case nil:
-                    Text("Select a menu")
-                }
-            } detail: {
-                switch selectedMenu {
-                case .transactions:
-                    if let record = selectedRecord {
-                        RecordDetailView(record: record, account: findAccount(of: record))
-                            .id(record.uid)
+                } content: {
+                    switch selectedMenu {
+                    case .transactions:
+                        RecordListView(selectedRecord: $selectedRecord)
+                    case .accounts:
+                        AccountListView(selectedAccount: $selectedAccount)
+                    case .trends:
+                        TrendsListView(selectedTrend: $selectedTrend)
+                    case nil:
+                        Text("Select a menu")
                     }
-                case .accounts:
-                    if let account = selectedAccount {
-                        AccountDetailView(account: account, startDate: viewModel.latestStatementDate(account.statementDay))
-                            .id(account.uid)
-                            .environmentObject(viewModel)
+                } detail: {
+                    switch selectedMenu {
+                    case .transactions:
+                        if let record = selectedRecord {
+                            RecordDetailView(record: record, account: findAccount(of: record))
+                                .id(record.uid)
+                        }
+                    case .accounts:
+                        if let account = selectedAccount {
+                            AccountDetailView(account: account, startDate: viewModel.latestStatementDate(account.statementDay))
+                                .id(account.uid)
+                                .environmentObject(viewModel)
+                        }
+                    case .trends:
+                        if let trend = selectedTrend {
+                            TrendsDetailView(trend: trend, stats: viewModel.stats(for: trend))
+                                .id(trend)
+                                .environmentObject(viewModel)
+                        }
+                    case nil:
+                        Text("Select a menu")
                     }
-                case .trends:
-                    if let trend = selectedTrend {
-                        TrendsDetailView(trend: trend, stats: viewModel.stats(for: trend))
-                            .id(trend)
-                            .environmentObject(viewModel)
+                }
+                .navigationSplitViewStyle(.balanced)
+                .alert("Can't find an account", isPresented: $presentAlert) {
+                    Button("Dismiss") {
+                        presentAlert = false
                     }
-                case nil:
-                    Text("Select a menu")
                 }
-            }
-            .navigationSplitViewStyle(.balanced)
-            .alert("Can't find an account", isPresented: $presentAlert) {
-                Button("Dismiss") {
-                    presentAlert = false
-                }
+                
+                Spacer()
+                
+                #if os(iOS)
+                BannerAd()
+                    .frame(height: 50)
+                #endif
             }
         }
     }

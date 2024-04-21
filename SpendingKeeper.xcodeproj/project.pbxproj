@@ -12,6 +12,9 @@
 		906C9D1A2BB861200031139D /* SKMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D192BB861200031139D /* SKMenu.swift */; };
 		906C9D1C2BB8900C0031139D /* RecordRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D1B2BB8900C0031139D /* RecordRowView.swift */; };
 		906C9D1E2BB8902B0031139D /* RecordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D1D2BB8902B0031139D /* RecordDetailView.swift */; };
+		907536552BD5B29700A2B774 /* BannerAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907536542BD5B29700A2B774 /* BannerAd.swift */; };
+		907536572BD5B32B00A2B774 /* BannerAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907536562BD5B32B00A2B774 /* BannerAdViewController.swift */; };
+		9075365A2BD5B44300A2B774 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 907536592BD5B44300A2B774 /* GoogleMobileAds */; };
 		9080C01B2BC1C70100F88FA8 /* SKPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9080C01A2BC1C70100F88FA8 /* SKPeriod.swift */; };
 		908598702BB36EB600208AEE /* SpendingKeeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9085986F2BB36EB600208AEE /* SpendingKeeperApp.swift */; };
 		908598722BB36EB600208AEE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908598712BB36EB600208AEE /* ContentView.swift */; };
@@ -60,6 +63,9 @@
 		906C9D192BB861200031139D /* SKMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKMenu.swift; sourceTree = "<group>"; };
 		906C9D1B2BB8900C0031139D /* RecordRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRowView.swift; sourceTree = "<group>"; };
 		906C9D1D2BB8902B0031139D /* RecordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailView.swift; sourceTree = "<group>"; };
+		907536522BD5B15200A2B774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		907536542BD5B29700A2B774 /* BannerAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAd.swift; sourceTree = "<group>"; };
+		907536562BD5B32B00A2B774 /* BannerAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdViewController.swift; sourceTree = "<group>"; };
 		9080C01A2BC1C70100F88FA8 /* SKPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPeriod.swift; sourceTree = "<group>"; };
 		9085986C2BB36EB600208AEE /* SpendingKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpendingKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9085986F2BB36EB600208AEE /* SpendingKeeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingKeeperApp.swift; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9075365A2BD5B44300A2B774 /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +120,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		907536532BD5B28500A2B774 /* AdMob */ = {
+			isa = PBXGroup;
+			children = (
+				907536542BD5B29700A2B774 /* BannerAd.swift */,
+				907536562BD5B32B00A2B774 /* BannerAdViewController.swift */,
+			);
+			path = AdMob;
+			sourceTree = "<group>";
+		};
+		907536582BD5B44300A2B774 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		908598632BB36EB600208AEE = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +143,7 @@
 				908598812BB36EB700208AEE /* SpendingKeeperTests */,
 				9085988B2BB36EB700208AEE /* SpendingKeeperUITests */,
 				9085986D2BB36EB600208AEE /* Products */,
+				907536582BD5B44300A2B774 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,6 +160,8 @@
 		9085986E2BB36EB600208AEE /* SpendingKeeper */ = {
 			isa = PBXGroup;
 			children = (
+				907536532BD5B28500A2B774 /* AdMob */,
+				907536522BD5B15200A2B774 /* Info.plist */,
 				90D96E2D2BBCC1D100DB4C01 /* ViewModel */,
 				908BF7E82BB7761800740266 /* View */,
 				908BF7DF2BB76C4200740266 /* Model */,
@@ -230,6 +256,9 @@
 			dependencies = (
 			);
 			name = SpendingKeeper;
+			packageProductDependencies = (
+				907536592BD5B44300A2B774 /* GoogleMobileAds */,
+			);
 			productName = SpendingKeeper;
 			productReference = 9085986C2BB36EB600208AEE /* SpendingKeeper.app */;
 			productType = "com.apple.product-type.application";
@@ -302,6 +331,9 @@
 				Base,
 			);
 			mainGroup = 908598632BB36EB600208AEE;
+			packageReferences = (
+				907536512BD5B0FB00A2B774 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
 			productRefGroup = 9085986D2BB36EB600208AEE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -345,9 +377,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				909B9E3D2BCC84290053A61D /* SKAccountStatementDay.swift in Sources */,
+				907536572BD5B32B00A2B774 /* BannerAdViewController.swift in Sources */,
 				906C9D1E2BB8902B0031139D /* RecordDetailView.swift in Sources */,
 				908BF7EA2BB7762700740266 /* AddAccountView.swift in Sources */,
 				906C9D182BB860700031139D /* RecordListView.swift in Sources */,
+				907536552BD5B29700A2B774 /* BannerAd.swift in Sources */,
 				908B14752BBA135D004E53D9 /* TrendsDetailView.swift in Sources */,
 				906C9D1A2BB861200031139D /* SKMenu.swift in Sources */,
 				908BF7E32BB76D7C00740266 /* SKTransaction.swift in Sources */,
@@ -534,6 +568,7 @@
 				DEVELOPMENT_TEAM = U8VSJXRJTQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SpendingKeeper/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -566,6 +601,7 @@
 				DEVELOPMENT_TEAM = U8VSJXRJTQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SpendingKeeper/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -702,6 +738,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		907536512BD5B0FB00A2B774 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		907536592BD5B44300A2B774 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 907536512BD5B0FB00A2B774 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 908598642BB36EB600208AEE /* Project object */;
 }
