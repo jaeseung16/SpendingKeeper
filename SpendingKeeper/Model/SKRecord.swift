@@ -11,15 +11,15 @@ import SwiftData
 @Model
 class SKRecord {
     
-    var uid: UUID
-    var recordDate: Date
-    var recordDescription: String
-    var transactionType: SKTransaction
-    var accountName: String
+    var uid: UUID = UUID()
+    var recordDate: Date = Date.now
+    var recordDescription: String = ""
+    var transactionType: SKTransaction = SKTransaction.spending
+    var accountName: String = ""
     var accountId: UUID?
-    var amount: Double
-    var created: Date
-    var updated: Date
+    var amount: Double = 0.0
+    var created: Date = Date.now
+    var updated: Date = Date.now
 
     init(uid: UUID = .init(), 
          recordDate: Date = .now,

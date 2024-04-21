@@ -11,14 +11,14 @@ import SwiftData
 @Model
 class SKAccount {
 
-    var uid: UUID
-    var name: String
-    var statementDay: SKAccountStatementDay
-    var created: Date
-    var updated: Date
+    var uid: UUID = UUID()
+    var name: String = ""
+    var statementDay: SKAccountStatementDay = SKAccountStatementDay.eom
+    var created: Date = Date.now
+    var updated: Date = Date.now
     
     init(uid: UUID = .init(), 
-         name: String,
+         name: String = "",
          statementDay: SKAccountStatementDay = .eom,
          created: Date = .now,
          updated: Date = .now) {
