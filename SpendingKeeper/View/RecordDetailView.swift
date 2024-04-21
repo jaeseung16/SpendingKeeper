@@ -64,7 +64,16 @@ struct RecordDetailView: View {
                             }
                         }
                     }
+                }
+                
+                HStack {
+                    Spacer()
                     
+                    Button {
+                        copyRecord()
+                    } label: {
+                        Label("Copy", systemImage: "doc.on.doc")
+                    }
                 }
                 
                 Spacer()
@@ -76,6 +85,18 @@ struct RecordDetailView: View {
                     record.accountName = account.name
                 }
             }
+        }
+    }
+    
+    private func copyRecord() {
+        withAnimation {
+            let newRecord = SKRecord(recordDate: record.recordDate,
+                                     recordDescription: record.recordDescription,
+                                     transactionType: record.transactionType,
+                                     accountName: record.accountName,
+                                     accountId: record.accountId,
+                                     amount: record.amount)
+            modelContext.insert(newRecord)
         }
     }
 
