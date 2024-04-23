@@ -7,6 +7,8 @@
 
 import SwiftUI
 import SwiftData
+import AppTrackingTransparency
+import GoogleMobileAds
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
@@ -54,13 +56,11 @@ struct ContentView: View {
                         if let account = selectedAccount {
                             AccountDetailView(account: account, startDate: viewModel.latestStatementDate(account.statementDay))
                                 .id(account.uid)
-                                .environmentObject(viewModel)
                         }
                     case .trends:
                         if let trend = selectedTrend {
                             TrendsDetailView(trend: trend, stats: viewModel.stats(for: trend))
                                 .id(trend)
-                                .environmentObject(viewModel)
                         }
                     case nil:
                         Text("Select a menu")
@@ -79,6 +79,12 @@ struct ContentView: View {
                 BannerAd()
                     .frame(height: 50)
                 #endif
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+                ATTrackingManager.requestTrackingAuthorization { status in
+                    GADMobileAds.sharedInstance().start(completionHandler: nil)
+                    
+                }
             }
         }
     }
