@@ -71,8 +71,7 @@ struct AddRecordView: View {
                     DatePicker("", selection: $recordDate, displayedComponents: [.date, .hourAndMinute])
                 }
             }
-            
-            Spacer()
+
         }
         .padding()
     }
