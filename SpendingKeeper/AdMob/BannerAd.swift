@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BannerAd: UIViewControllerRepresentable {
-    let adUnitId = "ca-app-pub-3940256099942544/2435281174" //"ca-app-pub-6771077591139198/3138486346"
+    let adUnitId = "ca-app-pub-6771077591139198/3138486346"
     
     init() {
     }
