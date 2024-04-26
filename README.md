@@ -1,5 +1,7 @@
 # SpendingKeeper
 
+[<img src="./docs/assets/images/App_Store_Badge.svg">](https://apps.apple.com/us/app/spendingkeeper/id6480076775)
+
 ## Description
 
 The app helps a user keep the records of spendings.
