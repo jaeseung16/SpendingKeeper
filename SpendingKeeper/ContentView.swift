@@ -29,7 +29,7 @@ struct ContentView: View {
                 NavigationSplitView {
                     List(selection: $selectedMenu) {
                         ForEach(SKMenu.allCases) { menu in
-                            NavigationLink(value: menu){
+                            NavigationLink(value: menu) {
                                 Text(menu.rawValue)
                             }
                         }
@@ -38,10 +38,13 @@ struct ContentView: View {
                     switch selectedMenu {
                     case .transactions:
                         RecordListView(selectedRecord: $selectedRecord)
+                            .navigationTitle(SKMenu.transactions.rawValue)
                     case .accounts:
                         AccountListView(selectedAccount: $selectedAccount)
+                            .navigationTitle("accounts")
                     case .trends:
                         TrendsListView(selectedTrend: $selectedTrend)
+                            .navigationTitle("trends")
                     case nil:
                         Text("Select a menu")
                     }
