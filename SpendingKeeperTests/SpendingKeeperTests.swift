@@ -80,6 +80,35 @@ final class SpendingKeeperTests: XCTestCase {
 
         XCTAssertEqual(actualDate, expectedDate)
     }
+    
+    @MainActor func testFirstDayOfMonthStats() throws {
+        let viewModel = SKViewModel(modelContext: testContainer.mainContext)
+        
+        let fromDateComponents = DateComponents(year: 2024, month: 2, day: 29)
+        let from = Calendar.current.date(from: fromDateComponents)!
+        
+        let toDateComponents = DateComponents(year: 2024, month: 5, day: 1)
+        let to = Calendar.current.date(from: toDateComponents)!
+        
+        let stats = viewModel.stats(from: from, to: to, trend: .daily)
+        
+        XCTAssertEqual(stats.first?.date, to)
+    }
+    
+    @MainActor func testFirstDayOfYearStats() throws {
+        let viewModel = SKViewModel(modelContext: testContainer.mainContext)
+        
+        let fromDateComponents = DateComponents(year: 2023, month: 12, day: 31)
+        let from = Calendar.current.date(from: fromDateComponents)!
+        
+        let toDateComponents = DateComponents(year: 2025, month: 1, day: 1)
+        let to = Calendar.current.date(from: toDateComponents)!
+        
+        let stats = viewModel.stats(from: from, to: to, trend: .monthly)
+        
+        XCTAssertEqual(stats.first?.date, to)
+        XCTAssertEqual(stats.first?.period, .previous)
+    }
 
     func testOneMonthLater() throws {
         let dateComponents = DateComponents(year: 2024, month: 1, day: 30)

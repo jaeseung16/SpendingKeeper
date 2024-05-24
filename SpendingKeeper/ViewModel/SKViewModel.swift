@@ -28,7 +28,7 @@ class SKViewModel: NSObject, ObservableObject {
         return stats(from: start, to: .now, trend: trend)
     }
     
-    private func stats(from start: Date, to end: Date, trend: SKTrend) -> [SKStats] {
+    func stats(from start: Date, to end: Date, trend: SKTrend) -> [SKStats] {
         let dates = dates(from: start, to: end, trend: trend)
         let records = fetchRecords(from: start, to: end)
         
@@ -76,8 +76,10 @@ class SKViewModel: NSObject, ObservableObject {
                     }
                 }
                 stat = SKStats(date: statDate, value: 0.0, period: .previous)
-            } else {
+            } else if areDatesInTheSamePeriod(date, otherDate: end, period: previousPeriod) {
                 stat = SKStats(date: date, value: 0.0, period: .current)
+            } else {
+                continue
             }
             
             while index < records.count && areDatesInTheSamePeriod(records[index].recordDate, otherDate: date, period: period) {
