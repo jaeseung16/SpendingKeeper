@@ -31,4 +31,5 @@ The app helps a user keep the records of spendings.
   - Click `cumulative` to diplay the cumulative spendings
 
 ## Version History
+### ver 1.1 (May 2024)
 ### ver 1.0 (Apr 2024)
