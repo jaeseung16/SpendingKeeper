@@ -87,8 +87,8 @@ class SKViewModel: NSObject, ObservableObject {
                 continue
             }
             
+            logger.log("date=\(date, privacy: .public), recordDate=\(records[index].recordDate, privacy: .public)")
             while index < records.count && areDatesInTheSamePeriod(records[index].recordDate, otherDate: date, period: period) {
-                logger.log("date=\(date, privacy: .public), recordDate=\(records[index].recordDate, privacy: .public)")
                 if records[index].transactionType == .spending {
                     stat.value += records[index].amount
                 }
@@ -186,6 +186,7 @@ class SKViewModel: NSObject, ObservableObject {
     }
     
     private func areDatesInTheSamePeriod(_ date: Date, otherDate: Date, period: Calendar.Component) -> Bool {
+        logger.log("date=\(date, privacy: .public), otherDate=\(otherDate, privacy: .public), period=\(period, privacy: .public)")
         return calendar.isDate(date, equalTo: otherDate, toGranularity: period)
     }
     
