@@ -95,7 +95,7 @@ class SKViewModel: NSObject, ObservableObject {
                 break
             }
         }
-        
+        logger.log("stats=\(stats)")
         return stats
     }
     
