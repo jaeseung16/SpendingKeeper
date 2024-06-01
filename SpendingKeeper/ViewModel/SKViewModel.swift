@@ -32,6 +32,8 @@ class SKViewModel: NSObject, ObservableObject {
         let dates = dates(from: start, to: end, trend: trend)
         let records = fetchRecords(from: start, to: end)
         
+        logger.log("records=\(records, privacy: .public)")
+        
         var stats = [SKStats]()
         var index = 0
         
