@@ -17,8 +17,6 @@ class SKViewModel: NSObject, ObservableObject {
     
     init(modelContext: ModelContext) {
         self.modelContext = modelContext
-        
-        logger.log("autosaveEnabled=\(modelContext.autosaveEnabled)")
     }
     
     func stats(for trend: SKTrend) -> [SKStats] {
@@ -55,12 +53,9 @@ class SKViewModel: NSObject, ObservableObject {
             period = .month
         }
         
-        logger.log("aDateInPreviousPeriod=\(aDateInPreviousPeriod)")
-        
         for date in dates {
             var stat: SKStats
             if areDatesInTheSamePeriod(date, otherDate: aDateInPreviousPeriod, period: previousPeriod) {
-                logger.log("date=\(date, privacy: .public) in previous period")
                 var statDate: Date
                 switch trend {
                 case .daily:
@@ -80,14 +75,16 @@ class SKViewModel: NSObject, ObservableObject {
                 }
                 stat = SKStats(date: statDate, value: 0.0, period: .previous)
             } else if areDatesInTheSamePeriod(date, otherDate: end, period: previousPeriod) {
-                logger.log("date=\(date, privacy: .public) in current period")
                 stat = SKStats(date: date, value: 0.0, period: .current)
             } else {
-                logger.log("date=\(date, privacy: .public)")
                 continue
             }
             
-            logger.log("date=\(date, privacy: .public), recordDate=\(records[index].recordDate, privacy: .public)")
+            // fast forward
+            while records[index].recordDate < date {
+                index += 1
+            }
+            
             while index < records.count && areDatesInTheSamePeriod(records[index].recordDate, otherDate: date, period: period) {
                 if records[index].transactionType == .spending {
                     stat.value += records[index].amount
@@ -186,7 +183,6 @@ class SKViewModel: NSObject, ObservableObject {
     }
     
     private func areDatesInTheSamePeriod(_ date: Date, otherDate: Date, period: Calendar.Component) -> Bool {
-        logger.log("date=\(date, privacy: .public), otherDate=\(otherDate, privacy: .public), period=\(String(describing: period), privacy: .public)")
         return calendar.isDate(date, equalTo: otherDate, toGranularity: period)
     }
     
