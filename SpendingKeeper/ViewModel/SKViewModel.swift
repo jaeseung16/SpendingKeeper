@@ -60,7 +60,7 @@ class SKViewModel: NSObject, ObservableObject {
         for date in dates {
             var stat: SKStats
             if areDatesInTheSamePeriod(date, otherDate: aDateInPreviousPeriod, period: previousPeriod) {
-                logger.log("date=\(date) in previous period")
+                logger.log("date=\(date, privacy: .public) in previous period")
                 var statDate: Date
                 switch trend {
                 case .daily:
@@ -80,14 +80,15 @@ class SKViewModel: NSObject, ObservableObject {
                 }
                 stat = SKStats(date: statDate, value: 0.0, period: .previous)
             } else if areDatesInTheSamePeriod(date, otherDate: end, period: previousPeriod) {
-                logger.log("date=\(date) in current period")
+                logger.log("date=\(date, privacy: .public) in current period")
                 stat = SKStats(date: date, value: 0.0, period: .current)
             } else {
-                logger.log("date=\(date)")
+                logger.log("date=\(date, privacy: .public)")
                 continue
             }
             
             while index < records.count && areDatesInTheSamePeriod(records[index].recordDate, otherDate: date, period: period) {
+                logger.log("date=\(date, privacy: .public), recordDate=\(records[index].recordDate, privacy: .public)")
                 if records[index].transactionType == .spending {
                     stat.value += records[index].amount
                 }
@@ -100,7 +101,7 @@ class SKViewModel: NSObject, ObservableObject {
                 break
             }
         }
-        logger.log("stats=\(stats, privacy: .public)")
+        
         return stats
     }
     
