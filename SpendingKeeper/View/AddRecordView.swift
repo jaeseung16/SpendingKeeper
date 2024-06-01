@@ -12,7 +12,7 @@ struct AddRecordView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     
-    @Query private var accounts: [SKAccount]
+    @Query(sort: \SKAccount.name) private var accounts: [SKAccount]
     
     @State var recordDate: Date = .now
     @State var recordDescription: String = ""
