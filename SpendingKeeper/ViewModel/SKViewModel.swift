@@ -95,7 +95,7 @@ class SKViewModel: NSObject, ObservableObject {
                 break
             }
         }
-        logger.log("stats=\(stats)")
+        logger.log("stats=\(stats, privacy: .public)")
         return stats
     }
     
