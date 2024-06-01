@@ -32,8 +32,6 @@ class SKViewModel: NSObject, ObservableObject {
         let dates = dates(from: start, to: end, trend: trend)
         let records = fetchRecords(from: start, to: end)
         
-        logger.log("records=\(records, privacy: .public)")
-        
         var stats = [SKStats]()
         var index = 0
         
@@ -57,9 +55,12 @@ class SKViewModel: NSObject, ObservableObject {
             period = .month
         }
         
+        logger.log("aDateInPreviousPeriod=\(aDateInPreviousPeriod)")
+        
         for date in dates {
             var stat: SKStats
             if areDatesInTheSamePeriod(date, otherDate: aDateInPreviousPeriod, period: previousPeriod) {
+                logger.log("date=\(date) in previous period")
                 var statDate: Date
                 switch trend {
                 case .daily:
@@ -79,8 +80,10 @@ class SKViewModel: NSObject, ObservableObject {
                 }
                 stat = SKStats(date: statDate, value: 0.0, period: .previous)
             } else if areDatesInTheSamePeriod(date, otherDate: end, period: previousPeriod) {
+                logger.log("date=\(date) in current period")
                 stat = SKStats(date: date, value: 0.0, period: .current)
             } else {
+                logger.log("date=\(date)")
                 continue
             }
             
