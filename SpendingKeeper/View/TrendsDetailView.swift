@@ -20,19 +20,21 @@ struct TrendsDetailView: View {
     @State var stats = [SKStats]()
     @State private var cumulative = false
     
-    private var cumulativeStats: [SKStats] {
-        var previousSum = 0.0
+    private var previousCumulativeStats: [SKStats] {
         var currentSum = 0.0
-        return stats.map { stat in
-            var cumulativeStat: SKStats
-            if stat.period == .previous {
-                previousSum += stat.value
-                cumulativeStat = SKStats(date: stat.date, value: previousSum, period: .previous)
-            } else {
+        return stats.filter { $0.period == .previous }
+            .map { stat in
                 currentSum += stat.value
-                cumulativeStat = SKStats(date: stat.date, value: currentSum, period: .current)
-            }
-            return cumulativeStat
+            return SKStats(date: stat.date, value: currentSum, period: .previous)
+        }
+    }
+    
+    private var currentCumulativeStats: [SKStats] {
+        var currentSum = 0.0
+        return stats.filter { $0.period == .current }
+            .map { stat in
+                currentSum += stat.value
+            return SKStats(date: stat.date, value: currentSum, period: .current)
         }
     }
     
@@ -55,11 +57,28 @@ struct TrendsDetailView: View {
             }
             
             if (cumulative) {
-                Chart(cumulativeStats, id: \.date) { stat in
-                    LineMark(x: .value("Date", stat.date, unit: unit),
-                            y: .value("Count", stat.value))
-                    .foregroundStyle(by: .value("Month", stat.period.rawValue))
-                    .interpolationMethod(.stepCenter)
+                Chart {
+                    ForEach(previousCumulativeStats, id: \.date) { stat in
+                        LineMark(x: .value("Date", stat.date, unit: unit),
+                                y: .value("Count", stat.value))
+                        
+                        .foregroundStyle(by: .value("Month", stat.period.rawValue))
+                        .interpolationMethod(.stepCenter)
+                    }
+                    .annotation(position: .top, alignment: .trailing) {
+                        annotationView(stats: previousCumulativeStats)
+                    }
+                    
+                    ForEach(currentCumulativeStats, id: \.date) { stat in
+                        LineMark(x: .value("Date", stat.date, unit: unit),
+                                y: .value("Count", stat.value))
+                        
+                        .foregroundStyle(by: .value("Month", stat.period.rawValue))
+                        .interpolationMethod(.stepCenter)
+                    }
+                    .annotation(position: .top, alignment: .trailing) {
+                        annotationView(stats: currentCumulativeStats)
+                    }
                 }
             } else {
                 Chart(stats, id: \.date) { stat in
@@ -79,5 +98,9 @@ struct TrendsDetailView: View {
         case .monthly:
             return .month
         }
+    }
+    
+    private func annotationView(stats: [SKStats]) -> Text {
+        Text(stats.last?.value ?? 0.0, format: .currency(code: Locale.current.currency?.identifier ?? ""))
     }
 }
