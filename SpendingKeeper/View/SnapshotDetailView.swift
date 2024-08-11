@@ -15,6 +15,18 @@ struct SnapshotDetailView: View {
     @State private var presentShareSheet = false
     @State private var presentAlert = false
     
+    private var sumOfIncome: Double
+    private var sumOfSpending: Double
+    
+    private let miniumPercentageToDisplayAnootation = 10.0
+    
+    init(snapshot: SKSnapshot) {
+        self.snapshot = snapshot
+        
+        self.sumOfIncome = snapshot.incomes?.map { $0.total }.reduce(0.0, +) ?? 0.0
+        self.sumOfSpending = snapshot.spendings?.map { $0.total }.reduce(0.0, +) ?? 0.0
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -26,12 +38,12 @@ struct SnapshotDetailView: View {
                     Section {
                         HStack {
                             Chart(spendings, id: \.accoundId) {
-                                barMark($0.accountName, $0.total)
+                                barMark($0.accountName, $0.total, $0.total / sumOfSpending)
                             }
-                            .chartYScale(domain: [0, 1.1 * spendings.map { $0.total }.reduce(0.0, +)])
+                            .chartYScale(domain: [0, 1.1 * sumOfSpending])
                             
                             Chart(spendings, id: \.accoundId) {
-                                sectorMark($0.accountName, $0.total)
+                                sectorMark($0.accountName, $0.total, $0.total / sumOfSpending)
                             }
                         }
                     } header: {
@@ -48,12 +60,12 @@ struct SnapshotDetailView: View {
                     Section {
                         HStack {
                             Chart(incomes, id: \.accoundId) {
-                                barMark($0.accountName, $0.total)
+                                barMark($0.accountName, $0.total, $0.total / sumOfIncome)
                             }
-                            .chartYScale(domain: [0, 1.1 * incomes.map { $0.total }.reduce(0.0, +)])
+                            .chartYScale(domain: [0, 1.1 * sumOfIncome])
                             
                             Chart(incomes, id: \.accoundId) {
-                                sectorMark($0.accountName, $0.total)
+                                sectorMark($0.accountName, $0.total, $0.total / sumOfIncome)
                             }
                         }
                     } header: {
@@ -116,21 +128,23 @@ struct SnapshotDetailView: View {
         }
     }
     
-    private func barMark(_ accountName: String, _ total: Double) -> some ChartContent {
+    private func barMark(_ accountName: String, _ total: Double, _ fraction: Double) -> some ChartContent {
         BarMark(y: .value("Total", total))
         .foregroundStyle(by: .value("Account", accountName))
         .annotation(position: .overlay) {
-            Text(total, format: .currency(code: Locale.current.currency?.identifier ?? ""))
-                .font(.caption)
+            if fraction * 100.0 > miniumPercentageToDisplayAnootation {
+                Text(total, format: .currency(code: Locale.current.currency?.identifier ?? ""))
+            }
         }
     }
     
-    private func sectorMark(_ accountName: String, _ total: Double) -> some ChartContent {
+    private func sectorMark(_ accountName: String, _ total: Double, _ fraction: Double) -> some ChartContent {
         SectorMark(angle: .value("Total", total))
             .foregroundStyle(by: .value("Account", accountName))
             .annotation(position: .overlay) {
-                Text(total, format: .currency(code: Locale.current.currency?.identifier ?? ""))
-                    .font(.caption)
+                if fraction * 100.0 > miniumPercentageToDisplayAnootation {
+                    Text(fraction, format: .percent.precision(.fractionLength(1)))
+                }
             }
     }
 }
