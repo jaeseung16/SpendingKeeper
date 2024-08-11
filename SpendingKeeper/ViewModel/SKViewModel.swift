@@ -219,4 +219,92 @@ class SKViewModel: NSObject, ObservableObject {
         let firstMonthOfQuater = (month/3) * 3 + 1
         return DateComponents(month: firstMonthOfQuater, day: 1, hour: 0, minute: 0, second: 0)
     }
+    
+    // Snapshot
+    
+    func totalByAccount(from begin: Date, to end: Date) -> ([SKSnapshotIncome], [SKSnapshotSpending]) {
+        var incomes = [UUID: SKSnapshotIncome]()
+        var spendings = [UUID: SKSnapshotSpending]()
+        
+        let records = fetchRecords(from: begin, to: end)
+        
+        for record in records {
+            if let accountId = record.accountId {
+                let account = fetchAccount(accountId)
+                let accountName = account.isEmpty ? record.accountName : account[0].name
+                logger.log("\(accountId) \(accountName)")
+                
+                switch record.transactionType {
+                case .income:
+                    let currentValue = incomes[accountId, default: SKSnapshotIncome(accoundId: accountId, accountName: accountName, total: 0.0)]
+                    currentValue.total += record.amount
+                    incomes[accountId] = currentValue
+                case .spending:
+                    let currentValue = spendings[accountId, default: SKSnapshotSpending(accoundId: accountId, accountName: accountName, total: 0.0)]
+                    currentValue.total += record.amount
+                    spendings[accountId] = currentValue
+                }
+            }
+        }
+        
+        logger.log("\(incomes)")
+        logger.log("\(spendings)")
+        
+        return (Array(incomes.values), Array(spendings.values))
+    }
+    
+    private func fetchAccount(_ uid: UUID) -> [SKAccount] {
+        var records = [SKAccount]()
+        do {
+            let descriptor = FetchDescriptor<SKAccount>(
+                predicate: #Predicate { $0.uid == uid },
+                sortBy: []
+            )
+            let fetchedRecords = try modelContext.fetch(descriptor)
+            records.append(contentsOf: fetchedRecords)
+        } catch {
+            logger.log("Fetch failed")
+        }
+        return records
+    }
+    
+    func generateCSV(from start: Date, to end: Date) -> URL? {
+        let records = fetchRecords(from: start, to: end)
+        let csvString = buildCSV(records: records)
+
+        guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            return nil
+        }
+        
+        let filename = "SpendingKeeper_\(start)_\(end).csv"
+        let csvFileURL = path.appendingPathComponent(filename)
+        
+        do {
+            try csvString.write(to: csvFileURL, atomically: true, encoding: .utf8)
+        } catch {
+            logger.log("Failed to save the csv file")
+        }
+        
+        logger.log("\(csvFileURL)")
+        return csvFileURL
+    }
+    
+    private func buildCSV(records: [SKRecord]) -> String {
+        var csvString = "Date, Description, Income, Spending, Account\n"
+        
+        for record in records {
+            csvString += "\(record.recordDate), "
+            csvString += "\(record.recordDescription), "
+            
+            if record.transactionType == .income {
+                csvString += "\(record.amount), , "
+            } else {
+                csvString += ", \(record.amount), "
+            }
+            
+            csvString += "\(record.accountName)\n"
+        }
+        
+        return csvString
+    }
 }

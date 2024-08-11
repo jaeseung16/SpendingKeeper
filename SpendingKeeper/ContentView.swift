@@ -20,6 +20,7 @@ struct ContentView: View {
     @State private var selectedRecord: SKRecord?
     @State private var selectedAccount: SKAccount?
     @State private var selectedTrend: SKTrend?
+    @State private var selectedSnapshot: SKSnapshot?
     
     @State private var presentAlert = false
     
@@ -45,6 +46,8 @@ struct ContentView: View {
                     case .trends:
                         TrendsListView(selectedTrend: $selectedTrend)
                             .navigationTitle("trends")
+                    case .snapshots:
+                        SnapshotListView(selectedSnapshot: $selectedSnapshot)
                     case nil:
                         Text("Select a menu")
                     }
@@ -65,6 +68,12 @@ struct ContentView: View {
                             TrendsDetailView(trend: trend, stats: viewModel.stats(for: trend))
                                 .id(trend)
                         }
+                    case .snapshots:
+                        if let snapshot = selectedSnapshot {
+                            SnapshotDetailView(snapshot: snapshot)
+                                .id(snapshot)
+                        }
+                        
                     case nil:
                         Text("Select a menu")
                     }
