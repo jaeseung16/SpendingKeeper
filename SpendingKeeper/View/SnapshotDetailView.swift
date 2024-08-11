@@ -28,9 +28,6 @@ struct SnapshotDetailView: View {
                             Chart(spendings, id: \.accoundId) {
                                 barMark($0.accountName, $0.total)
                             }
-                            
-                            Spacer()
-                            
                             Chart(spendings, id: \.accoundId) {
                                 sectorMark($0.accountName, $0.total)
                             }
@@ -51,9 +48,6 @@ struct SnapshotDetailView: View {
                             Chart(incomes, id: \.accoundId) {
                                 barMark($0.accountName, $0.total)
                             }
-                            
-                            Spacer()
-                            
                             Chart(incomes, id: \.accoundId) {
                                 sectorMark($0.accountName, $0.total)
                             }
@@ -114,11 +108,11 @@ struct SnapshotDetailView: View {
     }
     
     private func barMark(_ accountName: String, _ total: Double) -> some ChartContent {
-        BarMark(x: .value("Account", accountName),
-                 y: .value("Total", total))
+        BarMark(y: .value("Total", total))
         .foregroundStyle(by: .value("Account", accountName))
         .annotation(position: .overlay) {
             Text(total, format: .currency(code: Locale.current.currency?.identifier ?? ""))
+                .font(.caption)
         }
     }
     
@@ -127,6 +121,7 @@ struct SnapshotDetailView: View {
             .foregroundStyle(by: .value("Account", accountName))
             .annotation(position: .overlay) {
                 Text(total, format: .currency(code: Locale.current.currency?.identifier ?? ""))
+                    .font(.caption)
             }
     }
 }
