@@ -134,6 +134,7 @@ struct SnapshotDetailView: View {
         .annotation(position: .overlay) {
             if fraction * 100.0 > miniumPercentageToDisplayAnootation {
                 Text(total, format: .currency(code: Locale.current.currency?.identifier ?? ""))
+                    .font(.callout)
             }
         }
     }
@@ -143,7 +144,8 @@ struct SnapshotDetailView: View {
             .foregroundStyle(by: .value("Account", accountName))
             .annotation(position: .overlay) {
                 if fraction * 100.0 > miniumPercentageToDisplayAnootation {
-                    Text(fraction, format: .percent.precision(.fractionLength(1)))
+                    Text(fraction, format: .percent.precision(.fractionLength(0)))
+                        .font(.callout)
                 }
             }
     }
