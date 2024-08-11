@@ -28,6 +28,8 @@ struct SnapshotDetailView: View {
                             Chart(spendings, id: \.accoundId) {
                                 barMark($0.accountName, $0.total)
                             }
+                            .chartYScale(domain: [0, 1.1 * spendings.map { $0.total }.reduce(0.0, +)])
+                            
                             Chart(spendings, id: \.accoundId) {
                                 sectorMark($0.accountName, $0.total)
                             }
@@ -48,6 +50,8 @@ struct SnapshotDetailView: View {
                             Chart(incomes, id: \.accoundId) {
                                 barMark($0.accountName, $0.total)
                             }
+                            .chartYScale(domain: [0, 1.1 * incomes.map { $0.total }.reduce(0.0, +)])
+                            
                             Chart(incomes, id: \.accoundId) {
                                 sectorMark($0.accountName, $0.total)
                             }
@@ -101,6 +105,11 @@ struct SnapshotDetailView: View {
                 Text("TO")
                     .font(.caption)
                 Text(snapshot.end, format: Date.FormatStyle(date: .numeric, time: .omitted))
+                
+                Spacer()
+                
+                Text("CREATED ON").font(.caption)
+                Text(snapshot.created, format: Date.FormatStyle(date: .numeric, time: .omitted))
                 
                 Spacer()
             }
