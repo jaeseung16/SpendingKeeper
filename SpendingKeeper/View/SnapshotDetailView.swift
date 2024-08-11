@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 
 struct SnapshotDetailView: View {
     @EnvironmentObject private var viewModel: SKViewModel
@@ -17,28 +18,54 @@ struct SnapshotDetailView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Text(snapshot.title)
+                header
                 
-                Text(snapshot.begin, format: Date.FormatStyle(date: .numeric, time: .omitted))
-                    .font(.caption)
-                
-                Text(snapshot.end, format: Date.FormatStyle(date: .numeric, time: .omitted))
-                    .font(.caption)
-                
-                if let incomes = snapshot.incomes {
-                    List {
-                        ForEach(incomes) { income in
-                            Text("\(income.accountName): \(income.total)")
-                        }
-                    }
-                }
+                Divider()
                 
                 if let spendings = snapshot.spendings {
-                    List {
-                        ForEach(spendings) { spending in
-                            Text("\(spending.accountName): \(spending.total)")
+                    Section {
+                        HStack {
+                            Chart(spendings, id: \.accoundId) {
+                                barMark($0.accountName, $0.total)
+                            }
+                            
+                            Spacer()
+                            
+                            Chart(spendings, id: \.accoundId) {
+                                sectorMark($0.accountName, $0.total)
+                            }
+                        }
+                    } header: {
+                        HStack {
+                            Text("SPENDING")
+                                .font(.title3)
+                            Spacer()
                         }
                     }
+                    .padding()
+                }
+                
+                if let incomes = snapshot.incomes {
+                    Section {
+                        HStack {
+                            Chart(incomes, id: \.accoundId) {
+                                barMark($0.accountName, $0.total)
+                            }
+                            
+                            Spacer()
+                            
+                            Chart(incomes, id: \.accoundId) {
+                                sectorMark($0.accountName, $0.total)
+                            }
+                        }
+                    } header: {
+                        HStack {
+                            Text("INCOME")
+                                .font(.title3)
+                            Spacer()
+                        }
+                    }
+                    .padding()
                 }
             }
             .toolbar {
@@ -63,5 +90,43 @@ struct SnapshotDetailView: View {
                 
         }
         
+    }
+    
+    private var header: some View {
+        Group {
+            Text(snapshot.title)
+                .font(.title)
+            
+            HStack {
+                Spacer()
+                
+                Text("FROM")
+                    .font(.caption)
+                Text(snapshot.begin, format: Date.FormatStyle(date: .numeric, time: .omitted))
+
+                Text("TO")
+                    .font(.caption)
+                Text(snapshot.end, format: Date.FormatStyle(date: .numeric, time: .omitted))
+                
+                Spacer()
+            }
+        }
+    }
+    
+    private func barMark(_ accountName: String, _ total: Double) -> some ChartContent {
+        BarMark(x: .value("Account", accountName),
+                 y: .value("Total", total))
+        .foregroundStyle(by: .value("Account", accountName))
+        .annotation(position: .overlay) {
+            Text(total, format: .currency(code: Locale.current.currency?.identifier ?? ""))
+        }
+    }
+    
+    private func sectorMark(_ accountName: String, _ total: Double) -> some ChartContent {
+        SectorMark(angle: .value("Total", total))
+            .foregroundStyle(by: .value("Account", accountName))
+            .annotation(position: .overlay) {
+                Text(total, format: .currency(code: Locale.current.currency?.identifier ?? ""))
+            }
     }
 }
