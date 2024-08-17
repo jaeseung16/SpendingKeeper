@@ -255,7 +255,6 @@ struct SnapshotDetailView: View {
         // Table from second page
         
         let sortedRecords = records.sorted(by: { $0.recordDate < $1.recordDate })
-        let numberOfRowsPerPages = 15
         var index = 0
         
         while index < records.count {
