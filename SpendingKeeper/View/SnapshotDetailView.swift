@@ -37,52 +37,22 @@ struct SnapshotDetailView: View {
                 
                 Divider()
                 
-                if let spendings = snapshot.spendings {
-                    Section {
-                        HStack {
-                            Chart(spendings, id: \.accoundId) {
-                                barMark($0.accountName, $0.total, $0.total / sumOfSpending)
-                            }
-                            .chartYScale(domain: [0, 1.1 * sumOfSpending])
-                            
-                            Chart(spendings, id: \.accoundId) {
-                                sectorMark($0.accountName, $0.total, $0.total / sumOfSpending)
-                            }
-                        }
-                    } header: {
-                        HStack {
-                            Text("SPENDING")
-                                .font(.title3)
-                            Spacer()
-                        }
+                ScrollView {
+                    if let spendings = snapshot.spendings {
+                        spendingCharts(spendings)
+                            .frame(maxHeight: 0.4 * geometry.size.height)
+                            .padding()
                     }
-                    .padding()
-                }
-                
-                if let incomes = snapshot.incomes {
-                    Section {
-                        HStack {
-                            Chart(incomes, id: \.accoundId) {
-                                barMark($0.accountName, $0.total, $0.total / sumOfIncome)
-                            }
-                            .chartYScale(domain: [0, 1.1 * sumOfIncome])
-                            
-                            Chart(incomes, id: \.accoundId) {
-                                sectorMark($0.accountName, $0.total, $0.total / sumOfIncome)
-                            }
-                        }
-                    } header: {
-                        HStack {
-                            Text("INCOME")
-                                .font(.title3)
-                            Spacer()
-                        }
+                    
+                    if let incomes = snapshot.incomes {
+                        incomeCharts(incomes)
+                            .frame(maxHeight: 0.4 * geometry.size.height)
+                            .padding()
                     }
-                    .padding()
+                    
+                    recordTable
+                        .frame(minHeight: 0.3 * geometry.size.height, maxHeight: 0.5 * geometry.size.height)
                 }
-                
-                recordTable
-                
             }
             .toolbar {
                 ToolbarItem {
@@ -113,6 +83,48 @@ struct SnapshotDetailView: View {
                 Text("CREATED ON").font(.caption)
                 Text(snapshot.created, format: Date.FormatStyle(date: .numeric, time: .omitted))
                 
+                Spacer()
+            }
+        }
+    }
+    
+    private func spendingCharts(_ spendings: [SKSnapshotSpending]) -> some View {
+        Section {
+            HStack {
+                Chart(spendings, id: \.accoundId) {
+                    barMark($0.accountName, $0.total, $0.total / sumOfSpending)
+                }
+                .chartYScale(domain: [0, 1.1 * sumOfSpending])
+                
+                Chart(spendings, id: \.accoundId) {
+                    sectorMark($0.accountName, $0.total, $0.total / sumOfSpending)
+                }
+            }
+        } header: {
+            HStack {
+                Text("SPENDING")
+                    .font(.title3)
+                Spacer()
+            }
+        }
+    }
+    
+    private func incomeCharts(_ incomes: [SKSnapshotIncome]) -> some View {
+        Section {
+            HStack {
+                Chart(incomes, id: \.accoundId) {
+                    barMark($0.accountName, $0.total, $0.total / sumOfIncome)
+                }
+                .chartYScale(domain: [0, 1.1 * sumOfIncome])
+                
+                Chart(incomes, id: \.accoundId) {
+                    sectorMark($0.accountName, $0.total, $0.total / sumOfIncome)
+                }
+            }
+        } header: {
+            HStack {
+                Text("INCOME")
+                    .font(.title3)
                 Spacer()
             }
         }
@@ -244,7 +256,6 @@ struct SnapshotDetailView: View {
         
         let sortedRecords = records.sorted(by: { $0.recordDate < $1.recordDate })
         let numberOfRowsPerPages = 15
-        let numberOfPages = 1 + records.count / numberOfRowsPerPages
         var index = 0
         
         while index < records.count {
