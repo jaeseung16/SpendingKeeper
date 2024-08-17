@@ -13,6 +13,8 @@ struct SnapshotDetailView: View {
     
     @State var snapshot: SKSnapshot
     @State private var presentShareSheet = false
+    @State private var records: [SKSnapshotRecord]
+    @State private var sortOrder = [KeyPathComparator(\SKSnapshotRecord.recordDate)]
     
     private var sumOfIncome: Double
     private var sumOfSpending: Double
@@ -24,6 +26,8 @@ struct SnapshotDetailView: View {
         
         self.sumOfIncome = snapshot.incomes?.map { $0.total }.reduce(0.0, +) ?? 0.0
         self.sumOfSpending = snapshot.spendings?.map { $0.total }.reduce(0.0, +) ?? 0.0
+        
+        self.records = snapshot.records ?? [SKSnapshotRecord]()
     }
     
     var body: some View {
@@ -76,6 +80,10 @@ struct SnapshotDetailView: View {
                     }
                     .padding()
                 }
+                
+                //recordTable
+                recordGrid
+                
             }
             .toolbar {
                 ToolbarItem {
@@ -133,6 +141,72 @@ struct SnapshotDetailView: View {
             }
     }
     
+    private var recordTable: some View {
+        Table(records, sortOrder: $sortOrder) {
+            TableColumn("Date", value: \.recordDate) {
+                Text($0.recordDate, format: Date.FormatStyle(date: .numeric, time: .omitted))
+                    .foregroundColor(.secondary)
+            }
+            
+            TableColumn("Account", value: \.accountName)
+            
+            TableColumn("Income/Spending", value: \.transactionType.rawValue)
+            
+            TableColumn("Description", value: \.recordDescription)
+            
+            TableColumn("Amount", value: \.amount) {
+                Text($0.amount, format: .currency(code: Locale.current.currency?.identifier ?? ""))
+                    .foregroundColor(.primary)
+            }
+            .alignment(.numeric)
+        }
+        .onChange(of: sortOrder) { _, sortOrder in
+            records.sort(using: sortOrder)
+        }
+    }
+    
+    private var recordGrid: some View {
+        List {
+            Grid(alignment: .leading) {
+                GridRow {
+                    Text("Date")
+                    Text("Account")
+                    Text("Income/Spending")
+                    Text("Description")
+                    Text("Amount")
+                }
+                .bold()
+                Divider()
+                ForEach(records.sorted(by: {$0.recordDate < $1.recordDate})) { record in
+                    SnapshotRecordView(record: record)
+                }
+                
+            }
+        }
+    }
+    
+    private var pageHeader: some View {
+        VStack {
+            HStack {
+                Text("Date")
+                    .frame(width: 108)
+                Text("Account")
+                    .frame(width: 108)
+                Text("Income/Spending")
+                    .frame(width: 108)
+                    .multilineTextAlignment(.center)
+                Text("Description")
+                    .frame(width: 108)
+                Text("Amount")
+                    .frame(width: 108)
+            }
+            .bold()
+            
+            Divider()
+        }
+        .frame(width: 540.0)
+    }
+    
     private func renderPdf() -> URL {
         let url = URL.documentsDirectory.appending(path: "\(snapshot.title).pdf")
         
@@ -145,6 +219,7 @@ struct SnapshotDetailView: View {
             return url
         }
         
+        // Charts in first page
         pdf.beginPDFPage(nil)
         
         let renderer = ImageRenderer(content: pdfBody)
@@ -165,6 +240,44 @@ struct SnapshotDetailView: View {
         }
         
         pdf.endPDFPage()
+        
+        // Table from second page
+        
+        let sortedRecords = records.sorted(by: { $0.recordDate < $1.recordDate })
+        let numberOfRowsPerPages = 15
+        let numberOfPages = 1 + records.count / numberOfRowsPerPages
+        var index = 0
+        
+        while index < records.count {
+            pdf.beginPDFPage(nil)
+            
+            var yPosition = 0.0
+            
+            let headerRenderer = ImageRenderer(content: pageHeader)
+            headerRenderer.render { size, renderer in
+                let xTranslation = box.size.width / 2.0 - size.width / 2.0
+                let yTranslation = box.size.height - 108.0 // 1.5 inch from the top
+                yPosition += 108.0
+                pdf.translateBy(x: xTranslation, y: yTranslation)
+                
+                renderer(pdf)
+            }
+            
+            while yPosition < 700.0 && index < records.count {
+                let rowRenderer = ImageRenderer(content: SnapshotRecordView(record: sortedRecords[index]))
+                rowRenderer.render { size, renderer in
+                    let xTranslation = 0.0
+                    let yTranslation = -1.5 * size.height // 1.5 spacing
+                    yPosition += 1.5 * size.height
+                    pdf.translateBy(x: xTranslation, y: yTranslation)
+                    renderer(pdf)
+                }
+                
+                index += 1
+            }
+            
+            pdf.endPDFPage()
+        }
         
         pdf.closePDF()
         

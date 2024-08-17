@@ -222,7 +222,8 @@ class SKViewModel: NSObject, ObservableObject {
     
     // Snapshot
     
-    func totalByAccount(from begin: Date, to end: Date) -> ([SKSnapshotIncome], [SKSnapshotSpending]) {
+    func generateSnapshot(title: String, from begin: Date, to end: Date) -> SKSnapshot {
+        var snapshotRecords = [SKSnapshotRecord]()
         var incomes = [UUID: SKSnapshotIncome]()
         var spendings = [UUID: SKSnapshotSpending]()
         
@@ -232,7 +233,14 @@ class SKViewModel: NSObject, ObservableObject {
             if let accountId = record.accountId {
                 let account = fetchAccount(accountId)
                 let accountName = account.isEmpty ? record.accountName : account[0].name
-                logger.log("\(accountId) \(accountName)")
+                logger.log("\(record.recordDate)")
+                
+                let snapshotRecord = SKSnapshotRecord(recordDate: record.recordDate,
+                                                      recordDescription: record.recordDescription,
+                                                      transactionType: record.transactionType,
+                                                      accountName: record.accountName,
+                                                      amount: record.amount)
+                snapshotRecords.append(snapshotRecord)
                 
                 switch record.transactionType {
                 case .income:
@@ -247,10 +255,12 @@ class SKViewModel: NSObject, ObservableObject {
             }
         }
         
-        logger.log("\(incomes)")
-        logger.log("\(spendings)")
-        
-        return (Array(incomes.values), Array(spendings.values))
+        return SKSnapshot(title: title,
+                          begin: begin,
+                          end: end,
+                          records: snapshotRecords,
+                          incomes: Array(incomes.values),
+                          spendings: Array(spendings.values))
     }
     
     private func fetchAccount(_ uid: UUID) -> [SKAccount] {

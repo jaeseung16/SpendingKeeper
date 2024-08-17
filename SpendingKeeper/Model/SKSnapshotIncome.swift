@@ -18,9 +18,11 @@ class SKSnapshotIncome {
     
     init(accoundId: UUID = .init(),
          accountName: String = "",
-         total: Double = 0.0) {
+         total: Double = 0.0,
+         snapshot: SKSnapshot? = nil) {
         self.accoundId = accoundId
         self.accountName = accountName
         self.total = total
+        self.snapshot = snapshot
     }
 }

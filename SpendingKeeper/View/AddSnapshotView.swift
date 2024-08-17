@@ -70,13 +70,7 @@ struct AddSnapshotView: View {
     
     private func add() {
         withAnimation {
-            let (incomes, spendings) = viewModel.totalByAccount(from: begin, to: end)
-            let newRecord = SKSnapshot(title: title,
-                                       begin: begin,
-                                       end: end,
-                                       incomes: incomes,
-                                       spendings: spendings)
-            
+            let newRecord = viewModel.generateSnapshot(title: title, from: begin, to: end)
             modelContext.insert(newRecord)
             dismiss()
         }

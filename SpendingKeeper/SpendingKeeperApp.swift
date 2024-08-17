@@ -12,7 +12,8 @@ import SwiftData
 struct SpendingKeeperApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            SKAccount.self, SKRecord.self, SKSnapshot.self, SKSnapshotSpending.self, SKSnapshotIncome.self,
+            SKAccount.self, SKRecord.self, SKSnapshot.self,
+            SKSnapshotSpending.self, SKSnapshotIncome.self, SKSnapshotRecord.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

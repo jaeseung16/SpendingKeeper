@@ -15,6 +15,8 @@
 		907536552BD5B29700A2B774 /* BannerAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907536542BD5B29700A2B774 /* BannerAd.swift */; };
 		907536572BD5B32B00A2B774 /* BannerAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907536562BD5B32B00A2B774 /* BannerAdViewController.swift */; };
 		9075365A2BD5B44300A2B774 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 907536592BD5B44300A2B774 /* GoogleMobileAds */; };
+		9076D87E2C7127D600460146 /* SKSnapshotRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076D87D2C7127D600460146 /* SKSnapshotRecord.swift */; };
+		9076D8802C71480E00460146 /* SnapshotRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076D87F2C71480E00460146 /* SnapshotRecordView.swift */; };
 		907CA3DD2C68F3730082266D /* SKSnapshotIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CA3DC2C68F3730082266D /* SKSnapshotIncome.swift */; };
 		9080C01B2BC1C70100F88FA8 /* SKPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9080C01A2BC1C70100F88FA8 /* SKPeriod.swift */; };
 		908598702BB36EB600208AEE /* SpendingKeeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9085986F2BB36EB600208AEE /* SpendingKeeperApp.swift */; };
@@ -76,6 +78,8 @@
 		907536542BD5B29700A2B774 /* BannerAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAd.swift; sourceTree = "<group>"; };
 		907536562BD5B32B00A2B774 /* BannerAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdViewController.swift; sourceTree = "<group>"; };
 		9075365B2BD5B5C400A2B774 /* SpendingKeeper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpendingKeeper.entitlements; sourceTree = "<group>"; };
+		9076D87D2C7127D600460146 /* SKSnapshotRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSnapshotRecord.swift; sourceTree = "<group>"; };
+		9076D87F2C71480E00460146 /* SnapshotRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotRecordView.swift; sourceTree = "<group>"; };
 		907CA3DC2C68F3730082266D /* SKSnapshotIncome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSnapshotIncome.swift; sourceTree = "<group>"; };
 		9080C01A2BC1C70100F88FA8 /* SKPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPeriod.swift; sourceTree = "<group>"; };
 		9085986C2BB36EB600208AEE /* SpendingKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpendingKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,6 +238,7 @@
 				9090C7052C6811C5002D704C /* SKSnapshot.swift */,
 				9090C7072C6826B6002D704C /* SKSnapshotSpending.swift */,
 				907CA3DC2C68F3730082266D /* SKSnapshotIncome.swift */,
+				9076D87D2C7127D600460146 /* SKSnapshotRecord.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -256,6 +261,7 @@
 				9090C6FD2C681149002D704C /* SnapshotListView.swift */,
 				9090C7032C6811B5002D704C /* SnapshotRowView.swift */,
 				9090C6FF2C681169002D704C /* SnapshotDetailView.swift */,
+				9076D87F2C71480E00460146 /* SnapshotRecordView.swift */,
 				9090C7012C6811A1002D704C /* AddSnapshotView.swift */,
 			);
 			path = View;
@@ -406,6 +412,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				909B9E3D2BCC84290053A61D /* SKAccountStatementDay.swift in Sources */,
+				9076D8802C71480E00460146 /* SnapshotRecordView.swift in Sources */,
+				9076D87E2C7127D600460146 /* SKSnapshotRecord.swift in Sources */,
 				907536572BD5B32B00A2B774 /* BannerAdViewController.swift in Sources */,
 				906C9D1E2BB8902B0031139D /* RecordDetailView.swift in Sources */,
 				908BF7EA2BB7762700740266 /* AddAccountView.swift in Sources */,
