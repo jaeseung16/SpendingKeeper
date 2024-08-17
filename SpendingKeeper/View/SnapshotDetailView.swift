@@ -81,8 +81,7 @@ struct SnapshotDetailView: View {
                     .padding()
                 }
                 
-                //recordTable
-                recordGrid
+                recordTable
                 
             }
             .toolbar {
