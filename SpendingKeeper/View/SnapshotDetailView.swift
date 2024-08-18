@@ -22,15 +22,8 @@ struct SnapshotDetailView: View {
     @State private var records: [SKSnapshotRecord]
     @State private var sortOrder = [KeyPathComparator(\SKSnapshotRecord.recordDate)]
     
-    private var sumOfIncome: Double
-    private var sumOfSpending: Double
-    
     init(snapshot: SKSnapshot) {
         self.snapshot = snapshot
-        
-        self.sumOfIncome = snapshot.incomes?.map { $0.total }.reduce(0.0, +) ?? 0.0
-        self.sumOfSpending = snapshot.spendings?.map { $0.total }.reduce(0.0, +) ?? 0.0
-        
         self.records = snapshot.records ?? [SKSnapshotRecord]()
     }
     
@@ -157,48 +150,6 @@ struct SnapshotDetailView: View {
         }
     }
     
-    private var recordGrid: some View {
-        List {
-            Grid(alignment: .leading) {
-                GridRow {
-                    Text("Date")
-                    Text("Account")
-                    Text("Income/Spending")
-                    Text("Description")
-                    Text("Amount")
-                }
-                .bold()
-                Divider()
-                ForEach(records.sorted(by: {$0.recordDate < $1.recordDate})) { record in
-                    SnapshotRecordView(record: record)
-                }
-                
-            }
-        }
-    }
-    
-    private var pageHeader: some View {
-        VStack {
-            HStack {
-                Text("Date")
-                    .frame(width: 108)
-                Text("Account")
-                    .frame(width: 108)
-                Text("Income/Spending")
-                    .frame(width: 108)
-                    .multilineTextAlignment(.center)
-                Text("Description")
-                    .frame(width: 108)
-                Text("Amount")
-                    .frame(width: 108)
-            }
-            .bold()
-            
-            Divider()
-        }
-        .frame(width: 540.0)
-    }
-    
     private func renderPdf() -> URL {
         let url = URL.documentsDirectory.appending(path: "\(snapshot.title).pdf")
         
@@ -254,7 +205,7 @@ struct SnapshotDetailView: View {
             
             var yPosition = 0.0
             
-            let headerRenderer = ImageRenderer(content: pageHeader)
+            let headerRenderer = ImageRenderer(content: SnapshotRecordPageHeaderView())
             headerRenderer.render { size, renderer in
                 let xTranslation = box.size.width / 2.0 - size.width / 2.0
                 let yTranslation = box.size.height - 108.0 // 1.5 inch from the top

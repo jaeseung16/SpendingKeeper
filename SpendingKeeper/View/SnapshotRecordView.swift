@@ -9,21 +9,24 @@ import SwiftUI
 
 struct SnapshotRecordView: View {
     
+    private let frameWidth = 540.0
+    
     var record: SKSnapshotRecord
     
     var body: some View {
         HStack {
             Text(record.recordDate, format: Date.FormatStyle(date: .numeric, time: .omitted))
-                .frame(width: 108)
+                .frame(width: 0.2 * frameWidth)
             Text(record.accountName)
-                .frame(width: 108)
+                .frame(width: 0.2 * frameWidth)
             Text(record.transactionType.rawValue)
-                .frame(width: 108)
+                .frame(width: 0.2 * frameWidth)
             Text(record.recordDescription)
-                .frame(width: 108)
+                .frame(width: 0.2 * frameWidth)
             Text(record.amount, format: .currency(code: Locale.current.currency?.identifier ?? ""))
-                .frame(width: 108)
+                .frame(width: 0.2 * frameWidth)
         }
-        .frame(width: 540)
+        .font(.caption)
+        .frame(width: frameWidth)
     }
 }
