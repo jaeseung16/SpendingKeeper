@@ -10,6 +10,12 @@ import Charts
 
 struct SnapshotDetailView: View {
     @EnvironmentObject private var viewModel: SKViewModel
+    #if os(iOS)
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    private var isCompact: Bool { horizontalSizeClass == .compact }
+    #else
+    private let isCompact = false
+    #endif
     
     @State var snapshot: SKSnapshot
     @State private var presentShareSheet = false
@@ -37,22 +43,18 @@ struct SnapshotDetailView: View {
                 
                 Divider()
                 
-                ScrollView {
-                    if let spendings = snapshot.spendings {
-                        spendingCharts(spendings)
-                            .frame(maxHeight: 0.4 * geometry.size.height)
-                            .padding()
-                    }
-                    
-                    if let incomes = snapshot.incomes {
-                        incomeCharts(incomes)
-                            .frame(maxHeight: 0.4 * geometry.size.height)
-                            .padding()
-                    }
-                    
-                    recordTable
-                        .frame(minHeight: 0.3 * geometry.size.height, maxHeight: 0.5 * geometry.size.height)
+                if let spendings = snapshot.spendings {
+                    spendingCharts(spendings)
+                        .padding()
                 }
+                
+                if let incomes = snapshot.incomes {
+                    incomeCharts(incomes)
+                        .padding()
+                }
+                
+                recordTable
+                    .frame(minHeight: 0.3 * geometry.size.height, maxHeight: 0.5 * geometry.size.height)
             }
             .toolbar {
                 ToolbarItem {
@@ -155,8 +157,7 @@ struct SnapshotDetailView: View {
     private var recordTable: some View {
         Table(records, sortOrder: $sortOrder) {
             TableColumn("Date", value: \.recordDate) {
-                Text($0.recordDate, format: Date.FormatStyle(date: .numeric, time: .omitted))
-                    .foregroundColor(.secondary)
+                firstColumn($0)
             }
             
             TableColumn("Account", value: \.accountName)
@@ -173,6 +174,24 @@ struct SnapshotDetailView: View {
         }
         .onChange(of: sortOrder) { _, sortOrder in
             records.sort(using: sortOrder)
+        }
+    }
+    
+    private func firstColumn(_ record: SKSnapshotRecord) -> some View {
+        VStack(alignment: .leading) {
+            if isCompact {
+                Text(record.recordDate, format: Date.FormatStyle(date: .numeric, time: .omitted))
+                    .foregroundColor(.secondary)
+                HStack {
+                    Text(record.amount, format: .currency(code: Locale.current.currency?.identifier ?? ""))
+                        .foregroundColor(.primary)
+                    Spacer()
+                    Text(record.recordDescription)
+                }
+            } else {
+                Text(record.recordDate, format: Date.FormatStyle(date: .numeric, time: .omitted))
+                    .foregroundColor(.secondary)
+            }
         }
     }
     
