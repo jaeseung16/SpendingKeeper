@@ -48,6 +48,7 @@ struct ContentView: View {
                             .navigationTitle("trends")
                     case .snapshots:
                         SnapshotListView(selectedSnapshot: $selectedSnapshot)
+                            .navigationTitle("snapshots")
                     case nil:
                         Text("Select a menu")
                     }
