@@ -47,32 +47,39 @@ struct SnapshotPDFFirstPageView: View {
                 }
                 .padding()
             }
+            
+            Divider()
+            
+            footer
         }
         .frame(width: 540.0, height: 700.0)
     }
     
     private var header: some View {
         Group {
-            Text(snapshot.title)
-                .font(.title)
+            HStack {
+                Text(snapshot.title)
+                    .font(.title)
+                Spacer()
+            }
             
+            HStack {
+                Text("\((snapshot.begin..<snapshot.end).formatted(.interval.day().month(.wide).year()))")
+                    .font(.caption)
+                Spacer()
+            }
+        }
+    }
+    
+    private var footer: some View {
+        Group {
             HStack {
                 Spacer()
                 
-                Text("FROM")
+                Text("CREATED ON")
                     .font(.caption)
-                Text(snapshot.begin, format: Date.FormatStyle(date: .numeric, time: .omitted))
-
-                Text("TO")
-                    .font(.caption)
-                Text(snapshot.end, format: Date.FormatStyle(date: .numeric, time: .omitted))
-                
-                Spacer()
-                
-                Text("CREATED ON").font(.caption)
                 Text(snapshot.created, format: Date.FormatStyle(date: .numeric, time: .omitted))
-                
-                Spacer()
+                    .font(.caption)
             }
         }
     }

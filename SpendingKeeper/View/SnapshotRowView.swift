@@ -17,10 +17,7 @@ struct SnapshotRowView: View {
             
             Spacer()
 
-            Text(snapshot.begin, format: Date.FormatStyle(date: .numeric, time: .omitted))
-                .font(.caption) +
-            Text(" - ") +
-            Text(snapshot.end, format: Date.FormatStyle(date: .numeric, time: .omitted))
+            Text("\((snapshot.begin..<snapshot.end).formatted(.interval.day().month(.defaultDigits).year()))")
                 .font(.caption)
         }
     }
