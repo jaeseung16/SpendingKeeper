@@ -56,7 +56,7 @@ struct AddSnapshotView: View {
             
             Spacer()
             
-            Text("Add a new transaction")
+            Text("Generate a new snapshot")
             
             Spacer()
             
