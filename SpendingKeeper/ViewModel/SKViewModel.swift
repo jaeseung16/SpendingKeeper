@@ -30,6 +30,10 @@ class SKViewModel: NSObject, ObservableObject {
         let dates = dates(from: start, to: end, trend: trend)
         let records = fetchRecords(from: start, to: end)
         
+        guard !records.isEmpty else {
+            return [SKStats]()
+        }
+        
         var stats = [SKStats]()
         var index = 0
         
