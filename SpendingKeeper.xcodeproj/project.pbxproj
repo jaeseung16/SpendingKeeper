@@ -47,6 +47,8 @@
 		9090C7082C6826B6002D704C /* SKSnapshotSpending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9090C7072C6826B6002D704C /* SKSnapshotSpending.swift */; };
 		9093C6BA2C6572E7008A4737 /* TrendsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9093C6B92C6572E7008A4737 /* TrendsChartView.swift */; };
 		909B9E3D2BCC84290053A61D /* SKAccountStatementDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B9E3C2BCC84290053A61D /* SKAccountStatementDay.swift */; };
+		90B28C5C2C722470009589E2 /* SKSnapshotChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5B2C722470009589E2 /* SKSnapshotChartData.swift */; };
+		90B28C5E2C722552009589E2 /* SnapshotCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5D2C722552009589E2 /* SnapshotCharts.swift */; };
 		90D136372C65859100898641 /* ShareActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D136362C65859100898641 /* ShareActivityView.swift */; };
 		90D96E2F2BBCC1E300DB4C01 /* SKViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -113,6 +115,8 @@
 		9090C7072C6826B6002D704C /* SKSnapshotSpending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSnapshotSpending.swift; sourceTree = "<group>"; };
 		9093C6B92C6572E7008A4737 /* TrendsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsChartView.swift; sourceTree = "<group>"; };
 		909B9E3C2BCC84290053A61D /* SKAccountStatementDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAccountStatementDay.swift; sourceTree = "<group>"; };
+		90B28C5B2C722470009589E2 /* SKSnapshotChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSnapshotChartData.swift; sourceTree = "<group>"; };
+		90B28C5D2C722552009589E2 /* SnapshotCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotCharts.swift; sourceTree = "<group>"; };
 		90D136362C65859100898641 /* ShareActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareActivityView.swift; sourceTree = "<group>"; };
 		90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -239,6 +243,7 @@
 				9090C7072C6826B6002D704C /* SKSnapshotSpending.swift */,
 				907CA3DC2C68F3730082266D /* SKSnapshotIncome.swift */,
 				9076D87D2C7127D600460146 /* SKSnapshotRecord.swift */,
+				90B28C5B2C722470009589E2 /* SKSnapshotChartData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,6 +268,7 @@
 				9090C6FF2C681169002D704C /* SnapshotDetailView.swift */,
 				9076D87F2C71480E00460146 /* SnapshotRecordView.swift */,
 				9090C7012C6811A1002D704C /* AddSnapshotView.swift */,
+				90B28C5D2C722552009589E2 /* SnapshotCharts.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -426,10 +432,12 @@
 				9090C7082C6826B6002D704C /* SKSnapshotSpending.swift in Sources */,
 				908BF7E52BB76DC000740266 /* SKAccount.swift in Sources */,
 				908BF7E72BB7748500740266 /* SKAccountHistory.swift in Sources */,
+				90B28C5C2C722470009589E2 /* SKSnapshotChartData.swift in Sources */,
 				908B14732BBA11F6004E53D9 /* SKTrend.swift in Sources */,
 				9090C7022C6811A1002D704C /* AddSnapshotView.swift in Sources */,
 				906C9D162BB85E060031139D /* AccountListView.swift in Sources */,
 				9093C6BA2C6572E7008A4737 /* TrendsChartView.swift in Sources */,
+				90B28C5E2C722552009589E2 /* SnapshotCharts.swift in Sources */,
 				9090C7002C681169002D704C /* SnapshotDetailView.swift in Sources */,
 				9080C01B2BC1C70100F88FA8 /* SKPeriod.swift in Sources */,
 				906C9D1C2BB8900C0031139D /* RecordRowView.swift in Sources */,

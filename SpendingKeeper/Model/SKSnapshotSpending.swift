@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class SKSnapshotSpending {
+class SKSnapshotSpending: SKSnapshotChartData {
     
     var accoundId: UUID = UUID()
     var accountName: String = ""

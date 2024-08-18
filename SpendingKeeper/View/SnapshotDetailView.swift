@@ -25,8 +25,6 @@ struct SnapshotDetailView: View {
     private var sumOfIncome: Double
     private var sumOfSpending: Double
     
-    private let miniumPercentageToDisplayAnootation = 10.0
-    
     init(snapshot: SKSnapshot) {
         self.snapshot = snapshot
         
@@ -93,14 +91,7 @@ struct SnapshotDetailView: View {
     private func spendingCharts(_ spendings: [SKSnapshotSpending]) -> some View {
         Section {
             HStack {
-                Chart(spendings, id: \.accoundId) {
-                    barMark($0.accountName, $0.total, $0.total / sumOfSpending)
-                }
-                .chartYScale(domain: [0, 1.1 * sumOfSpending])
-                
-                Chart(spendings, id: \.accoundId) {
-                    sectorMark($0.accountName, $0.total, $0.total / sumOfSpending)
-                }
+                SnapshotCharts(data: spendings)
             }
         } header: {
             HStack {
@@ -114,14 +105,7 @@ struct SnapshotDetailView: View {
     private func incomeCharts(_ incomes: [SKSnapshotIncome]) -> some View {
         Section {
             HStack {
-                Chart(incomes, id: \.accoundId) {
-                    barMark($0.accountName, $0.total, $0.total / sumOfIncome)
-                }
-                .chartYScale(domain: [0, 1.1 * sumOfIncome])
-                
-                Chart(incomes, id: \.accoundId) {
-                    sectorMark($0.accountName, $0.total, $0.total / sumOfIncome)
-                }
+                SnapshotCharts(data: incomes)
             }
         } header: {
             HStack {
@@ -130,28 +114,6 @@ struct SnapshotDetailView: View {
                 Spacer()
             }
         }
-    }
-    
-    private func barMark(_ accountName: String, _ total: Double, _ fraction: Double) -> some ChartContent {
-        BarMark(y: .value("Total", total))
-        .foregroundStyle(by: .value("Account", accountName))
-        .annotation(position: .overlay) {
-            if fraction * 100.0 > miniumPercentageToDisplayAnootation {
-                Text(total, format: .currency(code: Locale.current.currency?.identifier ?? ""))
-                    .font(.callout)
-            }
-        }
-    }
-    
-    private func sectorMark(_ accountName: String, _ total: Double, _ fraction: Double) -> some ChartContent {
-        SectorMark(angle: .value("Total", total))
-            .foregroundStyle(by: .value("Account", accountName))
-            .annotation(position: .overlay) {
-                if fraction * 100.0 > miniumPercentageToDisplayAnootation {
-                    Text(fraction, format: .percent.precision(.fractionLength(0)))
-                        .font(.callout)
-                }
-            }
     }
     
     private var recordTable: some View {
@@ -321,14 +283,7 @@ struct SnapshotDetailView: View {
             if let spendings = snapshot.spendings {
                 Section {
                     HStack {
-                        Chart(spendings, id: \.accoundId) {
-                            barMark($0.accountName, $0.total, $0.total / sumOfSpending)
-                        }
-                        .chartYScale(domain: [0, 1.1 * sumOfSpending])
-                        
-                        Chart(spendings, id: \.accoundId) {
-                            sectorMark($0.accountName, $0.total, $0.total / sumOfSpending)
-                        }
+                        SnapshotCharts(data: spendings)
                     }
                 } header: {
                     HStack {
@@ -343,14 +298,7 @@ struct SnapshotDetailView: View {
             if let incomes = snapshot.incomes {
                 Section {
                     HStack {
-                        Chart(incomes, id: \.accoundId) {
-                            barMark($0.accountName, $0.total, $0.total / sumOfIncome)
-                        }
-                        .chartYScale(domain: [0, 1.1 * sumOfIncome])
-                        
-                        Chart(incomes, id: \.accoundId) {
-                            sectorMark($0.accountName, $0.total, $0.total / sumOfIncome)
-                        }
+                        SnapshotCharts(data: incomes)
                     }
                 } header: {
                     HStack {
