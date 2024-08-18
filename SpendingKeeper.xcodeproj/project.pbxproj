@@ -49,6 +49,7 @@
 		909B9E3D2BCC84290053A61D /* SKAccountStatementDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B9E3C2BCC84290053A61D /* SKAccountStatementDay.swift */; };
 		90B28C5C2C722470009589E2 /* SKSnapshotChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5B2C722470009589E2 /* SKSnapshotChartData.swift */; };
 		90B28C5E2C722552009589E2 /* SnapshotCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5D2C722552009589E2 /* SnapshotCharts.swift */; };
+		90B28C602C7226EB009589E2 /* SnapshotPDFFirstPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5F2C7226EB009589E2 /* SnapshotPDFFirstPageView.swift */; };
 		90D136372C65859100898641 /* ShareActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D136362C65859100898641 /* ShareActivityView.swift */; };
 		90D96E2F2BBCC1E300DB4C01 /* SKViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -117,6 +118,7 @@
 		909B9E3C2BCC84290053A61D /* SKAccountStatementDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAccountStatementDay.swift; sourceTree = "<group>"; };
 		90B28C5B2C722470009589E2 /* SKSnapshotChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSnapshotChartData.swift; sourceTree = "<group>"; };
 		90B28C5D2C722552009589E2 /* SnapshotCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotCharts.swift; sourceTree = "<group>"; };
+		90B28C5F2C7226EB009589E2 /* SnapshotPDFFirstPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotPDFFirstPageView.swift; sourceTree = "<group>"; };
 		90D136362C65859100898641 /* ShareActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareActivityView.swift; sourceTree = "<group>"; };
 		90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -269,6 +271,7 @@
 				9076D87F2C71480E00460146 /* SnapshotRecordView.swift */,
 				9090C7012C6811A1002D704C /* AddSnapshotView.swift */,
 				90B28C5D2C722552009589E2 /* SnapshotCharts.swift */,
+				90B28C5F2C7226EB009589E2 /* SnapshotPDFFirstPageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				908B14732BBA11F6004E53D9 /* SKTrend.swift in Sources */,
 				9090C7022C6811A1002D704C /* AddSnapshotView.swift in Sources */,
 				906C9D162BB85E060031139D /* AccountListView.swift in Sources */,
+				90B28C602C7226EB009589E2 /* SnapshotPDFFirstPageView.swift in Sources */,
 				9093C6BA2C6572E7008A4737 /* TrendsChartView.swift in Sources */,
 				90B28C5E2C722552009589E2 /* SnapshotCharts.swift in Sources */,
 				9090C7002C681169002D704C /* SnapshotDetailView.swift in Sources */,

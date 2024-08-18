@@ -212,9 +212,20 @@ struct SnapshotDetailView: View {
         }
         
         // Charts in first page
+        renderFirstPage(pdf, in: box)
+        
+        // Table from second page
+        renderRecordTable(pdf, in: box)
+        
+        pdf.closePDF()
+        
+        return url
+    }
+    
+    private func renderFirstPage(_ pdf: CGContext, in box: CGRect) {
         pdf.beginPDFPage(nil)
         
-        let renderer = ImageRenderer(content: pdfBody)
+        let renderer = ImageRenderer(content: SnapshotPDFFirstPageView(snapshot: snapshot))
         renderer.render { size, renderer in
             // size=(467.0, 477.30908203125)
             
@@ -232,9 +243,9 @@ struct SnapshotDetailView: View {
         }
         
         pdf.endPDFPage()
-        
-        // Table from second page
-        
+    }
+    
+    private func renderRecordTable(_ pdf: CGContext, in box: CGRect) {
         let sortedRecords = records.sorted(by: { $0.recordDate < $1.recordDate })
         var index = 0
         
@@ -268,48 +279,5 @@ struct SnapshotDetailView: View {
             
             pdf.endPDFPage()
         }
-        
-        pdf.closePDF()
-        
-        return url
-    }
-    
-    private var pdfBody: some View {
-        VStack {
-            header
-            
-            Divider()
-            
-            if let spendings = snapshot.spendings {
-                Section {
-                    HStack {
-                        SnapshotCharts(data: spendings)
-                    }
-                } header: {
-                    HStack {
-                        Text("SPENDING")
-                            .font(.title3)
-                        Spacer()
-                    }
-                }
-                .padding()
-            }
-            
-            if let incomes = snapshot.incomes {
-                Section {
-                    HStack {
-                        SnapshotCharts(data: incomes)
-                    }
-                } header: {
-                    HStack {
-                        Text("INCOME")
-                            .font(.title3)
-                        Spacer()
-                    }
-                }
-                .padding()
-            }
-        }
-        .frame(width: 540.0, height: 700.0)
     }
 }
