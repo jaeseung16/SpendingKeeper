@@ -14,14 +14,24 @@ struct ImportsRowView: View {
     
     var body: some View {
         VStack {
-            Text(transaction.merchantName ?? "")
-            Text(transaction.transactionDescription)
-            Text("\(transaction.creditDebitIndicator.rawValue)")
+            HStack {
+                switch transaction.creditDebitIndicator {
+                case .credit:
+                    Image(systemName: "banknote")
+                case .debit:
+                    Image(systemName: "cart")
+                @unknown default:
+                    EmptyView()
+                }
+                
+                Text(transaction.transactionDescription)
+                
+                Spacer()
+            }
             
             HStack {
                 Text(transaction.transactionAmount.currencyCode)
                 Text(transaction.transactionAmount.amount.formatted())
-                //Text(record.amount, format: .currency(code: Locale.current.currency?.identifier ?? ""))
                 
                 Spacer()
                 

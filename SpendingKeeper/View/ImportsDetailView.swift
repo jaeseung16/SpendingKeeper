@@ -27,8 +27,8 @@ struct ImportsDetailView: View {
     init(transaction: FinanceKit.Transaction) {
         self.transaction = transaction
         self.recordDate = transaction.transactionDate
-        self.recordDescription = transaction.merchantName ?? ""
-        self.transactionType = .spending
+        self.recordDescription = transaction.transactionDescription
+        self.transactionType = transaction.creditDebitIndicator == .credit ? .income : .spending
         self.amount = transaction.transactionAmount.amount.primitivePlottable
     }
     
