@@ -6,13 +6,18 @@
 //
 
 import SwiftUI
+#if canImport(FinanceKit)
 import FinanceKit
+#endif
 
 struct ImportsRowView: View {
     
+#if canImport(FinanceKit)
     @State var transaction: FinanceKit.Transaction
+#endif
     
     var body: some View {
+#if canImport(FinanceKit)
         VStack {
             HStack {
                 switch transaction.creditDebitIndicator {
@@ -39,5 +44,8 @@ struct ImportsRowView: View {
                     .font(.caption)
             }
         }
+#else
+        EmptyView()
+#endif
     }
 }

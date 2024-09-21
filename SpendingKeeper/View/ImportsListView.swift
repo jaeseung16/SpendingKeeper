@@ -6,18 +6,23 @@
 //
 
 import SwiftUI
+#if canImport(FinanceKit)
 import FinanceKit
 import FinanceKitUI
+#endif
 
 struct ImportsListView: View {
     @Environment(\.modelContext) private var modelContext
     
+#if canImport(FinanceKit)
     @Binding var selectedTransaction: FinanceKit.Transaction?
     
     @State private var transactions: [FinanceKit.Transaction] = []
+#endif
     
     var body: some View {
         GeometryReader { geometry in
+#if canImport(FinanceKit)
             VStack {
                 if transactions.isEmpty {
                     HStack {
@@ -44,12 +49,17 @@ struct ImportsListView: View {
                     }
                 }
             }
+#else
+            EmptyView()
+#endif
         }
     }
 }
 
+#if canImport(FinanceKit)
 extension FinanceKit.Transaction: @retroactive Hashable {
     public func hash(into hasher: inout Hasher) {
         id.hash(into: &hasher)
     }
 }
+#endif

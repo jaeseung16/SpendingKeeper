@@ -9,7 +9,9 @@ import SwiftUI
 import SwiftData
 import AppTrackingTransparency
 import GoogleMobileAds
+#if canImport(FinanceKit)
 import FinanceKit
+#endif
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
@@ -22,7 +24,10 @@ struct ContentView: View {
     @State private var selectedAccount: SKAccount?
     @State private var selectedTrend: SKTrend?
     @State private var selectedSnapshot: SKSnapshot?
+    
+#if canImport(FinanceKit)
     @State private var selectedTransaction: FinanceKit.Transaction?
+#endif
     
     @State private var presentAlert = false
     
@@ -52,8 +57,12 @@ struct ContentView: View {
                         SnapshotListView(selectedSnapshot: $selectedSnapshot)
                             .navigationTitle("snapshots")
                     case .imports:
+#if canImport(FinanceKit)
                         ImportsListView(selectedTransaction: $selectedTransaction)
                             .navigationTitle("imports")
+#else
+                        Text("No imports available")
+#endif
                     case nil:
                         Text("Select a menu")
                     }
@@ -80,9 +89,14 @@ struct ContentView: View {
                                 .id(snapshot)
                         } 
                     case .imports:
+#if canImport(FinanceKit)
                         if let transaction = selectedTransaction {
                             ImportsDetailView(transaction: transaction)
+                                .id(transaction.id)
                         }
+#else
+                        Text("No imports available")
+#endif
                     case nil:
                         Text("Select a menu")
                     }

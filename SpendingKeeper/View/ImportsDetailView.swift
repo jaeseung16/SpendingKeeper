@@ -6,24 +6,29 @@
 //
 
 import SwiftUI
-import FinanceKit
 import SwiftData
+#if canImport(FinanceKit)
+import FinanceKit
+#endif
 
 struct ImportsDetailView: View {
     @Environment(\.modelContext) private var modelContext
     
     @Query(sort: \SKAccount.name) private var accounts: [SKAccount]
     
+#if canImport(FinanceKit)
     var transaction: FinanceKit.Transaction
+#endif
     
-    @State private var recordDate: Date
-    @State private var recordDescription: String
-    @State private var transactionType: SKTransaction
-    @State private var amount: Double
+    @State private var recordDate: Date = .now
+    @State private var recordDescription: String = ""
+    @State private var transactionType: SKTransaction = .spending
+    @State private var amount: Double = 0.0
     
     @State private var selectedAccount: SKAccount?
     @State private var imported = false
     
+#if canImport(FinanceKit)
     init(transaction: FinanceKit.Transaction) {
         self.transaction = transaction
         self.recordDate = transaction.transactionDate
@@ -31,6 +36,7 @@ struct ImportsDetailView: View {
         self.transactionType = transaction.creditDebitIndicator == .credit ? .income : .spending
         self.amount = transaction.transactionAmount.amount.primitivePlottable
     }
+#endif
     
     var body: some View {
         VStack {
