@@ -21,18 +21,17 @@ struct TrendsDetailView: View {
     @State private var cumulative = false
     
     private var cumulativeStats: [SKStats] {
-        var previousSum = 0.0
         var currentSum = 0.0
+        var previousSum = 0.0
         return stats.map { stat in
-            var cumulativeStat: SKStats
-            if stat.period == .previous {
+            switch stat.period {
+            case .previous:
                 previousSum += stat.value
-                cumulativeStat = SKStats(date: stat.date, value: previousSum, period: .previous)
-            } else {
+                return SKStats(date: stat.date, value: previousSum, period: .previous)
+            case .current:
                 currentSum += stat.value
-                cumulativeStat = SKStats(date: stat.date, value: currentSum, period: .current)
+                return SKStats(date: stat.date, value: currentSum, period: .current)
             }
-            return cumulativeStat
         }
     }
     
@@ -55,29 +54,10 @@ struct TrendsDetailView: View {
             }
             
             if (cumulative) {
-                Chart(cumulativeStats, id: \.date) { stat in
-                    LineMark(x: .value("Date", stat.date, unit: unit),
-                            y: .value("Count", stat.value))
-                    .foregroundStyle(by: .value("Month", stat.period.rawValue))
-                    .interpolationMethod(.stepCenter)
-                }
+                TrendsChartView(stats: cumulativeStats, trend: trend)
             } else {
-                Chart(stats, id: \.date) { stat in
-                    LineMark(x: .value("Date", stat.date, unit: unit),
-                            y: .value("Count", stat.value))
-                    .foregroundStyle(by: .value("Month", stat.period.rawValue))
-                    .interpolationMethod(.stepCenter)
-                }
+                TrendsChartView(stats: stats, trend: trend)
             }
-        }
-    }
-    
-    private var unit: Calendar.Component {
-        switch trend {
-        case .daily:
-            return .day
-        case .monthly:
-            return .month
         }
     }
 }

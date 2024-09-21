@@ -12,6 +12,12 @@ struct AccountDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var viewModel: SKViewModel
+    #if os(iOS)
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    private var isCompact: Bool { horizontalSizeClass == .compact }
+    #else
+    private let isCompact = false
+    #endif
     
     @State var account: SKAccount
     @State var startDate: Date
@@ -68,15 +74,17 @@ struct AccountDetailView: View {
                 }
                 
                 Table(records) {
-                    TableColumn("Description", value: \.recordDescription)
+                    TableColumn("Description") {
+                        firstColumn($0)
+                    }
                     
-                    TableColumn("Date") { record in
-                        Text(record.recordDate, format: Date.FormatStyle(date: .numeric, time: .omitted))
+                    TableColumn("Date") {
+                        Text($0.recordDate, format: Date.FormatStyle(date: .numeric, time: .omitted))
                             .foregroundColor(.secondary)
                     }
                     
-                    TableColumn("Amount") { record in
-                        Text(record.amount, format: .currency(code: Locale.current.currency?.identifier ?? ""))
+                    TableColumn("Amount") {
+                        Text($0.amount, format: .currency(code: Locale.current.currency?.identifier ?? ""))
                             .foregroundColor(.primary)
                     }
                     .alignment(.numeric)
@@ -85,6 +93,24 @@ struct AccountDetailView: View {
             .padding()
             .onChange(of: account.statementDay) { oldValue, newValue in
                 startDate = viewModel.latestStatementDate(newValue)
+            }
+        }
+    }
+    
+    private func firstColumn(_ record: SKRecord) -> some View {
+        VStack(alignment: .leading) {
+            if isCompact {
+                Text(record.recordDescription)
+                HStack {
+                    Text(record.amount, format: .currency(code: Locale.current.currency?.identifier ?? ""))
+                        .foregroundColor(.primary)
+                    Spacer()
+                    Text(record.recordDate, format: Date.FormatStyle(date: .numeric, time: .omitted))
+                        .foregroundColor(.secondary)
+                }
+            } else {
+                Text(record.recordDescription)
+                    .foregroundColor(.secondary)
             }
         }
     }

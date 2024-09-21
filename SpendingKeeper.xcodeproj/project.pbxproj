@@ -15,6 +15,9 @@
 		907536552BD5B29700A2B774 /* BannerAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907536542BD5B29700A2B774 /* BannerAd.swift */; };
 		907536572BD5B32B00A2B774 /* BannerAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907536562BD5B32B00A2B774 /* BannerAdViewController.swift */; };
 		9075365A2BD5B44300A2B774 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 907536592BD5B44300A2B774 /* GoogleMobileAds */; };
+		9076D87E2C7127D600460146 /* SKSnapshotRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076D87D2C7127D600460146 /* SKSnapshotRecord.swift */; };
+		9076D8802C71480E00460146 /* SnapshotRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076D87F2C71480E00460146 /* SnapshotRecordView.swift */; };
+		907CA3DD2C68F3730082266D /* SKSnapshotIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CA3DC2C68F3730082266D /* SKSnapshotIncome.swift */; };
 		9080C01B2BC1C70100F88FA8 /* SKPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9080C01A2BC1C70100F88FA8 /* SKPeriod.swift */; };
 		908598702BB36EB600208AEE /* SpendingKeeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9085986F2BB36EB600208AEE /* SpendingKeeperApp.swift */; };
 		908598722BB36EB600208AEE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908598712BB36EB600208AEE /* ContentView.swift */; };
@@ -36,7 +39,19 @@
 		908BF7E72BB7748500740266 /* SKAccountHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908BF7E62BB7748500740266 /* SKAccountHistory.swift */; };
 		908BF7EA2BB7762700740266 /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908BF7E92BB7762700740266 /* AddAccountView.swift */; };
 		908BF7EC2BB7773E00740266 /* AddRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908BF7EB2BB7773E00740266 /* AddRecordView.swift */; };
+		9090C6FE2C681149002D704C /* SnapshotListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9090C6FD2C681149002D704C /* SnapshotListView.swift */; };
+		9090C7002C681169002D704C /* SnapshotDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9090C6FF2C681169002D704C /* SnapshotDetailView.swift */; };
+		9090C7022C6811A1002D704C /* AddSnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9090C7012C6811A1002D704C /* AddSnapshotView.swift */; };
+		9090C7042C6811B5002D704C /* SnapshotRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9090C7032C6811B5002D704C /* SnapshotRowView.swift */; };
+		9090C7062C6811C5002D704C /* SKSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9090C7052C6811C5002D704C /* SKSnapshot.swift */; };
+		9090C7082C6826B6002D704C /* SKSnapshotSpending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9090C7072C6826B6002D704C /* SKSnapshotSpending.swift */; };
+		9093C6BA2C6572E7008A4737 /* TrendsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9093C6B92C6572E7008A4737 /* TrendsChartView.swift */; };
 		909B9E3D2BCC84290053A61D /* SKAccountStatementDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B9E3C2BCC84290053A61D /* SKAccountStatementDay.swift */; };
+		90B28C5C2C722470009589E2 /* SKSnapshotChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5B2C722470009589E2 /* SKSnapshotChartData.swift */; };
+		90B28C5E2C722552009589E2 /* SnapshotCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5D2C722552009589E2 /* SnapshotCharts.swift */; };
+		90B28C602C7226EB009589E2 /* SnapshotPDFFirstPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5F2C7226EB009589E2 /* SnapshotPDFFirstPageView.swift */; };
+		90B28C622C722B4E009589E2 /* SnapshotRecordPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C612C722B4E009589E2 /* SnapshotRecordPageHeaderView.swift */; };
+		90D136372C65859100898641 /* ShareActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D136362C65859100898641 /* ShareActivityView.swift */; };
 		90D96E2F2BBCC1E300DB4C01 /* SKViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +82,9 @@
 		907536542BD5B29700A2B774 /* BannerAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAd.swift; sourceTree = "<group>"; };
 		907536562BD5B32B00A2B774 /* BannerAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdViewController.swift; sourceTree = "<group>"; };
 		9075365B2BD5B5C400A2B774 /* SpendingKeeper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpendingKeeper.entitlements; sourceTree = "<group>"; };
+		9076D87D2C7127D600460146 /* SKSnapshotRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSnapshotRecord.swift; sourceTree = "<group>"; };
+		9076D87F2C71480E00460146 /* SnapshotRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotRecordView.swift; sourceTree = "<group>"; };
+		907CA3DC2C68F3730082266D /* SKSnapshotIncome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSnapshotIncome.swift; sourceTree = "<group>"; };
 		9080C01A2BC1C70100F88FA8 /* SKPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPeriod.swift; sourceTree = "<group>"; };
 		9085986C2BB36EB600208AEE /* SpendingKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpendingKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9085986F2BB36EB600208AEE /* SpendingKeeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingKeeperApp.swift; sourceTree = "<group>"; };
@@ -91,7 +109,19 @@
 		908BF7E62BB7748500740266 /* SKAccountHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAccountHistory.swift; sourceTree = "<group>"; };
 		908BF7E92BB7762700740266 /* AddAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountView.swift; sourceTree = "<group>"; };
 		908BF7EB2BB7773E00740266 /* AddRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordView.swift; sourceTree = "<group>"; };
+		9090C6FD2C681149002D704C /* SnapshotListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotListView.swift; sourceTree = "<group>"; };
+		9090C6FF2C681169002D704C /* SnapshotDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotDetailView.swift; sourceTree = "<group>"; };
+		9090C7012C6811A1002D704C /* AddSnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSnapshotView.swift; sourceTree = "<group>"; };
+		9090C7032C6811B5002D704C /* SnapshotRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotRowView.swift; sourceTree = "<group>"; };
+		9090C7052C6811C5002D704C /* SKSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSnapshot.swift; sourceTree = "<group>"; };
+		9090C7072C6826B6002D704C /* SKSnapshotSpending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSnapshotSpending.swift; sourceTree = "<group>"; };
+		9093C6B92C6572E7008A4737 /* TrendsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsChartView.swift; sourceTree = "<group>"; };
 		909B9E3C2BCC84290053A61D /* SKAccountStatementDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAccountStatementDay.swift; sourceTree = "<group>"; };
+		90B28C5B2C722470009589E2 /* SKSnapshotChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSnapshotChartData.swift; sourceTree = "<group>"; };
+		90B28C5D2C722552009589E2 /* SnapshotCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotCharts.swift; sourceTree = "<group>"; };
+		90B28C5F2C7226EB009589E2 /* SnapshotPDFFirstPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotPDFFirstPageView.swift; sourceTree = "<group>"; };
+		90B28C612C722B4E009589E2 /* SnapshotRecordPageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotRecordPageHeaderView.swift; sourceTree = "<group>"; };
+		90D136362C65859100898641 /* ShareActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareActivityView.swift; sourceTree = "<group>"; };
 		90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -213,6 +243,11 @@
 				908B14762BBA1C7E004E53D9 /* SKStats.swift */,
 				9080C01A2BC1C70100F88FA8 /* SKPeriod.swift */,
 				909B9E3C2BCC84290053A61D /* SKAccountStatementDay.swift */,
+				9090C7052C6811C5002D704C /* SKSnapshot.swift */,
+				9090C7072C6826B6002D704C /* SKSnapshotSpending.swift */,
+				907CA3DC2C68F3730082266D /* SKSnapshotIncome.swift */,
+				9076D87D2C7127D600460146 /* SKSnapshotRecord.swift */,
+				90B28C5B2C722470009589E2 /* SKSnapshotChartData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -230,6 +265,16 @@
 				906C9D1D2BB8902B0031139D /* RecordDetailView.swift */,
 				908B14702BBA11CD004E53D9 /* TrendsListView.swift */,
 				908B14742BBA135D004E53D9 /* TrendsDetailView.swift */,
+				9093C6B92C6572E7008A4737 /* TrendsChartView.swift */,
+				90D136362C65859100898641 /* ShareActivityView.swift */,
+				9090C6FD2C681149002D704C /* SnapshotListView.swift */,
+				9090C7032C6811B5002D704C /* SnapshotRowView.swift */,
+				9090C6FF2C681169002D704C /* SnapshotDetailView.swift */,
+				9076D87F2C71480E00460146 /* SnapshotRecordView.swift */,
+				9090C7012C6811A1002D704C /* AddSnapshotView.swift */,
+				90B28C5D2C722552009589E2 /* SnapshotCharts.swift */,
+				90B28C5F2C7226EB009589E2 /* SnapshotPDFFirstPageView.swift */,
+				90B28C612C722B4E009589E2 /* SnapshotRecordPageHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -379,27 +424,42 @@
 			buildActionMask = 2147483647;
 			files = (
 				909B9E3D2BCC84290053A61D /* SKAccountStatementDay.swift in Sources */,
+				9076D8802C71480E00460146 /* SnapshotRecordView.swift in Sources */,
+				9076D87E2C7127D600460146 /* SKSnapshotRecord.swift in Sources */,
 				907536572BD5B32B00A2B774 /* BannerAdViewController.swift in Sources */,
 				906C9D1E2BB8902B0031139D /* RecordDetailView.swift in Sources */,
 				908BF7EA2BB7762700740266 /* AddAccountView.swift in Sources */,
 				906C9D182BB860700031139D /* RecordListView.swift in Sources */,
 				907536552BD5B29700A2B774 /* BannerAd.swift in Sources */,
 				908B14752BBA135D004E53D9 /* TrendsDetailView.swift in Sources */,
+				9090C7042C6811B5002D704C /* SnapshotRowView.swift in Sources */,
 				906C9D1A2BB861200031139D /* SKMenu.swift in Sources */,
 				908BF7E32BB76D7C00740266 /* SKTransaction.swift in Sources */,
+				9090C7082C6826B6002D704C /* SKSnapshotSpending.swift in Sources */,
 				908BF7E52BB76DC000740266 /* SKAccount.swift in Sources */,
 				908BF7E72BB7748500740266 /* SKAccountHistory.swift in Sources */,
+				90B28C5C2C722470009589E2 /* SKSnapshotChartData.swift in Sources */,
 				908B14732BBA11F6004E53D9 /* SKTrend.swift in Sources */,
+				9090C7022C6811A1002D704C /* AddSnapshotView.swift in Sources */,
 				906C9D162BB85E060031139D /* AccountListView.swift in Sources */,
+				90B28C602C7226EB009589E2 /* SnapshotPDFFirstPageView.swift in Sources */,
+				9093C6BA2C6572E7008A4737 /* TrendsChartView.swift in Sources */,
+				90B28C5E2C722552009589E2 /* SnapshotCharts.swift in Sources */,
+				9090C7002C681169002D704C /* SnapshotDetailView.swift in Sources */,
 				9080C01B2BC1C70100F88FA8 /* SKPeriod.swift in Sources */,
 				906C9D1C2BB8900C0031139D /* RecordRowView.swift in Sources */,
+				90B28C622C722B4E009589E2 /* SnapshotRecordPageHeaderView.swift in Sources */,
+				9090C6FE2C681149002D704C /* SnapshotListView.swift in Sources */,
 				908598722BB36EB600208AEE /* ContentView.swift in Sources */,
 				908598742BB36EB600208AEE /* Item.swift in Sources */,
 				908BF7E12BB76C7900740266 /* SKRecord.swift in Sources */,
 				908BF7EC2BB7773E00740266 /* AddRecordView.swift in Sources */,
 				908B146F2BB9A8C4004E53D9 /* AccountDetailView.swift in Sources */,
+				9090C7062C6811C5002D704C /* SKSnapshot.swift in Sources */,
 				908598702BB36EB600208AEE /* SpendingKeeperApp.swift in Sources */,
+				907CA3DD2C68F3730082266D /* SKSnapshotIncome.swift in Sources */,
 				908B14772BBA1C7E004E53D9 /* SKStats.swift in Sources */,
+				90D136372C65859100898641 /* ShareActivityView.swift in Sources */,
 				908B146D2BB9A8B8004E53D9 /* AccountRowView.swift in Sources */,
 				90D96E2F2BBCC1E300DB4C01 /* SKViewModel.swift in Sources */,
 				908B14712BBA11CD004E53D9 /* TrendsListView.swift in Sources */,
@@ -566,7 +626,7 @@
 				CODE_SIGN_ENTITLEMENTS = SpendingKeeper/SpendingKeeper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"SpendingKeeper/Preview Content\"";
 				DEVELOPMENT_TEAM = U8VSJXRJTQ;
 				ENABLE_PREVIEWS = YES;
@@ -583,7 +643,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.SpendingKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -601,7 +661,7 @@
 				CODE_SIGN_ENTITLEMENTS = SpendingKeeper/SpendingKeeper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"SpendingKeeper/Preview Content\"";
 				DEVELOPMENT_TEAM = U8VSJXRJTQ;
 				ENABLE_PREVIEWS = YES;
@@ -618,7 +678,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.SpendingKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -750,8 +810,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 11.3.0;
+				kind = exactVersion;
+				version = 11.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
