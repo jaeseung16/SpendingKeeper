@@ -12,6 +12,7 @@ enum SKMenu: String, CaseIterable, Identifiable {
     case accounts
     case trends
     case snapshots
+    case imports
     
     var id: Self { self }
 }

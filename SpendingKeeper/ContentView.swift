@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 import AppTrackingTransparency
 import GoogleMobileAds
+import FinanceKit
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
@@ -21,6 +22,7 @@ struct ContentView: View {
     @State private var selectedAccount: SKAccount?
     @State private var selectedTrend: SKTrend?
     @State private var selectedSnapshot: SKSnapshot?
+    @State private var selectedTransaction: FinanceKit.Transaction?
     
     @State private var presentAlert = false
     
@@ -49,6 +51,9 @@ struct ContentView: View {
                     case .snapshots:
                         SnapshotListView(selectedSnapshot: $selectedSnapshot)
                             .navigationTitle("snapshots")
+                    case .imports:
+                        ImportsListView(selectedTransaction: $selectedTransaction)
+                            .navigationTitle("imports")
                     case nil:
                         Text("Select a menu")
                     }
@@ -73,8 +78,11 @@ struct ContentView: View {
                         if let snapshot = selectedSnapshot {
                             SnapshotDetailView(snapshot: snapshot)
                                 .id(snapshot)
+                        } 
+                    case .imports:
+                        if let transaction = selectedTransaction {
+                            ImportsDetailView(transaction: transaction)
                         }
-                        
                     case nil:
                         Text("Select a menu")
                     }

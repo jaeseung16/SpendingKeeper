@@ -14,7 +14,6 @@ struct RecordListView: View {
     @Query(sort: \SKRecord.recordDate, order: .reverse) var records: [SKRecord]
     @Binding var selectedRecord: SKRecord?
     @State private var presentAddRecordView = false
-    @State private var presentTransactionPicker = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -35,21 +34,9 @@ struct RecordListView: View {
                         Label("Add", systemImage: "plus")
                     }
                 }
-                if #available(iOS 18, *) {
-                    ToolbarItem {
-                        Button {
-                            presentTransactionPicker = true
-                        } label: {
-                            Label("Import Transactions", systemImage: "wallet.pass")
-                        }
-                    }
-                }
             }
             .sheet(isPresented: $presentAddRecordView) {
                 AddRecordView()
-            }
-            .sheet(isPresented: $presentTransactionPicker) {
-                ImportTransactionsView()
             }
         }
     }
