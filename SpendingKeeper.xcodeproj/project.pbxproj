@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		900CCD822C9F171500573810 /* ImportTransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CCD812C9F171500573810 /* ImportTransactionsView.swift */; };
 		906C9D162BB85E060031139D /* AccountListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D152BB85E060031139D /* AccountListView.swift */; };
 		906C9D182BB860700031139D /* RecordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D172BB860700031139D /* RecordListView.swift */; };
 		906C9D1A2BB861200031139D /* SKMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D192BB861200031139D /* SKMenu.swift */; };
@@ -73,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		900CCD812C9F171500573810 /* ImportTransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportTransactionsView.swift; sourceTree = "<group>"; };
 		906C9D152BB85E060031139D /* AccountListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListView.swift; sourceTree = "<group>"; };
 		906C9D172BB860700031139D /* RecordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListView.swift; sourceTree = "<group>"; };
 		906C9D192BB861200031139D /* SKMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKMenu.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				906C9D152BB85E060031139D /* AccountListView.swift */,
 				908B146C2BB9A8B8004E53D9 /* AccountRowView.swift */,
 				908B146E2BB9A8C4004E53D9 /* AccountDetailView.swift */,
+				900CCD812C9F171500573810 /* ImportTransactionsView.swift */,
 				906C9D172BB860700031139D /* RecordListView.swift */,
 				906C9D1B2BB8900C0031139D /* RecordRowView.swift */,
 				906C9D1D2BB8902B0031139D /* RecordDetailView.swift */,
@@ -440,6 +443,7 @@
 				908BF7E72BB7748500740266 /* SKAccountHistory.swift in Sources */,
 				90B28C5C2C722470009589E2 /* SKSnapshotChartData.swift in Sources */,
 				908B14732BBA11F6004E53D9 /* SKTrend.swift in Sources */,
+				900CCD822C9F171500573810 /* ImportTransactionsView.swift in Sources */,
 				9090C7022C6811A1002D704C /* AddSnapshotView.swift in Sources */,
 				906C9D162BB85E060031139D /* AccountListView.swift in Sources */,
 				90B28C602C7226EB009589E2 /* SnapshotPDFFirstPageView.swift in Sources */,
