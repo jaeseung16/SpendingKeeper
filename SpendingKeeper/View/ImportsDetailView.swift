@@ -105,9 +105,8 @@ struct ImportsDetailView: View {
         withAnimation {
             let accountName = selectedAccount?.name ?? ""
             let accountId = selectedAccount?.uid
-            let amount = transaction.transactionAmount.amount.primitivePlottable
-            let newRecord = SKRecord(recordDate: transaction.transactionDate,
-                                     recordDescription: transaction.merchantName ?? "",
+            let newRecord = SKRecord(recordDate: recordDate,
+                                     recordDescription: recordDescription,
                                      transactionType: .spending,
                                      accountName: accountName,
                                      accountId: accountId,
