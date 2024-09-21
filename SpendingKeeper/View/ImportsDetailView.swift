@@ -107,7 +107,7 @@ struct ImportsDetailView: View {
             let accountId = selectedAccount?.uid
             let newRecord = SKRecord(recordDate: recordDate,
                                      recordDescription: recordDescription,
-                                     transactionType: .spending,
+                                     transactionType: transactionType,
                                      accountName: accountName,
                                      accountId: accountId,
                                      amount: amount)
