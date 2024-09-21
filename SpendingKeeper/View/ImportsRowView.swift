@@ -14,11 +14,20 @@ struct ImportsRowView: View {
     
     var body: some View {
         VStack {
-            Text(transaction.accountID.description)
             Text(transaction.merchantName ?? "")
-            Text(transaction.transactionDate.description)
-            Text(transaction.transactionAmount.currencyCode)
-            Text(transaction.transactionAmount.amount.formatted())
+            Text(transaction.transactionDescription)
+            Text("\(transaction.creditDebitIndicator.rawValue)")
+            
+            HStack {
+                Text(transaction.transactionAmount.currencyCode)
+                Text(transaction.transactionAmount.amount.formatted())
+                //Text(record.amount, format: .currency(code: Locale.current.currency?.identifier ?? ""))
+                
+                Spacer()
+                
+                Text(transaction.transactionDate, format: Date.FormatStyle(date: .numeric, time: .omitted))
+                    .font(.caption)
+            }
         }
     }
 }
