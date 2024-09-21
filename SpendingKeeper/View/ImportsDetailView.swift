@@ -97,7 +97,7 @@ struct ImportsDetailView: View {
             } label: {
                 Text("Import")
             }
-            .disabled(!imported)
+            .disabled(imported)
         }
     }
     
