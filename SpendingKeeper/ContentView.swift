@@ -49,17 +49,17 @@ struct ContentView: View {
                             .navigationTitle(SKMenu.transactions.rawValue)
                     case .accounts:
                         AccountListView(selectedAccount: $selectedAccount)
-                            .navigationTitle("accounts")
+                            .navigationTitle(SKMenu.accounts.rawValue)
                     case .trends:
                         TrendsListView(selectedTrend: $selectedTrend)
-                            .navigationTitle("trends")
+                            .navigationTitle(SKMenu.trends.rawValue)
                     case .snapshots:
                         SnapshotListView(selectedSnapshot: $selectedSnapshot)
-                            .navigationTitle("snapshots")
+                            .navigationTitle(SKMenu.snapshots.rawValue)
                     case .imports:
 #if canImport(FinanceKit)
                         ImportsListView(selectedTransaction: $selectedTransaction)
-                            .navigationTitle("imports")
+                            .navigationTitle(SKMenu.imports.rawValue)
 #else
                         Text("No imports available")
 #endif
