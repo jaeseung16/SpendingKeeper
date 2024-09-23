@@ -13,6 +13,7 @@ import FinanceKit
 
 struct ImportsDetailView: View {
     @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject private var viewModel: SKViewModel
     
     @Query(sort: \SKAccount.name) private var accounts: [SKAccount]
     
@@ -127,6 +128,9 @@ struct ImportsDetailView: View {
             
             modelContext.insert(newRecord)
             imported = true
+#if canImport(FinanceKit)
+            viewModel.importedTransaction = transaction
+#endif
         }
     }
 }
