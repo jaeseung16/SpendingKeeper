@@ -20,10 +20,10 @@ struct ImportsDetailView: View {
     var transaction: FinanceKit.Transaction
 #endif
     
-    @State private var recordDate: Date = .now
-    @State private var recordDescription: String = ""
-    @State private var transactionType: SKTransaction = .spending
-    @State private var amount: Double = 0.0
+    @State private var recordDate: Date
+    @State private var recordDescription: String
+    @State private var transactionType: SKTransaction
+    @State private var amount: Double
     
     @State private var selectedAccount: SKAccount?
     @State private var imported = false
@@ -35,6 +35,13 @@ struct ImportsDetailView: View {
         self.recordDescription = transaction.transactionDescription
         self.transactionType = transaction.creditDebitIndicator == .credit ? .income : .spending
         self.amount = transaction.transactionAmount.amount.primitivePlottable
+    }
+#else
+    init() {
+        recordDate = .now
+        recordDescription = ""
+        transactionType = .spending
+        amount = 0.0
     }
 #endif
     
