@@ -13,6 +13,7 @@ import FinanceKitUI
 
 struct ImportsListView: View {
     @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject private var viewModel: SKViewModel
     
 #if canImport(FinanceKit)
     @Binding var selectedTransaction: FinanceKit.Transaction?
@@ -48,6 +49,15 @@ struct ImportsListView: View {
                         }
                     }
                 }
+            }
+            .onChange(of: viewModel.importedTransaction) {
+                if let transaction = viewModel.importedTransaction {
+                    selectedTransaction = nil
+                    if let index = transactions.firstIndex(of: transaction) {
+                        transactions.remove(at: index)
+                    }
+                }
+                
             }
 #else
             EmptyView()
