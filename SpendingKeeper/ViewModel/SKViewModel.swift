@@ -8,12 +8,19 @@
 import Foundation
 import os
 import SwiftData
+#if canImport(FinanceKit)
+import FinanceKit
+#endif
 
 class SKViewModel: NSObject, ObservableObject {
     let logger = Logger()
     
     let calendar = Calendar.current
     let modelContext: ModelContext
+    
+#if canImport(FinanceKit)
+    @Published var importedTransaction: FinanceKit.Transaction?
+#endif
     
     init(modelContext: ModelContext) {
         self.modelContext = modelContext

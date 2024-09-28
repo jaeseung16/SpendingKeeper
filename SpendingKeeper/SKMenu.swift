@@ -8,10 +8,11 @@
 import Foundation
 
 enum SKMenu: String, CaseIterable, Identifiable {
-    case transactions
-    case accounts
-    case trends
-    case snapshots
+    case transactions = "Transactions"
+    case accounts = "Accounts"
+    case trends = "Trends"
+    case snapshots = "Snapshots"
+    case imports = "Import from Wallet"
     
     var id: Self { self }
 }

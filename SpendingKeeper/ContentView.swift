@@ -9,6 +9,9 @@ import SwiftUI
 import SwiftData
 import AppTrackingTransparency
 import GoogleMobileAds
+#if canImport(FinanceKit)
+import FinanceKit
+#endif
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
@@ -21,6 +24,10 @@ struct ContentView: View {
     @State private var selectedAccount: SKAccount?
     @State private var selectedTrend: SKTrend?
     @State private var selectedSnapshot: SKSnapshot?
+    
+#if canImport(FinanceKit)
+    @State private var selectedTransaction: FinanceKit.Transaction?
+#endif
     
     @State private var presentAlert = false
     
@@ -42,13 +49,20 @@ struct ContentView: View {
                             .navigationTitle(SKMenu.transactions.rawValue)
                     case .accounts:
                         AccountListView(selectedAccount: $selectedAccount)
-                            .navigationTitle("accounts")
+                            .navigationTitle(SKMenu.accounts.rawValue)
                     case .trends:
                         TrendsListView(selectedTrend: $selectedTrend)
-                            .navigationTitle("trends")
+                            .navigationTitle(SKMenu.trends.rawValue)
                     case .snapshots:
                         SnapshotListView(selectedSnapshot: $selectedSnapshot)
-                            .navigationTitle("snapshots")
+                            .navigationTitle(SKMenu.snapshots.rawValue)
+                    case .imports:
+#if canImport(FinanceKit)
+                        ImportsListView(selectedTransaction: $selectedTransaction)
+                            .navigationTitle(SKMenu.imports.rawValue)
+#else
+                        Text("No imports available")
+#endif
                     case nil:
                         Text("Select a menu")
                     }
@@ -73,8 +87,16 @@ struct ContentView: View {
                         if let snapshot = selectedSnapshot {
                             SnapshotDetailView(snapshot: snapshot)
                                 .id(snapshot)
+                        } 
+                    case .imports:
+#if canImport(FinanceKit)
+                        if let transaction = selectedTransaction {
+                            ImportsDetailView(transaction: transaction)
+                                .id(transaction.id)
                         }
-                        
+#else
+                        Text("No imports available")
+#endif
                     case nil:
                         Text("Select a menu")
                     }
