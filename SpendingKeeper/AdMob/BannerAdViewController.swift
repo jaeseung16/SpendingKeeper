@@ -24,7 +24,7 @@ class BannerAdViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var bannerView: GADBannerView = GADBannerView() //Creates your BannerView
+    var bannerView: BannerView = BannerView() //Creates your BannerView
 
     override func viewDidLoad() {
         // GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "a41877dede79bf64096bf6dd857966e1" ]
@@ -59,38 +59,38 @@ class BannerAdViewController: UIViewController {
         let viewWidth = frame.size.width
 
         //Updates the BannerView size relative to the current safe area of device (This creates the adaptive banner)
-        bannerView.adSize = GADInlineAdaptiveBannerAdSizeWithWidthAndMaxHeight(viewWidth, 50)
+        bannerView.adSize = inlineAdaptiveBanner(width: viewWidth, maxHeight: 50)
 
         if let winddowScene = self.view.window?.windowScene{
-            let gadRequest = GADRequest()
+            let gadRequest = Request()
             gadRequest.scene = winddowScene
             bannerView.load(gadRequest)
         }
     }
 }
 
-extension BannerAdViewController: GADBannerViewDelegate {
-    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+extension BannerAdViewController: BannerViewDelegate {
+    func bannerViewDidReceiveAd(_ bannerView: BannerView) {
         logger.info("bannerViewDidReceiveAd")
     }
 
-    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+    func bannerView(_ bannerView: BannerView, didFailToReceiveAdWithError error: Error) {
         logger.error("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
     }
 
-    func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
+    func bannerViewDidRecordImpression(_ bannerView: BannerView) {
         logger.info("bannerViewDidRecordImpression")
     }
 
-    func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
+    func bannerViewWillPresentScreen(_ bannerView: BannerView) {
         logger.info("bannerViewWillPresentScreen")
     }
 
-    func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
+    func bannerViewWillDismissScreen(_ bannerView: BannerView) {
         logger.info("bannerViewWillDIsmissScreen")
     }
 
-    func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
+    func bannerViewDidDismissScreen(_ bannerView: BannerView) {
         logger.info("bannerViewDidDismissScreen")
     }
 }
