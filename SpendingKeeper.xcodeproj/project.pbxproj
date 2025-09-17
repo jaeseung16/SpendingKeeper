@@ -10,6 +10,7 @@
 		900CCD852C9F458300573810 /* ImportsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CCD842C9F458300573810 /* ImportsListView.swift */; };
 		900CCD872C9F45FB00573810 /* ImportsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CCD862C9F45FB00573810 /* ImportsRowView.swift */; };
 		900CCD892C9F46C900573810 /* ImportsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CCD882C9F46C900573810 /* ImportsDetailView.swift */; };
+		90534BC62E7B6D77004BFF9C /* AppIcon_1.icon in Resources */ = {isa = PBXBuildFile; fileRef = 90534BC52E7B6D77004BFF9C /* AppIcon_1.icon */; };
 		906C9D162BB85E060031139D /* AccountListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D152BB85E060031139D /* AccountListView.swift */; };
 		906C9D182BB860700031139D /* RecordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D172BB860700031139D /* RecordListView.swift */; };
 		906C9D1A2BB861200031139D /* SKMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D192BB861200031139D /* SKMenu.swift */; };
@@ -79,6 +80,7 @@
 		900CCD842C9F458300573810 /* ImportsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportsListView.swift; sourceTree = "<group>"; };
 		900CCD862C9F45FB00573810 /* ImportsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportsRowView.swift; sourceTree = "<group>"; };
 		900CCD882C9F46C900573810 /* ImportsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportsDetailView.swift; sourceTree = "<group>"; };
+		90534BC52E7B6D77004BFF9C /* AppIcon_1.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon_1.icon; sourceTree = "<group>"; };
 		906C9D152BB85E060031139D /* AccountListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListView.swift; sourceTree = "<group>"; };
 		906C9D172BB860700031139D /* RecordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListView.swift; sourceTree = "<group>"; };
 		906C9D192BB861200031139D /* SKMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKMenu.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				906C9D192BB861200031139D /* SKMenu.swift */,
 				908598732BB36EB600208AEE /* Item.swift */,
 				908598752BB36EB700208AEE /* Assets.xcassets */,
+				90534BC52E7B6D77004BFF9C /* AppIcon_1.icon */,
 				908598772BB36EB700208AEE /* Preview Content */,
 			);
 			path = SpendingKeeper;
@@ -408,6 +411,7 @@
 			files = (
 				908598792BB36EB700208AEE /* Preview Assets.xcassets in Resources */,
 				908598762BB36EB700208AEE /* Assets.xcassets in Resources */,
+				90534BC62E7B6D77004BFF9C /* AppIcon_1.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,7 +641,7 @@
 		908598932BB36EB800208AEE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_1;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SpendingKeeper/SpendingKeeper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -673,7 +677,7 @@
 		908598942BB36EB800208AEE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_1;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SpendingKeeper/SpendingKeeper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
