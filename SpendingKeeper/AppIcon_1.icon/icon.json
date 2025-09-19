@@ -1,21 +1,50 @@
 {
   "fill" : {
-    "automatic-gradient" : "extended-srgb:0.00000,0.53333,1.00000,1.00000"
+    "solid" : "extended-gray:1.00000,1.00000"
   },
   "groups" : [
     {
       "layers" : [
         {
+          "blend-mode" : "normal",
+          "fill" : "automatic",
+          "glass" : true,
           "image-name" : "finderlayer3.svg",
           "name" : "finderlayer3"
-        },
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    },
+    {
+      "layers" : [
         {
-          "blend-mode" : "plus-lighter",
+          "blend-mode" : "normal",
           "glass" : true,
           "image-name" : "finderlayer2.svg",
           "name" : "finderlayer2"
-        },
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    },
+    {
+      "layers" : [
         {
+          "blend-mode" : "normal",
+          "glass" : true,
           "image-name" : "finderlayer1.svg",
           "name" : "finderlayer1"
         }
