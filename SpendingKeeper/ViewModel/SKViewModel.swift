@@ -116,7 +116,7 @@ class SKViewModel: NSObject, ObservableObject {
     private func dates(from start: Date, to end: Date, trend: SKTrend) -> [Date] {
         var dates: [Date] = []
         
-        var matchingDateComponents = switch trend {
+        let matchingDateComponents = switch trend {
         case .daily:
             DateComponents(hour:0, minute: 0, second: 0)
         case .monthly:
@@ -137,7 +137,7 @@ class SKViewModel: NSObject, ObservableObject {
     }
     
     private func firstDateOfPreviousPeriod(for trend: SKTrend) -> Date {
-        var start = switch trend {
+        let start = switch trend {
         case .daily:
             firstDayOfLastMonth()
         case .monthly:
