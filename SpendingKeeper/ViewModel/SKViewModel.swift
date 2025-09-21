@@ -114,25 +114,22 @@ class SKViewModel: NSObject, ObservableObject {
     }
     
     private func dates(from start: Date, to end: Date, trend: SKTrend) -> [Date] {
-        var dates = [Date]()
+        var dates: [Date] = []
         
-        var matchingDateComponents: DateComponents
-        switch trend {
+        var matchingDateComponents = switch trend {
         case .daily:
-            matchingDateComponents = DateComponents(hour:0, minute: 0, second: 0)
+            DateComponents(hour:0, minute: 0, second: 0)
         case .monthly:
-            matchingDateComponents = DateComponents(day: 1, hour:0, minute: 0, second: 0)
+            DateComponents(day: 1, hour:0, minute: 0, second: 0)
         }
         
         calendar.enumerateDates(startingAfter: start, matching: matchingDateComponents, matchingPolicy: .nextTime) { result, exactMatch, stop in
-            guard let result = result else {
-                return
-            }
-            
-            if result > end {
-                stop = true
-            } else {
-                dates.append(result)
+            if let result = result {
+                if result > end {
+                    stop = true
+                } else {
+                    dates.append(result)
+                }
             }
         }
         
@@ -140,12 +137,11 @@ class SKViewModel: NSObject, ObservableObject {
     }
     
     private func firstDateOfPreviousPeriod(for trend: SKTrend) -> Date {
-        var start: Date?
-        switch trend {
+        var start = switch trend {
         case .daily:
-            start = firstDayOfLastMonth()
+            firstDayOfLastMonth()
         case .monthly:
-            start = firstDayOfLastYear()
+            firstDayOfLastYear()
         }
         return start ?? .now
     }
