@@ -290,23 +290,20 @@ class SKViewModel: NSObject, ObservableObject {
     }
     
     func generateCSV(from start: Date, to end: Date) -> URL? {
-        let records = fetchRecords(from: start, to: end)
-        let csvString = buildCSV(records: records)
-
         guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return nil
         }
         
         let filename = "SpendingKeeper_\(start)_\(end).csv"
         let csvFileURL = path.appendingPathComponent(filename)
-        
+        let csvString = buildCSV(records: fetchRecords(from: start, to: end))
         do {
             try csvString.write(to: csvFileURL, atomically: true, encoding: .utf8)
         } catch {
-            logger.log("Failed to save the csv file")
+            logger.log("Failed to save the csv file \(filename): \(error.localizedDescription)")
         }
         
-        logger.log("\(csvFileURL)")
+        logger.log("Generated CSV file at \(csvFileURL)")
         return csvFileURL
     }
     
