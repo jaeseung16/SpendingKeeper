@@ -10,12 +10,15 @@ import SwiftData
 
 struct RecordListView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(SKNavigator.self) private var navigator: SKNavigator
     
     @Query(sort: \SKRecord.recordDate, order: .reverse) var records: [SKRecord]
     @Binding var selectedRecord: SKRecord?
     @State private var presentAddRecordView = false
     
     var body: some View {
+        @Bindable var navigator = navigator
+        
         GeometryReader { geometry in
             List(selection: $selectedRecord) {
                 ForEach(records) { record in
@@ -35,7 +38,7 @@ struct RecordListView: View {
                     }
                 }
             }
-            .sheet(isPresented: $presentAddRecordView) {
+            .sheet(isPresented: $navigator.presentAddRecordView) {
                 AddRecordView()
             }
         }

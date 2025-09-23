@@ -15,6 +15,7 @@ import FinanceKit
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(SKNavigator.self) private var navigator: SKNavigator
     @EnvironmentObject private var viewModel: SKViewModel
     //@Query private var records: [SKRecord]
     //@Query private var accounts: [SKAccount]
@@ -32,10 +33,12 @@ struct ContentView: View {
     @State private var presentAlert = false
     
     var body: some View {
+        @Bindable var navigator = navigator
+        
         GeometryReader { geometry in
             VStack {
                 NavigationSplitView {
-                    List(selection: $selectedMenu) {
+                    List(selection: $navigator.menu) {
                         ForEach(SKMenu.allCases) { menu in
                             NavigationLink(value: menu) {
                                 Text(menu.rawValue)
@@ -43,7 +46,7 @@ struct ContentView: View {
                         }
                     }
                 } content: {
-                    switch selectedMenu {
+                    switch navigator.menu {
                     case .transactions:
                         RecordListView(selectedRecord: $selectedRecord)
                             .navigationTitle(SKMenu.transactions.rawValue)
@@ -67,7 +70,7 @@ struct ContentView: View {
                         Text("Select a menu")
                     }
                 } detail: {
-                    switch selectedMenu {
+                    switch navigator.menu {
                     case .transactions:
                         if let record = selectedRecord {
                             RecordDetailView(record: record, account: findAccount(of: record))

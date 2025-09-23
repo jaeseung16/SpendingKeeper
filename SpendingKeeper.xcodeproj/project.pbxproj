@@ -23,6 +23,7 @@
 		9076D8802C71480E00460146 /* SnapshotRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076D87F2C71480E00460146 /* SnapshotRecordView.swift */; };
 		907CA3DD2C68F3730082266D /* SKSnapshotIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CA3DC2C68F3730082266D /* SKSnapshotIncome.swift */; };
 		9080C01B2BC1C70100F88FA8 /* SKPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9080C01A2BC1C70100F88FA8 /* SKPeriod.swift */; };
+		908592382E835CA4009B42C0 /* SpendingKeeperAppShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908592372E835C9C009B42C0 /* SpendingKeeperAppShortcuts.swift */; };
 		908598702BB36EB600208AEE /* SpendingKeeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9085986F2BB36EB600208AEE /* SpendingKeeperApp.swift */; };
 		908598722BB36EB600208AEE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908598712BB36EB600208AEE /* ContentView.swift */; };
 		908598742BB36EB600208AEE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908598732BB36EB600208AEE /* Item.swift */; };
@@ -51,6 +52,10 @@
 		9090C7082C6826B6002D704C /* SKSnapshotSpending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9090C7072C6826B6002D704C /* SKSnapshotSpending.swift */; };
 		9093C6BA2C6572E7008A4737 /* TrendsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9093C6B92C6572E7008A4737 /* TrendsChartView.swift */; };
 		909B9E3D2BCC84290053A61D /* SKAccountStatementDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B9E3C2BCC84290053A61D /* SKAccountStatementDay.swift */; };
+		90A912212E80B0E200D4356C /* AddRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A912202E80B0D800D4356C /* AddRecord.swift */; };
+		90A912232E80B1F000D4356C /* ImportFromWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A912222E80B1E000D4356C /* ImportFromWallet.swift */; };
+		90A912252E80B23200D4356C /* SKNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A912242E80B22E00D4356C /* SKNavigator.swift */; };
+		90A912272E80B57F00D4356C /* SKNavigationOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A912262E80B57300D4356C /* SKNavigationOption.swift */; };
 		90B28C5C2C722470009589E2 /* SKSnapshotChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5B2C722470009589E2 /* SKSnapshotChartData.swift */; };
 		90B28C5E2C722552009589E2 /* SnapshotCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5D2C722552009589E2 /* SnapshotCharts.swift */; };
 		90B28C602C7226EB009589E2 /* SnapshotPDFFirstPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5F2C7226EB009589E2 /* SnapshotPDFFirstPageView.swift */; };
@@ -94,6 +99,7 @@
 		9076D87F2C71480E00460146 /* SnapshotRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotRecordView.swift; sourceTree = "<group>"; };
 		907CA3DC2C68F3730082266D /* SKSnapshotIncome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSnapshotIncome.swift; sourceTree = "<group>"; };
 		9080C01A2BC1C70100F88FA8 /* SKPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPeriod.swift; sourceTree = "<group>"; };
+		908592372E835C9C009B42C0 /* SpendingKeeperAppShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingKeeperAppShortcuts.swift; sourceTree = "<group>"; };
 		9085986C2BB36EB600208AEE /* SpendingKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpendingKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9085986F2BB36EB600208AEE /* SpendingKeeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingKeeperApp.swift; sourceTree = "<group>"; };
 		908598712BB36EB600208AEE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -125,6 +131,10 @@
 		9090C7072C6826B6002D704C /* SKSnapshotSpending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSnapshotSpending.swift; sourceTree = "<group>"; };
 		9093C6B92C6572E7008A4737 /* TrendsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsChartView.swift; sourceTree = "<group>"; };
 		909B9E3C2BCC84290053A61D /* SKAccountStatementDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAccountStatementDay.swift; sourceTree = "<group>"; };
+		90A912202E80B0D800D4356C /* AddRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecord.swift; sourceTree = "<group>"; };
+		90A912222E80B1E000D4356C /* ImportFromWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportFromWallet.swift; sourceTree = "<group>"; };
+		90A912242E80B22E00D4356C /* SKNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKNavigator.swift; sourceTree = "<group>"; };
+		90A912262E80B57300D4356C /* SKNavigationOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKNavigationOption.swift; sourceTree = "<group>"; };
 		90B28C5B2C722470009589E2 /* SKSnapshotChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSnapshotChartData.swift; sourceTree = "<group>"; };
 		90B28C5D2C722552009589E2 /* SnapshotCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotCharts.swift; sourceTree = "<group>"; };
 		90B28C5F2C7226EB009589E2 /* SnapshotPDFFirstPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotPDFFirstPageView.swift; sourceTree = "<group>"; };
@@ -199,6 +209,7 @@
 		9085986E2BB36EB600208AEE /* SpendingKeeper */ = {
 			isa = PBXGroup;
 			children = (
+				90A9121D2E80AE9400D4356C /* AppIntents */,
 				9075365B2BD5B5C400A2B774 /* SpendingKeeper.entitlements */,
 				907536532BD5B28500A2B774 /* AdMob */,
 				907536522BD5B15200A2B774 /* Info.plist */,
@@ -291,9 +302,21 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		90A9121D2E80AE9400D4356C /* AppIntents */ = {
+			isa = PBXGroup;
+			children = (
+				908592372E835C9C009B42C0 /* SpendingKeeperAppShortcuts.swift */,
+				90A912222E80B1E000D4356C /* ImportFromWallet.swift */,
+				90A912202E80B0D800D4356C /* AddRecord.swift */,
+			);
+			path = AppIntents;
+			sourceTree = "<group>";
+		};
 		90D96E2D2BBCC1D100DB4C01 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				90A912262E80B57300D4356C /* SKNavigationOption.swift */,
+				90A912242E80B22E00D4356C /* SKNavigator.swift */,
 				90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */,
 			);
 			path = ViewModel;
@@ -438,6 +461,7 @@
 			files = (
 				909B9E3D2BCC84290053A61D /* SKAccountStatementDay.swift in Sources */,
 				9076D8802C71480E00460146 /* SnapshotRecordView.swift in Sources */,
+				90A912212E80B0E200D4356C /* AddRecord.swift in Sources */,
 				9076D87E2C7127D600460146 /* SKSnapshotRecord.swift in Sources */,
 				907536572BD5B32B00A2B774 /* BannerAdViewController.swift in Sources */,
 				906C9D1E2BB8902B0031139D /* RecordDetailView.swift in Sources */,
@@ -455,12 +479,16 @@
 				90B28C5C2C722470009589E2 /* SKSnapshotChartData.swift in Sources */,
 				908B14732BBA11F6004E53D9 /* SKTrend.swift in Sources */,
 				9090C7022C6811A1002D704C /* AddSnapshotView.swift in Sources */,
+				90A912232E80B1F000D4356C /* ImportFromWallet.swift in Sources */,
 				906C9D162BB85E060031139D /* AccountListView.swift in Sources */,
+				90A912252E80B23200D4356C /* SKNavigator.swift in Sources */,
 				90B28C602C7226EB009589E2 /* SnapshotPDFFirstPageView.swift in Sources */,
 				9093C6BA2C6572E7008A4737 /* TrendsChartView.swift in Sources */,
+				90A912272E80B57F00D4356C /* SKNavigationOption.swift in Sources */,
 				90B28C5E2C722552009589E2 /* SnapshotCharts.swift in Sources */,
 				9090C7002C681169002D704C /* SnapshotDetailView.swift in Sources */,
 				9080C01B2BC1C70100F88FA8 /* SKPeriod.swift in Sources */,
+				908592382E835CA4009B42C0 /* SpendingKeeperAppShortcuts.swift in Sources */,
 				906C9D1C2BB8900C0031139D /* RecordRowView.swift in Sources */,
 				90B28C622C722B4E009589E2 /* SnapshotRecordPageHeaderView.swift in Sources */,
 				9090C6FE2C681149002D704C /* SnapshotListView.swift in Sources */,
@@ -646,7 +674,7 @@
 				CODE_SIGN_ENTITLEMENTS = SpendingKeeper/SpendingKeeper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"SpendingKeeper/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
@@ -682,7 +710,7 @@
 				CODE_SIGN_ENTITLEMENTS = SpendingKeeper/SpendingKeeper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"SpendingKeeper/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
