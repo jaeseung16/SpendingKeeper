@@ -5,6 +5,7 @@ struct SpendingKeeperAppShortcuts: AppShortcutsProvider {
         AppShortcut(
             intent: AddRecord(),
             phrases: [
+                "Add a transaction to \(.applicationName)",
                 "Open \(.applicationName) and add a transaction",
             ],
             shortTitle: "Add a transaction",
@@ -13,6 +14,7 @@ struct SpendingKeeperAppShortcuts: AppShortcutsProvider {
         AppShortcut(
             intent: ImportFromWallet(),
             phrases: [
+                "Import transactions to \(.applicationName)",
                 "Open \(.applicationName) and import transactions",
             ],
             shortTitle: "Import transactions",
