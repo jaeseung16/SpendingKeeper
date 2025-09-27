@@ -10,9 +10,9 @@ import SwiftUI
 
 struct OpenSpendingTrend: AppIntent {
     
-    static let title: LocalizedStringResource = "Open spending trends"
+    static let title: LocalizedStringResource = "View spending trends"
 
-    static let description = IntentDescription("Opens the app and shows the daily spending trend this month.")
+    static let description = IntentDescription("Opens the app and shows you the daily spending trend this month.")
     
     @Dependency private var navigator: SKNavigator
     

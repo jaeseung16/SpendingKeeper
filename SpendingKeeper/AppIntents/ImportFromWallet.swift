@@ -12,7 +12,7 @@ struct ImportFromWallet: AppIntent {
     
     static let title: LocalizedStringResource = "Import transactions"
 
-    static let description = IntentDescription("Opens the app and goes to import transactions from Wallet.")
+    static let description = IntentDescription("Opens the app to allow you to import transactions from Wallet.")
     
     @Dependency private var navigator: SKNavigator
     
