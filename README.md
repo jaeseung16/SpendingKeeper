@@ -1,5 +1,7 @@
 # SpendingKeeper
 
+<img src="./docs/assets/images/AppIcon_1-iOS-Default-1024x1024@1x.png" width=100>
+
 [<img src="./docs/assets/images/App_Store_Badge.svg">](https://apps.apple.com/us/app/spendingkeeper/id6480076775)
 
 ## Description
