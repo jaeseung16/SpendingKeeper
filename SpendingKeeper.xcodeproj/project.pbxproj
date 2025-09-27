@@ -62,6 +62,7 @@
 		90B28C622C722B4E009589E2 /* SnapshotRecordPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C612C722B4E009589E2 /* SnapshotRecordPageHeaderView.swift */; };
 		90D136372C65859100898641 /* ShareActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D136362C65859100898641 /* ShareActivityView.swift */; };
 		90D96E2F2BBCC1E300DB4C01 /* SKViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */; };
+		90EB41CB2E8842FF009046A5 /* OpenDailyTrend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EB41CA2E8842EC009046A5 /* OpenDailyTrend.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +142,7 @@
 		90B28C612C722B4E009589E2 /* SnapshotRecordPageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotRecordPageHeaderView.swift; sourceTree = "<group>"; };
 		90D136362C65859100898641 /* ShareActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareActivityView.swift; sourceTree = "<group>"; };
 		90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKViewModel.swift; sourceTree = "<group>"; };
+		90EB41CA2E8842EC009046A5 /* OpenDailyTrend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDailyTrend.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +307,7 @@
 		90A9121D2E80AE9400D4356C /* AppIntents */ = {
 			isa = PBXGroup;
 			children = (
+				90EB41CA2E8842EC009046A5 /* OpenDailyTrend.swift */,
 				908592372E835C9C009B42C0 /* SpendingKeeperAppShortcuts.swift */,
 				90A912222E80B1E000D4356C /* ImportFromWallet.swift */,
 				90A912202E80B0D800D4356C /* AddRecord.swift */,
@@ -495,6 +498,7 @@
 				908598722BB36EB600208AEE /* ContentView.swift in Sources */,
 				908598742BB36EB600208AEE /* Item.swift in Sources */,
 				908BF7E12BB76C7900740266 /* SKRecord.swift in Sources */,
+				90EB41CB2E8842FF009046A5 /* OpenDailyTrend.swift in Sources */,
 				908BF7EC2BB7773E00740266 /* AddRecordView.swift in Sources */,
 				908B146F2BB9A8C4004E53D9 /* AccountDetailView.swift in Sources */,
 				900CCD892C9F46C900573810 /* ImportsDetailView.swift in Sources */,
@@ -682,6 +686,7 @@
 				INFOPLIST_FILE = SpendingKeeper/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SpendingKeeper;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Your data will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -717,6 +722,7 @@
 				INFOPLIST_FILE = SpendingKeeper/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SpendingKeeper;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Your data will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

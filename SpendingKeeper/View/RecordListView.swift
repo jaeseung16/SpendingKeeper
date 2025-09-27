@@ -14,7 +14,6 @@ struct RecordListView: View {
     
     @Query(sort: \SKRecord.recordDate, order: .reverse) var records: [SKRecord]
     @Binding var selectedRecord: SKRecord?
-    @State private var presentAddRecordView = false
     
     var body: some View {
         @Bindable var navigator = navigator
@@ -32,7 +31,7 @@ struct RecordListView: View {
             .toolbar {
                 ToolbarItem {
                     Button {
-                        presentAddRecordView = true
+                        navigator.presentAddRecordView = true
                     } label: {
                         Label("Add", systemImage: "plus")
                     }

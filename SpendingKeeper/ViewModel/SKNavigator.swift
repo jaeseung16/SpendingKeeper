@@ -15,6 +15,7 @@ final class SKNavigator {
     
     var menu: SKMenu? = .transactions
     var presentAddRecordView = false
+    var selectedTrend: SKTrend?
     
     func navigate(to menu: SKMenu) {
         self.menu = menu
@@ -27,5 +28,10 @@ final class SKNavigator {
     
     func navigateToImportTransactionsView() {
         self.menu = .imports
+    }
+    
+    func navigateToDailyTrends() {
+        self.menu = .trends
+        self.selectedTrend = .daily
     }
 }

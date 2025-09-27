@@ -17,13 +17,9 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(SKNavigator.self) private var navigator: SKNavigator
     @EnvironmentObject private var viewModel: SKViewModel
-    //@Query private var records: [SKRecord]
-    //@Query private var accounts: [SKAccount]
 
-    @State private var selectedMenu: SKMenu? = .transactions
     @State private var selectedRecord: SKRecord?
     @State private var selectedAccount: SKAccount?
-    @State private var selectedTrend: SKTrend?
     @State private var selectedSnapshot: SKSnapshot?
     
 #if canImport(FinanceKit)
@@ -54,7 +50,7 @@ struct ContentView: View {
                         AccountListView(selectedAccount: $selectedAccount)
                             .navigationTitle(SKMenu.accounts.rawValue)
                     case .trends:
-                        TrendsListView(selectedTrend: $selectedTrend)
+                        TrendsListView(selectedTrend: $navigator.selectedTrend)
                             .navigationTitle(SKMenu.trends.rawValue)
                     case .snapshots:
                         SnapshotListView(selectedSnapshot: $selectedSnapshot)
@@ -82,7 +78,7 @@ struct ContentView: View {
                                 .id(account.uid)
                         }
                     case .trends:
-                        if let trend = selectedTrend {
+                        if let trend = navigator.selectedTrend {
                             TrendsDetailView(trend: trend, stats: viewModel.stats(for: trend))
                                 .id(trend)
                         }

@@ -20,5 +20,13 @@ struct SpendingKeeperAppShortcuts: AppShortcutsProvider {
             shortTitle: "Import transactions",
             systemImageName: "square.and.arrow.down.on.square"
         )
+        AppShortcut(
+            intent: OpenSpendingTrend(),
+            phrases: [
+                "Open \(.applicationName) and show daily spending trend this month",
+            ],
+            shortTitle: "Spending trend",
+            systemImageName: "chart.line.uptrend.xyaxis"
+        )
     }
 }
