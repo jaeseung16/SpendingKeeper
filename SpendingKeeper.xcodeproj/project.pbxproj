@@ -10,6 +10,7 @@
 		900CCD852C9F458300573810 /* ImportsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CCD842C9F458300573810 /* ImportsListView.swift */; };
 		900CCD872C9F45FB00573810 /* ImportsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CCD862C9F45FB00573810 /* ImportsRowView.swift */; };
 		900CCD892C9F46C900573810 /* ImportsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CCD882C9F46C900573810 /* ImportsDetailView.swift */; };
+		90534BC62E7B6D77004BFF9C /* AppIcon_1.icon in Resources */ = {isa = PBXBuildFile; fileRef = 90534BC52E7B6D77004BFF9C /* AppIcon_1.icon */; };
 		906C9D162BB85E060031139D /* AccountListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D152BB85E060031139D /* AccountListView.swift */; };
 		906C9D182BB860700031139D /* RecordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D172BB860700031139D /* RecordListView.swift */; };
 		906C9D1A2BB861200031139D /* SKMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D192BB861200031139D /* SKMenu.swift */; };
@@ -22,6 +23,7 @@
 		9076D8802C71480E00460146 /* SnapshotRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076D87F2C71480E00460146 /* SnapshotRecordView.swift */; };
 		907CA3DD2C68F3730082266D /* SKSnapshotIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CA3DC2C68F3730082266D /* SKSnapshotIncome.swift */; };
 		9080C01B2BC1C70100F88FA8 /* SKPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9080C01A2BC1C70100F88FA8 /* SKPeriod.swift */; };
+		908592382E835CA4009B42C0 /* SpendingKeeperAppShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908592372E835C9C009B42C0 /* SpendingKeeperAppShortcuts.swift */; };
 		908598702BB36EB600208AEE /* SpendingKeeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9085986F2BB36EB600208AEE /* SpendingKeeperApp.swift */; };
 		908598722BB36EB600208AEE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908598712BB36EB600208AEE /* ContentView.swift */; };
 		908598742BB36EB600208AEE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908598732BB36EB600208AEE /* Item.swift */; };
@@ -50,12 +52,17 @@
 		9090C7082C6826B6002D704C /* SKSnapshotSpending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9090C7072C6826B6002D704C /* SKSnapshotSpending.swift */; };
 		9093C6BA2C6572E7008A4737 /* TrendsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9093C6B92C6572E7008A4737 /* TrendsChartView.swift */; };
 		909B9E3D2BCC84290053A61D /* SKAccountStatementDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B9E3C2BCC84290053A61D /* SKAccountStatementDay.swift */; };
+		90A912212E80B0E200D4356C /* AddRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A912202E80B0D800D4356C /* AddRecord.swift */; };
+		90A912232E80B1F000D4356C /* ImportFromWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A912222E80B1E000D4356C /* ImportFromWallet.swift */; };
+		90A912252E80B23200D4356C /* SKNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A912242E80B22E00D4356C /* SKNavigator.swift */; };
+		90A912272E80B57F00D4356C /* SKNavigationOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A912262E80B57300D4356C /* SKNavigationOption.swift */; };
 		90B28C5C2C722470009589E2 /* SKSnapshotChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5B2C722470009589E2 /* SKSnapshotChartData.swift */; };
 		90B28C5E2C722552009589E2 /* SnapshotCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5D2C722552009589E2 /* SnapshotCharts.swift */; };
 		90B28C602C7226EB009589E2 /* SnapshotPDFFirstPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5F2C7226EB009589E2 /* SnapshotPDFFirstPageView.swift */; };
 		90B28C622C722B4E009589E2 /* SnapshotRecordPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C612C722B4E009589E2 /* SnapshotRecordPageHeaderView.swift */; };
 		90D136372C65859100898641 /* ShareActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D136362C65859100898641 /* ShareActivityView.swift */; };
 		90D96E2F2BBCC1E300DB4C01 /* SKViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */; };
+		90EB41CB2E8842FF009046A5 /* OpenDailyTrend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EB41CA2E8842EC009046A5 /* OpenDailyTrend.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +86,7 @@
 		900CCD842C9F458300573810 /* ImportsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportsListView.swift; sourceTree = "<group>"; };
 		900CCD862C9F45FB00573810 /* ImportsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportsRowView.swift; sourceTree = "<group>"; };
 		900CCD882C9F46C900573810 /* ImportsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportsDetailView.swift; sourceTree = "<group>"; };
+		90534BC52E7B6D77004BFF9C /* AppIcon_1.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon_1.icon; sourceTree = "<group>"; };
 		906C9D152BB85E060031139D /* AccountListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListView.swift; sourceTree = "<group>"; };
 		906C9D172BB860700031139D /* RecordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListView.swift; sourceTree = "<group>"; };
 		906C9D192BB861200031139D /* SKMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKMenu.swift; sourceTree = "<group>"; };
@@ -92,6 +100,7 @@
 		9076D87F2C71480E00460146 /* SnapshotRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotRecordView.swift; sourceTree = "<group>"; };
 		907CA3DC2C68F3730082266D /* SKSnapshotIncome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSnapshotIncome.swift; sourceTree = "<group>"; };
 		9080C01A2BC1C70100F88FA8 /* SKPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPeriod.swift; sourceTree = "<group>"; };
+		908592372E835C9C009B42C0 /* SpendingKeeperAppShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingKeeperAppShortcuts.swift; sourceTree = "<group>"; };
 		9085986C2BB36EB600208AEE /* SpendingKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpendingKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9085986F2BB36EB600208AEE /* SpendingKeeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingKeeperApp.swift; sourceTree = "<group>"; };
 		908598712BB36EB600208AEE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -123,12 +132,17 @@
 		9090C7072C6826B6002D704C /* SKSnapshotSpending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSnapshotSpending.swift; sourceTree = "<group>"; };
 		9093C6B92C6572E7008A4737 /* TrendsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsChartView.swift; sourceTree = "<group>"; };
 		909B9E3C2BCC84290053A61D /* SKAccountStatementDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAccountStatementDay.swift; sourceTree = "<group>"; };
+		90A912202E80B0D800D4356C /* AddRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecord.swift; sourceTree = "<group>"; };
+		90A912222E80B1E000D4356C /* ImportFromWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportFromWallet.swift; sourceTree = "<group>"; };
+		90A912242E80B22E00D4356C /* SKNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKNavigator.swift; sourceTree = "<group>"; };
+		90A912262E80B57300D4356C /* SKNavigationOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKNavigationOption.swift; sourceTree = "<group>"; };
 		90B28C5B2C722470009589E2 /* SKSnapshotChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSnapshotChartData.swift; sourceTree = "<group>"; };
 		90B28C5D2C722552009589E2 /* SnapshotCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotCharts.swift; sourceTree = "<group>"; };
 		90B28C5F2C7226EB009589E2 /* SnapshotPDFFirstPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotPDFFirstPageView.swift; sourceTree = "<group>"; };
 		90B28C612C722B4E009589E2 /* SnapshotRecordPageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotRecordPageHeaderView.swift; sourceTree = "<group>"; };
 		90D136362C65859100898641 /* ShareActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareActivityView.swift; sourceTree = "<group>"; };
 		90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKViewModel.swift; sourceTree = "<group>"; };
+		90EB41CA2E8842EC009046A5 /* OpenDailyTrend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDailyTrend.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +211,7 @@
 		9085986E2BB36EB600208AEE /* SpendingKeeper */ = {
 			isa = PBXGroup;
 			children = (
+				90A9121D2E80AE9400D4356C /* AppIntents */,
 				9075365B2BD5B5C400A2B774 /* SpendingKeeper.entitlements */,
 				907536532BD5B28500A2B774 /* AdMob */,
 				907536522BD5B15200A2B774 /* Info.plist */,
@@ -208,6 +223,7 @@
 				906C9D192BB861200031139D /* SKMenu.swift */,
 				908598732BB36EB600208AEE /* Item.swift */,
 				908598752BB36EB700208AEE /* Assets.xcassets */,
+				90534BC52E7B6D77004BFF9C /* AppIcon_1.icon */,
 				908598772BB36EB700208AEE /* Preview Content */,
 			);
 			path = SpendingKeeper;
@@ -288,9 +304,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		90A9121D2E80AE9400D4356C /* AppIntents */ = {
+			isa = PBXGroup;
+			children = (
+				90EB41CA2E8842EC009046A5 /* OpenDailyTrend.swift */,
+				908592372E835C9C009B42C0 /* SpendingKeeperAppShortcuts.swift */,
+				90A912222E80B1E000D4356C /* ImportFromWallet.swift */,
+				90A912202E80B0D800D4356C /* AddRecord.swift */,
+			);
+			path = AppIntents;
+			sourceTree = "<group>";
+		};
 		90D96E2D2BBCC1D100DB4C01 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				90A912262E80B57300D4356C /* SKNavigationOption.swift */,
+				90A912242E80B22E00D4356C /* SKNavigator.swift */,
 				90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */,
 			);
 			path = ViewModel;
@@ -363,7 +392,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					9085986B2BB36EB600208AEE = {
 						CreatedOnToolsVersion = 15.3;
@@ -408,6 +437,7 @@
 			files = (
 				908598792BB36EB700208AEE /* Preview Assets.xcassets in Resources */,
 				908598762BB36EB700208AEE /* Assets.xcassets in Resources */,
+				90534BC62E7B6D77004BFF9C /* AppIcon_1.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +464,7 @@
 			files = (
 				909B9E3D2BCC84290053A61D /* SKAccountStatementDay.swift in Sources */,
 				9076D8802C71480E00460146 /* SnapshotRecordView.swift in Sources */,
+				90A912212E80B0E200D4356C /* AddRecord.swift in Sources */,
 				9076D87E2C7127D600460146 /* SKSnapshotRecord.swift in Sources */,
 				907536572BD5B32B00A2B774 /* BannerAdViewController.swift in Sources */,
 				906C9D1E2BB8902B0031139D /* RecordDetailView.swift in Sources */,
@@ -451,18 +482,23 @@
 				90B28C5C2C722470009589E2 /* SKSnapshotChartData.swift in Sources */,
 				908B14732BBA11F6004E53D9 /* SKTrend.swift in Sources */,
 				9090C7022C6811A1002D704C /* AddSnapshotView.swift in Sources */,
+				90A912232E80B1F000D4356C /* ImportFromWallet.swift in Sources */,
 				906C9D162BB85E060031139D /* AccountListView.swift in Sources */,
+				90A912252E80B23200D4356C /* SKNavigator.swift in Sources */,
 				90B28C602C7226EB009589E2 /* SnapshotPDFFirstPageView.swift in Sources */,
 				9093C6BA2C6572E7008A4737 /* TrendsChartView.swift in Sources */,
+				90A912272E80B57F00D4356C /* SKNavigationOption.swift in Sources */,
 				90B28C5E2C722552009589E2 /* SnapshotCharts.swift in Sources */,
 				9090C7002C681169002D704C /* SnapshotDetailView.swift in Sources */,
 				9080C01B2BC1C70100F88FA8 /* SKPeriod.swift in Sources */,
+				908592382E835CA4009B42C0 /* SpendingKeeperAppShortcuts.swift in Sources */,
 				906C9D1C2BB8900C0031139D /* RecordRowView.swift in Sources */,
 				90B28C622C722B4E009589E2 /* SnapshotRecordPageHeaderView.swift in Sources */,
 				9090C6FE2C681149002D704C /* SnapshotListView.swift in Sources */,
 				908598722BB36EB600208AEE /* ContentView.swift in Sources */,
 				908598742BB36EB600208AEE /* Item.swift in Sources */,
 				908BF7E12BB76C7900740266 /* SKRecord.swift in Sources */,
+				90EB41CB2E8842FF009046A5 /* OpenDailyTrend.swift in Sources */,
 				908BF7EC2BB7773E00740266 /* AddRecordView.swift in Sources */,
 				908B146F2BB9A8C4004E53D9 /* AccountDetailView.swift in Sources */,
 				900CCD892C9F46C900573810 /* ImportsDetailView.swift in Sources */,
@@ -546,6 +582,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = U8VSJXRJTQ;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -569,6 +606,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -609,6 +647,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = U8VSJXRJTQ;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -625,6 +664,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -633,20 +673,20 @@
 		908598932BB36EB800208AEE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_1;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SpendingKeeper/SpendingKeeper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 9;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"SpendingKeeper/Preview Content\"";
-				DEVELOPMENT_TEAM = U8VSJXRJTQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpendingKeeper/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SpendingKeeper;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Your data will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -657,12 +697,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.SpendingKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -670,19 +710,19 @@
 		908598942BB36EB800208AEE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_1;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SpendingKeeper/SpendingKeeper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"SpendingKeeper/Preview Content\"";
-				DEVELOPMENT_TEAM = U8VSJXRJTQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpendingKeeper/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SpendingKeeper;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Your data will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -693,12 +733,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.SpendingKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -709,7 +749,6 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = U8VSJXRJTQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
@@ -728,7 +767,6 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = U8VSJXRJTQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
@@ -746,7 +784,6 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = U8VSJXRJTQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.SpendingKeeperUITests;
@@ -763,7 +800,6 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = U8VSJXRJTQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.SpendingKeeperUITests;
@@ -822,7 +858,7 @@
 			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
 			requirement = {
 				kind = exactVersion;
-				version = 11.10.0;
+				version = 12.11.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

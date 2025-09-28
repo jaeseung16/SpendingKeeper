@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import AppIntents
 
 @main
 struct SpendingKeeperApp: App {
@@ -23,12 +24,20 @@ struct SpendingKeeperApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+    
+    @State private var navigator = SKNavigator.shared
 
+    init() {
+        let navigator = self.navigator
+        AppDependencyManager.shared.add(dependency: navigator)
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
         .modelContainer(sharedModelContainer)
         .environmentObject(SKViewModel(modelContext: sharedModelContainer.mainContext))
+        .environment(navigator)
     }
 }

@@ -114,25 +114,22 @@ class SKViewModel: NSObject, ObservableObject {
     }
     
     private func dates(from start: Date, to end: Date, trend: SKTrend) -> [Date] {
-        var dates = [Date]()
+        var dates: [Date] = []
         
-        var matchingDateComponents: DateComponents
-        switch trend {
+        let matchingDateComponents = switch trend {
         case .daily:
-            matchingDateComponents = DateComponents(hour:0, minute: 0, second: 0)
+            DateComponents(hour:0, minute: 0, second: 0)
         case .monthly:
-            matchingDateComponents = DateComponents(day: 1, hour:0, minute: 0, second: 0)
+            DateComponents(day: 1, hour:0, minute: 0, second: 0)
         }
         
         calendar.enumerateDates(startingAfter: start, matching: matchingDateComponents, matchingPolicy: .nextTime) { result, exactMatch, stop in
-            guard let result = result else {
-                return
-            }
-            
-            if result > end {
-                stop = true
-            } else {
-                dates.append(result)
+            if let result = result {
+                if result > end {
+                    stop = true
+                } else {
+                    dates.append(result)
+                }
             }
         }
         
@@ -140,12 +137,11 @@ class SKViewModel: NSObject, ObservableObject {
     }
     
     private func firstDateOfPreviousPeriod(for trend: SKTrend) -> Date {
-        var start: Date?
-        switch trend {
+        let start = switch trend {
         case .daily:
-            start = firstDayOfLastMonth()
+            firstDayOfLastMonth()
         case .monthly:
-            start = firstDayOfLastYear()
+            firstDayOfLastYear()
         }
         return start ?? .now
     }
@@ -234,36 +230,25 @@ class SKViewModel: NSObject, ObservableObject {
     // Snapshot
     
     func generateSnapshot(title: String, from begin: Date, to end: Date) -> SKSnapshot {
-        var snapshotRecords = [SKSnapshotRecord]()
+        let records = fetchRecords(from: begin, to: end)
+        let accountsByUid = fetchAllAccountsByUid()
+        
         var incomes = [UUID: SKSnapshotIncome]()
         var spendings = [UUID: SKSnapshotSpending]()
-        
-        let records = fetchRecords(from: begin, to: end)
-        
+        var snapshotRecords = [SKSnapshotRecord]()
         for record in records {
-            if let accountId = record.accountId {
-                let account = fetchAccount(accountId)
-                let accountName = account.isEmpty ? record.accountName : account[0].name
-                logger.log("\(record.recordDate)")
-                
-                let snapshotRecord = SKSnapshotRecord(recordDate: record.recordDate,
-                                                      recordDescription: record.recordDescription,
-                                                      transactionType: record.transactionType,
-                                                      accountName: record.accountName,
-                                                      amount: record.amount)
-                snapshotRecords.append(snapshotRecord)
-                
-                switch record.transactionType {
-                case .income:
-                    let currentValue = incomes[accountId, default: SKSnapshotIncome(accoundId: accountId, accountName: accountName, total: 0.0)]
-                    currentValue.total += record.amount
-                    incomes[accountId] = currentValue
-                case .spending:
-                    let currentValue = spendings[accountId, default: SKSnapshotSpending(accoundId: accountId, accountName: accountName, total: 0.0)]
-                    currentValue.total += record.amount
-                    spendings[accountId] = currentValue
-                }
+            guard let accountId = record.accountId else {
+                continue
             }
+            let accountName = accountsByUid[accountId]?.name ?? record.accountName
+            switch record.transactionType {
+            case .income:
+                accumulateIncome(&incomes, accountId: accountId, accountName: accountName, amount: record.amount)
+            case .spending:
+                accumulateSpending(&spendings, accountId: accountId, accountName: accountName, amount: record.amount)
+            }
+            
+            snapshotRecords.append(snapshotRecord(from: record))
         }
         
         return SKSnapshot(title: title,
@@ -274,39 +259,56 @@ class SKViewModel: NSObject, ObservableObject {
                           spendings: Array(spendings.values))
     }
     
-    private func fetchAccount(_ uid: UUID) -> [SKAccount] {
-        var records = [SKAccount]()
+    /// Fetch all SKAccount objects and return a dictionary keyed by their uid
+    private func fetchAllAccountsByUid() -> [UUID: SKAccount] {
+        var map: [UUID: SKAccount] = [:]
         do {
-            let descriptor = FetchDescriptor<SKAccount>(
-                predicate: #Predicate { $0.uid == uid },
-                sortBy: []
-            )
-            let fetchedRecords = try modelContext.fetch(descriptor)
-            records.append(contentsOf: fetchedRecords)
+            let descriptor = FetchDescriptor<SKAccount>(predicate: nil, sortBy: [])
+            let accounts = try modelContext.fetch(descriptor)
+            accounts.forEach { map[$0.uid] = $0 }
         } catch {
-            logger.log("Fetch failed")
+            logger.log("Fetch all accounts failed: \(error.localizedDescription)")
         }
-        return records
+        return map
+    }
+    
+    private func snapshotRecord(from record: SKRecord) -> SKSnapshotRecord {
+        return SKSnapshotRecord(recordDate: record.recordDate,
+                                recordDescription: record.recordDescription,
+                                transactionType: record.transactionType,
+                                accountName: record.accountName,
+                                amount: record.amount)
+    }
+    
+    private func accumulateIncome(_ map: inout [UUID: SKSnapshotIncome], accountId: UUID, accountName: String, amount: Double) {
+        let current = map[accountId, default: SKSnapshotIncome(accoundId: accountId, accountName: accountName, total: 0.0)]
+        map[accountId] = SKSnapshotIncome(accoundId: current.accoundId,
+                                          accountName: current.accountName,
+                                          total: current.total + amount)
+    }
+
+    private func accumulateSpending(_ map: inout [UUID: SKSnapshotSpending], accountId: UUID, accountName: String, amount: Double) {
+        let current = map[accountId, default: SKSnapshotSpending(accoundId: accountId, accountName: accountName, total: 0.0)]
+        map[accountId] = SKSnapshotSpending(accoundId: current.accoundId,
+                                            accountName: current.accountName,
+                                            total: current.total + amount)
     }
     
     func generateCSV(from start: Date, to end: Date) -> URL? {
-        let records = fetchRecords(from: start, to: end)
-        let csvString = buildCSV(records: records)
-
         guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return nil
         }
         
         let filename = "SpendingKeeper_\(start)_\(end).csv"
         let csvFileURL = path.appendingPathComponent(filename)
-        
+        let csvString = buildCSV(records: fetchRecords(from: start, to: end))
         do {
             try csvString.write(to: csvFileURL, atomically: true, encoding: .utf8)
         } catch {
-            logger.log("Failed to save the csv file")
+            logger.log("Failed to save the csv file \(filename): \(error.localizedDescription)")
         }
         
-        logger.log("\(csvFileURL)")
+        logger.log("Generated CSV file at \(csvFileURL)")
         return csvFileURL
     }
     
@@ -329,3 +331,4 @@ class SKViewModel: NSObject, ObservableObject {
         return csvString
     }
 }
+

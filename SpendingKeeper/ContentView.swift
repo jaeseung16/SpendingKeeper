@@ -15,14 +15,11 @@ import FinanceKit
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(SKNavigator.self) private var navigator: SKNavigator
     @EnvironmentObject private var viewModel: SKViewModel
-    //@Query private var records: [SKRecord]
-    //@Query private var accounts: [SKAccount]
 
-    @State private var selectedMenu: SKMenu? = .transactions
     @State private var selectedRecord: SKRecord?
     @State private var selectedAccount: SKAccount?
-    @State private var selectedTrend: SKTrend?
     @State private var selectedSnapshot: SKSnapshot?
     
 #if canImport(FinanceKit)
@@ -32,10 +29,12 @@ struct ContentView: View {
     @State private var presentAlert = false
     
     var body: some View {
+        @Bindable var navigator = navigator
+        
         GeometryReader { geometry in
             VStack {
                 NavigationSplitView {
-                    List(selection: $selectedMenu) {
+                    List(selection: $navigator.menu) {
                         ForEach(SKMenu.allCases) { menu in
                             NavigationLink(value: menu) {
                                 Text(menu.rawValue)
@@ -43,7 +42,7 @@ struct ContentView: View {
                         }
                     }
                 } content: {
-                    switch selectedMenu {
+                    switch navigator.menu {
                     case .transactions:
                         RecordListView(selectedRecord: $selectedRecord)
                             .navigationTitle(SKMenu.transactions.rawValue)
@@ -51,7 +50,7 @@ struct ContentView: View {
                         AccountListView(selectedAccount: $selectedAccount)
                             .navigationTitle(SKMenu.accounts.rawValue)
                     case .trends:
-                        TrendsListView(selectedTrend: $selectedTrend)
+                        TrendsListView(selectedTrend: $navigator.selectedTrend)
                             .navigationTitle(SKMenu.trends.rawValue)
                     case .snapshots:
                         SnapshotListView(selectedSnapshot: $selectedSnapshot)
@@ -67,7 +66,7 @@ struct ContentView: View {
                         Text("Select a menu")
                     }
                 } detail: {
-                    switch selectedMenu {
+                    switch navigator.menu {
                     case .transactions:
                         if let record = selectedRecord {
                             RecordDetailView(record: record, account: findAccount(of: record))
@@ -79,7 +78,7 @@ struct ContentView: View {
                                 .id(account.uid)
                         }
                     case .trends:
-                        if let trend = selectedTrend {
+                        if let trend = navigator.selectedTrend {
                             TrendsDetailView(trend: trend, stats: viewModel.stats(for: trend))
                                 .id(trend)
                         }
@@ -117,7 +116,7 @@ struct ContentView: View {
             }
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
                 ATTrackingManager.requestTrackingAuthorization { status in
-                    GADMobileAds.sharedInstance().start(completionHandler: nil)
+                    MobileAds.shared.start(completionHandler: nil)
                     
                 }
             }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_3_Layer" data-name="3 – Layer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #009245;
+        font-family: HelveticaNeue-BoldItalic, 'Helvetica Neue';
+        font-size: 432px;
+        font-style: italic;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <text class="cls-1" transform="translate(131.59 410.89)"><tspan x="0" y="0">$</tspan></text>
+  <text class="cls-1" transform="translate(648.77 935.54)"><tspan x="0" y="0">$</tspan></text>
+</svg>
