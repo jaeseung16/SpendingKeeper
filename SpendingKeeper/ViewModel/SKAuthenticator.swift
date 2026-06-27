@@ -38,6 +38,15 @@ final class SKAuthenticator {
     /// or is not required). Defaults to unlocked so the app is never bricked.
     var isUnlocked = true
 
+    /// Set when the app is backgrounded, consumed on the next foreground to decide
+    /// whether to re-prompt. This avoids re-firing the prompt on transient
+    /// `.inactive → .active` cycles caused by the system auth UI itself.
+    var pendingAuth = false
+
+    /// Guards against overlapping evaluations (e.g. `.task` and a scenePhase change
+    /// both firing before the first prompt resolves).
+    private var isAuthenticating = false
+
     /// Whether the user has opted in to the biometric lock. Persisted to UserDefaults.
     var isEnabled: Bool {
         didSet {
@@ -57,16 +66,20 @@ final class SKAuthenticator {
         self.isUnlocked = !enabled
     }
 
-    /// Re-lock the app (e.g. when moving to the background). No-op when the lock is disabled.
+    /// Re-lock the app (e.g. when moving to the background) and mark that a prompt is
+    /// owed on the next foreground. No-op when the lock is disabled.
     func lock() {
         guard isEnabled else { return }
         isUnlocked = false
+        pendingAuth = true
     }
 
     /// Prompt for biometric / passcode authentication. Fails open if no auth method
     /// is available so the user is never permanently locked out of their own data.
     func authenticate() async {
-        guard isEnabled, !isUnlocked else { return }
+        guard isEnabled, !isUnlocked, !isAuthenticating else { return }
+        isAuthenticating = true
+        defer { isAuthenticating = false }
 
         let context = contextProvider()
         var policyError: NSError?

@@ -62,6 +62,7 @@
 		90B28C602C7226EB009589E2 /* SnapshotPDFFirstPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5F2C7226EB009589E2 /* SnapshotPDFFirstPageView.swift */; };
 		90B28C622C722B4E009589E2 /* SnapshotRecordPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C612C722B4E009589E2 /* SnapshotRecordPageHeaderView.swift */; };
 		90D136372C65859100898641 /* ShareActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D136362C65859100898641 /* ShareActivityView.swift */; };
+		90AA00102E80B24000D4356C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AA00112E80B24000D4356C /* SettingsView.swift */; };
 		90D96E2F2BBCC1E300DB4C01 /* SKViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */; };
 		90EB41CB2E8842FF009046A5 /* OpenDailyTrend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EB41CA2E8842EC009046A5 /* OpenDailyTrend.swift */; };
 /* End PBXBuildFile section */
@@ -143,6 +144,7 @@
 		90B28C5F2C7226EB009589E2 /* SnapshotPDFFirstPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotPDFFirstPageView.swift; sourceTree = "<group>"; };
 		90B28C612C722B4E009589E2 /* SnapshotRecordPageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotRecordPageHeaderView.swift; sourceTree = "<group>"; };
 		90D136362C65859100898641 /* ShareActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareActivityView.swift; sourceTree = "<group>"; };
+		90AA00112E80B24000D4356C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKViewModel.swift; sourceTree = "<group>"; };
 		90EB41CA2E8842EC009046A5 /* OpenDailyTrend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDailyTrend.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -294,6 +296,7 @@
 				908B14742BBA135D004E53D9 /* TrendsDetailView.swift */,
 				9093C6B92C6572E7008A4737 /* TrendsChartView.swift */,
 				90D136362C65859100898641 /* ShareActivityView.swift */,
+				90AA00112E80B24000D4356C /* SettingsView.swift */,
 				9090C6FD2C681149002D704C /* SnapshotListView.swift */,
 				9090C7032C6811B5002D704C /* SnapshotRowView.swift */,
 				9090C6FF2C681169002D704C /* SnapshotDetailView.swift */,
@@ -512,6 +515,7 @@
 				907CA3DD2C68F3730082266D /* SKSnapshotIncome.swift in Sources */,
 				908B14772BBA1C7E004E53D9 /* SKStats.swift in Sources */,
 				90D136372C65859100898641 /* ShareActivityView.swift in Sources */,
+				90AA00102E80B24000D4356C /* SettingsView.swift in Sources */,
 				908B146D2BB9A8B8004E53D9 /* AccountRowView.swift in Sources */,
 				90D96E2F2BBCC1E300DB4C01 /* SKViewModel.swift in Sources */,
 				908B14712BBA11CD004E53D9 /* TrendsListView.swift in Sources */,

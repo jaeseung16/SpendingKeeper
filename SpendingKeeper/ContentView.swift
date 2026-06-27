@@ -16,6 +16,8 @@ import FinanceKit
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(SKNavigator.self) private var navigator: SKNavigator
+    @Environment(SKAuthenticator.self) private var authenticator: SKAuthenticator
+    @Environment(\.scenePhase) private var scenePhase
     @EnvironmentObject private var viewModel: SKViewModel
 
     @State private var selectedRecord: SKRecord?
@@ -62,6 +64,9 @@ struct ContentView: View {
 #else
                         Text("No imports available")
 #endif
+                    case .settings:
+                        SettingsView()
+                            .navigationTitle(SKMenu.settings.rawValue)
                     case nil:
                         Text("Select a menu")
                     }
@@ -96,6 +101,8 @@ struct ContentView: View {
 #else
                         Text("No imports available")
 #endif
+                    case .settings:
+                        Text("Select a menu")
                     case nil:
                         Text("Select a menu")
                     }
@@ -117,7 +124,34 @@ struct ContentView: View {
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
                 ATTrackingManager.requestTrackingAuthorization { status in
                     MobileAds.shared.start(completionHandler: nil)
-                    
+
+                }
+            }
+            .overlay {
+                if authenticator.isEnabled {
+                    if !authenticator.isUnlocked {
+                        LockView { Task { await authenticator.authenticate() } }
+                    } else if scenePhase != .active {
+                        // Cover the content so it isn't captured in the app switcher snapshot.
+                        PrivacyCover()
+                    }
+                }
+            }
+            .task {
+                // Cold-launch authentication (`.onChange` does not fire for the initial phase).
+                await authenticator.authenticate()
+            }
+            .onChange(of: scenePhase) { _, newPhase in
+                switch newPhase {
+                case .background:
+                    authenticator.lock()
+                case .active:
+                    if authenticator.pendingAuth {
+                        authenticator.pendingAuth = false
+                        Task { await authenticator.authenticate() }
+                    }
+                default:
+                    break
                 }
             }
         }
@@ -137,4 +171,47 @@ struct ContentView: View {
         return account
     }
 
+}
+
+/// Full-screen lock shown while the app is locked. The unlock button re-triggers the
+/// system prompt in case the initial prompt was cancelled.
+private struct LockView: View {
+    let unlock: () -> Void
+
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .fill(.background)
+                .ignoresSafeArea()
+
+            VStack(spacing: 24) {
+                Image(systemName: "lock.fill")
+                    .font(.system(size: 48))
+                    .foregroundStyle(.secondary)
+
+                Text("SpendingKeeper is locked")
+                    .font(.headline)
+
+                Button(action: unlock) {
+                    Label("Unlock", systemImage: "faceid")
+                }
+                .buttonStyle(.borderedProminent)
+            }
+        }
+    }
+}
+
+/// Opaque cover shown when the app is not active so content is hidden from the
+/// app switcher snapshot.
+private struct PrivacyCover: View {
+    var body: some View {
+        Rectangle()
+            .fill(.background)
+            .ignoresSafeArea()
+            .overlay {
+                Image(systemName: "lock.fill")
+                    .font(.system(size: 48))
+                    .foregroundStyle(.secondary)
+            }
+    }
 }

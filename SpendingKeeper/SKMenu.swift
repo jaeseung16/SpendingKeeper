@@ -13,6 +13,7 @@ enum SKMenu: String, CaseIterable, Identifiable {
     case trends = "Trends"
     case snapshots = "Snapshots"
     case imports = "Import from Wallet"
-    
+    case settings = "Settings"
+
     var id: Self { self }
 }
