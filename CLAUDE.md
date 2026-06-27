@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-SpendingKeeper is a native iOS app (SwiftUI + SwiftData) for tracking spending. Published on the App Store (`com.resonance.SpendingKeeper`). Swift 6.0, iOS deployment target 17.4 (app target 18.0). There is no Package.swift — this is an Xcode project (`SpendingKeeper.xcodeproj`) with dependencies managed via Swift Package Manager inside Xcode.
+SpendingKeeper is a native iOS app (SwiftUI + SwiftData) for tracking spending. Published on the App Store (`com.resonance.SpendingKeeper`). Swift 6.0, iOS deployment target 26.0. There is no Package.swift — this is an Xcode project (`SpendingKeeper.xcodeproj`) with dependencies managed via Swift Package Manager inside Xcode.
 
 The project does **not** use Xcode's file-system-synchronized groups, so creating a new source file on disk is not enough — it must be registered in `SpendingKeeper.xcodeproj/project.pbxproj` (a `PBXBuildFile` entry, a `PBXFileReference` entry, membership in its `PBXGroup`, and the target's `PBXSourcesBuildPhase`) or it won't compile. The simplest way is to add the file through Xcode; if editing `project.pbxproj` directly, mirror an existing sibling file in the same group and use fresh unique 24-character hex IDs.
 

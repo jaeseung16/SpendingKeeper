@@ -30,6 +30,7 @@
 		908598762BB36EB700208AEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 908598752BB36EB700208AEE /* Assets.xcassets */; };
 		908598792BB36EB700208AEE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 908598782BB36EB700208AEE /* Preview Assets.xcassets */; };
 		908598832BB36EB700208AEE /* SpendingKeeperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908598822BB36EB700208AEE /* SpendingKeeperTests.swift */; };
+		90AA00202E80B24000D4356C /* SKAuthenticatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AA00212E80B24000D4356C /* SKAuthenticatorTests.swift */; };
 		9085988D2BB36EB700208AEE /* SpendingKeeperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9085988C2BB36EB700208AEE /* SpendingKeeperUITests.swift */; };
 		9085988F2BB36EB800208AEE /* SpendingKeeperUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9085988E2BB36EB700208AEE /* SpendingKeeperUITestsLaunchTests.swift */; };
 		908B146D2BB9A8B8004E53D9 /* AccountRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908B146C2BB9A8B8004E53D9 /* AccountRowView.swift */; };
@@ -111,6 +112,7 @@
 		908598782BB36EB700208AEE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9085987E2BB36EB700208AEE /* SpendingKeeperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpendingKeeperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		908598822BB36EB700208AEE /* SpendingKeeperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingKeeperTests.swift; sourceTree = "<group>"; };
+		90AA00212E80B24000D4356C /* SKAuthenticatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAuthenticatorTests.swift; sourceTree = "<group>"; };
 		908598882BB36EB700208AEE /* SpendingKeeperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpendingKeeperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9085988C2BB36EB700208AEE /* SpendingKeeperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingKeeperUITests.swift; sourceTree = "<group>"; };
 		9085988E2BB36EB700208AEE /* SpendingKeeperUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingKeeperUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				908598822BB36EB700208AEE /* SpendingKeeperTests.swift */,
+				90AA00212E80B24000D4356C /* SKAuthenticatorTests.swift */,
 			);
 			path = SpendingKeeperTests;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				908598832BB36EB700208AEE /* SpendingKeeperTests.swift in Sources */,
+				90AA00202E80B24000D4356C /* SKAuthenticatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,7 +612,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -667,7 +671,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -700,7 +704,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -736,7 +740,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -758,7 +762,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.SpendingKeeperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -776,7 +780,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.SpendingKeeperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -34,6 +34,9 @@ final class SKAuthenticator {
     /// per evaluation because a context caches a successful evaluation.
     private let contextProvider: () -> SKLAContext
 
+    /// Store backing the persisted `isEnabled` flag. Injectable for testing.
+    private let defaults: UserDefaults
+
     /// Whether the app content is currently visible (i.e. authentication has succeeded
     /// or is not required). Defaults to unlocked so the app is never bricked.
     var isUnlocked = true
@@ -50,7 +53,7 @@ final class SKAuthenticator {
     /// Whether the user has opted in to the biometric lock. Persisted to UserDefaults.
     var isEnabled: Bool {
         didSet {
-            UserDefaults.standard.set(isEnabled, forKey: Self.enabledKey)
+            defaults.set(isEnabled, forKey: Self.enabledKey)
             // Re-lock immediately when turning the feature on.
             if isEnabled, !oldValue {
                 isUnlocked = false
@@ -58,9 +61,11 @@ final class SKAuthenticator {
         }
     }
 
-    init(contextProvider: @escaping () -> SKLAContext = { LAContext() }) {
+    init(contextProvider: @escaping () -> SKLAContext = { LAContext() },
+         defaults: UserDefaults = .standard) {
         self.contextProvider = contextProvider
-        let enabled = UserDefaults.standard.bool(forKey: Self.enabledKey)
+        self.defaults = defaults
+        let enabled = defaults.bool(forKey: Self.enabledKey)
         self.isEnabled = enabled
         // Start locked only when the feature is enabled.
         self.isUnlocked = !enabled
