@@ -212,7 +212,6 @@ class SKViewModel: NSObject, ObservableObject {
         return calendar.date(byAdding: .year, value: 1, to: date)
     }
     
-    // TODO:- Add tests
     func latestStatementDate(_ statementDay: SKAccountStatementDay) -> Date {
         let matchingDateComponents = statementDay.convertToInt() > 0 ? dateComponents(matching: statementDay.convertToInt()) : dateComponentsMatchingFirstDayOfQuater(for: Calendar.current.component(.month, from: .now))
         return Calendar.current.nextDate(after: .now, matching: matchingDateComponents, matchingPolicy: .nextTime, direction: .backward)!
@@ -223,7 +222,7 @@ class SKViewModel: NSObject, ObservableObject {
     }
     
     private func dateComponentsMatchingFirstDayOfQuater(for month: Int) -> DateComponents {
-        let firstMonthOfQuater = (month/3) * 3 + 1
+        let firstMonthOfQuater = ((month - 1) / 3) * 3 + 1
         return DateComponents(month: firstMonthOfQuater, day: 1, hour: 0, minute: 0, second: 0)
     }
     

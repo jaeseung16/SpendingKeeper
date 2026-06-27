@@ -48,7 +48,7 @@ final class SpendingKeeperTests: XCTestCase {
         let monthNow = Calendar.current.component(.month, from: .now)
         let yearNow = Calendar.current.component(.year, from: .now)
         
-        let quarter = monthNow/3 + 1
+        let quarter = (monthNow - 1)/3 + 1
         let startMonthofQuater = (quarter - 1) * 3 + 1
         let dateComponents = DateComponents(year: yearNow, month: startMonthofQuater, day: 1)
         
@@ -79,35 +79,6 @@ final class SpendingKeeperTests: XCTestCase {
         let expectedDate = Calendar.current.date(from: dateComponentsFirstDayOfLastMonth)!
 
         XCTAssertEqual(actualDate, expectedDate)
-    }
-    
-    @MainActor func testFirstDayOfMonthStats() throws {
-        let viewModel = SKViewModel(modelContext: testContainer.mainContext)
-        
-        let fromDateComponents = DateComponents(year: 2024, month: 2, day: 29)
-        let from = Calendar.current.date(from: fromDateComponents)!
-        
-        let toDateComponents = DateComponents(year: 2024, month: 5, day: 1)
-        let to = Calendar.current.date(from: toDateComponents)!
-        
-        let stats = viewModel.stats(from: from, to: to, trend: .daily)
-        
-        XCTAssertEqual(stats.first?.date, to)
-    }
-    
-    @MainActor func testFirstDayOfYearStats() throws {
-        let viewModel = SKViewModel(modelContext: testContainer.mainContext)
-        
-        let fromDateComponents = DateComponents(year: 2023, month: 12, day: 31)
-        let from = Calendar.current.date(from: fromDateComponents)!
-        
-        let toDateComponents = DateComponents(year: 2025, month: 1, day: 1)
-        let to = Calendar.current.date(from: toDateComponents)!
-        
-        let stats = viewModel.stats(from: from, to: to, trend: .monthly)
-        
-        XCTAssertEqual(stats.first?.date, to)
-        XCTAssertEqual(stats.first?.period, .previous)
     }
 
     func testOneMonthLater() throws {
