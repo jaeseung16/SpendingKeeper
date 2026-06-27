@@ -55,6 +55,7 @@
 		90A912212E80B0E200D4356C /* AddRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A912202E80B0D800D4356C /* AddRecord.swift */; };
 		90A912232E80B1F000D4356C /* ImportFromWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A912222E80B1E000D4356C /* ImportFromWallet.swift */; };
 		90A912252E80B23200D4356C /* SKNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A912242E80B22E00D4356C /* SKNavigator.swift */; };
+		90AA00012E80B24000D4356C /* SKAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AA00022E80B24000D4356C /* SKAuthenticator.swift */; };
 		90A912272E80B57F00D4356C /* SKNavigationOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A912262E80B57300D4356C /* SKNavigationOption.swift */; };
 		90B28C5C2C722470009589E2 /* SKSnapshotChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5B2C722470009589E2 /* SKSnapshotChartData.swift */; };
 		90B28C5E2C722552009589E2 /* SnapshotCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5D2C722552009589E2 /* SnapshotCharts.swift */; };
@@ -135,6 +136,7 @@
 		90A912202E80B0D800D4356C /* AddRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecord.swift; sourceTree = "<group>"; };
 		90A912222E80B1E000D4356C /* ImportFromWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportFromWallet.swift; sourceTree = "<group>"; };
 		90A912242E80B22E00D4356C /* SKNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKNavigator.swift; sourceTree = "<group>"; };
+		90AA00022E80B24000D4356C /* SKAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAuthenticator.swift; sourceTree = "<group>"; };
 		90A912262E80B57300D4356C /* SKNavigationOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKNavigationOption.swift; sourceTree = "<group>"; };
 		90B28C5B2C722470009589E2 /* SKSnapshotChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSnapshotChartData.swift; sourceTree = "<group>"; };
 		90B28C5D2C722552009589E2 /* SnapshotCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotCharts.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 			children = (
 				90A912262E80B57300D4356C /* SKNavigationOption.swift */,
 				90A912242E80B22E00D4356C /* SKNavigator.swift */,
+				90AA00022E80B24000D4356C /* SKAuthenticator.swift */,
 				90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */,
 			);
 			path = ViewModel;
@@ -485,6 +488,7 @@
 				90A912232E80B1F000D4356C /* ImportFromWallet.swift in Sources */,
 				906C9D162BB85E060031139D /* AccountListView.swift in Sources */,
 				90A912252E80B23200D4356C /* SKNavigator.swift in Sources */,
+				90AA00012E80B24000D4356C /* SKAuthenticator.swift in Sources */,
 				90B28C602C7226EB009589E2 /* SnapshotPDFFirstPageView.swift in Sources */,
 				9093C6BA2C6572E7008A4737 /* TrendsChartView.swift in Sources */,
 				90A912272E80B57F00D4356C /* SKNavigationOption.swift in Sources */,

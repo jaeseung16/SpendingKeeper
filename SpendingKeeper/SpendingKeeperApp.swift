@@ -26,6 +26,7 @@ struct SpendingKeeperApp: App {
     }()
     
     @State private var navigator = SKNavigator.shared
+    @State private var authenticator = SKAuthenticator()
 
     init() {
         let navigator = self.navigator
@@ -39,5 +40,6 @@ struct SpendingKeeperApp: App {
         .modelContainer(sharedModelContainer)
         .environmentObject(SKViewModel(modelContext: sharedModelContainer.mainContext))
         .environment(navigator)
+        .environment(authenticator)
     }
 }

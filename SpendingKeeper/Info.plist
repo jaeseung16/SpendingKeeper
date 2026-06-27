@@ -4,6 +4,8 @@
 <dict>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>Your data will be used to deliver personalized ads to you.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>SpendingKeeper uses Face ID to keep your spending data private.</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-6771077591139198~2208548053</string>
 	<key>SKAdNetworkItems</key>
