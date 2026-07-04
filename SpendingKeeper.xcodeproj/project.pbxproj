@@ -782,6 +782,13 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.6;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-weak_framework",
+					FinanceKit,
+					"-weak_framework",
+					FinanceKitUI,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.SpendingKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -818,6 +825,13 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.6;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-weak_framework",
+					FinanceKit,
+					"-weak_framework",
+					FinanceKitUI,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.SpendingKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -24,40 +24,50 @@ struct ImportsListView: View {
     var body: some View {
         GeometryReader { geometry in
 #if canImport(FinanceKit)
-            VStack {
-                if transactions.isEmpty {
-                    HStack {
-                        Spacer()
-                        
-                        TransactionPicker(selection: $transactions) {
-                            Label {
-                                Text("Select Transactions")
-                            } icon: {
-                                Image(systemName: "creditcard")
+            // FinanceKit(UI) is weak-linked and non-functional when the iOS app runs on a Mac;
+            // instantiating TransactionPicker there would call an unresolved symbol.
+            if ProcessInfo.processInfo.isiOSAppOnMac {
+                ContentUnavailableView(
+                    "Not Available on Mac",
+                    systemImage: "creditcard",
+                    description: Text("Importing transactions from Wallet requires an iPhone or iPad.")
+                )
+            } else {
+                VStack {
+                    if transactions.isEmpty {
+                        HStack {
+                            Spacer()
+
+                            TransactionPicker(selection: $transactions) {
+                                Label {
+                                    Text("Select Transactions")
+                                } icon: {
+                                    Image(systemName: "creditcard")
+                                }
                             }
+
+                            Spacer()
                         }
-                        
-                        Spacer()
-                    }
-                } else {
-                    List(selection: $selectedTransaction) {
-                        ForEach(transactions) { transaction in
-                            NavigationLink(value: transaction) {
-                                ImportsRowView(transaction: transaction)
+                    } else {
+                        List(selection: $selectedTransaction) {
+                            ForEach(transactions) { transaction in
+                                NavigationLink(value: transaction) {
+                                    ImportsRowView(transaction: transaction)
+                                }
+                                .id(transaction.id)
                             }
-                            .id(transaction.id)
                         }
                     }
                 }
-            }
-            .onChange(of: viewModel.importedTransaction) {
-                if let transaction = viewModel.importedTransaction {
-                    selectedTransaction = nil
-                    if let index = transactions.firstIndex(of: transaction) {
-                        transactions.remove(at: index)
+                .onChange(of: viewModel.importedTransaction) {
+                    if let transaction = viewModel.importedTransaction {
+                        selectedTransaction = nil
+                        if let index = transactions.firstIndex(of: transaction) {
+                            transactions.remove(at: index)
+                        }
                     }
+
                 }
-                
             }
 #else
             EmptyView()

@@ -37,7 +37,7 @@ struct ContentView: View {
             VStack {
                 NavigationSplitView {
                     List(selection: $navigator.menu) {
-                        ForEach(SKMenu.allCases) { menu in
+                        ForEach(SKMenu.availableCases) { menu in
                             NavigationLink(value: menu) {
                                 Text(menu.rawValue)
                             }
