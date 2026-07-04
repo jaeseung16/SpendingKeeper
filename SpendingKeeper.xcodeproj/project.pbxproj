@@ -13,7 +13,6 @@
 		90534BC62E7B6D77004BFF9C /* AppIcon_1.icon in Resources */ = {isa = PBXBuildFile; fileRef = 90534BC52E7B6D77004BFF9C /* AppIcon_1.icon */; };
 		906C9D162BB85E060031139D /* AccountListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D152BB85E060031139D /* AccountListView.swift */; };
 		906C9D182BB860700031139D /* RecordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D172BB860700031139D /* RecordListView.swift */; };
-		A1D6CB739CF948B5BC278567 /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0975A555449F4AB5ABB3D /* HistoryListView.swift */; };
 		906C9D1A2BB861200031139D /* SKMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D192BB861200031139D /* SKMenu.swift */; };
 		906C9D1C2BB8900C0031139D /* RecordRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D1B2BB8900C0031139D /* RecordRowView.swift */; };
 		906C9D1E2BB8902B0031139D /* RecordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D1D2BB8902B0031139D /* RecordDetailView.swift */; };
@@ -66,6 +65,7 @@
 		90D136372C65859100898641 /* ShareActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D136362C65859100898641 /* ShareActivityView.swift */; };
 		90D96E2F2BBCC1E300DB4C01 /* SKViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */; };
 		90EB41CB2E8842FF009046A5 /* OpenDailyTrend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EB41CA2E8842EC009046A5 /* OpenDailyTrend.swift */; };
+		A1D6CB739CF948B5BC278567 /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0975A555449F4AB5ABB3D /* HistoryListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,13 +86,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		39A0975A555449F4AB5ABB3D /* HistoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListView.swift; sourceTree = "<group>"; };
 		900CCD842C9F458300573810 /* ImportsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportsListView.swift; sourceTree = "<group>"; };
 		900CCD862C9F45FB00573810 /* ImportsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportsRowView.swift; sourceTree = "<group>"; };
 		900CCD882C9F46C900573810 /* ImportsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportsDetailView.swift; sourceTree = "<group>"; };
 		90534BC52E7B6D77004BFF9C /* AppIcon_1.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon_1.icon; sourceTree = "<group>"; };
 		906C9D152BB85E060031139D /* AccountListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListView.swift; sourceTree = "<group>"; };
 		906C9D172BB860700031139D /* RecordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListView.swift; sourceTree = "<group>"; };
-		39A0975A555449F4AB5ABB3D /* HistoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListView.swift; sourceTree = "<group>"; };
 		906C9D192BB861200031139D /* SKMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKMenu.swift; sourceTree = "<group>"; };
 		906C9D1B2BB8900C0031139D /* RecordRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRowView.swift; sourceTree = "<group>"; };
 		906C9D1D2BB8902B0031139D /* RecordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailView.swift; sourceTree = "<group>"; };
@@ -762,7 +762,7 @@
 				CODE_SIGN_ENTITLEMENTS = SpendingKeeper/SpendingKeeper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"SpendingKeeper/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
@@ -806,7 +806,7 @@
 				CODE_SIGN_ENTITLEMENTS = SpendingKeeper/SpendingKeeper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"SpendingKeeper/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
