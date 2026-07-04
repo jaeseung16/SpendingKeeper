@@ -13,6 +13,7 @@
 		90534BC62E7B6D77004BFF9C /* AppIcon_1.icon in Resources */ = {isa = PBXBuildFile; fileRef = 90534BC52E7B6D77004BFF9C /* AppIcon_1.icon */; };
 		906C9D162BB85E060031139D /* AccountListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D152BB85E060031139D /* AccountListView.swift */; };
 		906C9D182BB860700031139D /* RecordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D172BB860700031139D /* RecordListView.swift */; };
+		A1D6CB739CF948B5BC278567 /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0975A555449F4AB5ABB3D /* HistoryListView.swift */; };
 		906C9D1A2BB861200031139D /* SKMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D192BB861200031139D /* SKMenu.swift */; };
 		906C9D1C2BB8900C0031139D /* RecordRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D1B2BB8900C0031139D /* RecordRowView.swift */; };
 		906C9D1E2BB8902B0031139D /* RecordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C9D1D2BB8902B0031139D /* RecordDetailView.swift */; };
@@ -91,6 +92,7 @@
 		90534BC52E7B6D77004BFF9C /* AppIcon_1.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon_1.icon; sourceTree = "<group>"; };
 		906C9D152BB85E060031139D /* AccountListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListView.swift; sourceTree = "<group>"; };
 		906C9D172BB860700031139D /* RecordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListView.swift; sourceTree = "<group>"; };
+		39A0975A555449F4AB5ABB3D /* HistoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListView.swift; sourceTree = "<group>"; };
 		906C9D192BB861200031139D /* SKMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKMenu.swift; sourceTree = "<group>"; };
 		906C9D1B2BB8900C0031139D /* RecordRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRowView.swift; sourceTree = "<group>"; };
 		906C9D1D2BB8902B0031139D /* RecordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailView.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 			children = (
 				908BF7EB2BB7773E00740266 /* AddRecordView.swift */,
 				906C9D172BB860700031139D /* RecordListView.swift */,
+				39A0975A555449F4AB5ABB3D /* HistoryListView.swift */,
 				906C9D1D2BB8902B0031139D /* RecordDetailView.swift */,
 				906C9D1B2BB8900C0031139D /* RecordRowView.swift */,
 			);
@@ -548,6 +551,7 @@
 				906C9D1E2BB8902B0031139D /* RecordDetailView.swift in Sources */,
 				908BF7EA2BB7762700740266 /* AddAccountView.swift in Sources */,
 				906C9D182BB860700031139D /* RecordListView.swift in Sources */,
+				A1D6CB739CF948B5BC278567 /* HistoryListView.swift in Sources */,
 				907536552BD5B29700A2B774 /* BannerAd.swift in Sources */,
 				900CCD872C9F45FB00573810 /* ImportsRowView.swift in Sources */,
 				908B14752BBA135D004E53D9 /* TrendsDetailView.swift in Sources */,

@@ -9,6 +9,7 @@ import Foundation
 
 enum SKMenu: String, CaseIterable, Identifiable {
     case transactions = "Transactions"
+    case history = "Transaction History"
     case accounts = "Accounts"
     case trends = "Trends"
     case snapshots = "Snapshots"

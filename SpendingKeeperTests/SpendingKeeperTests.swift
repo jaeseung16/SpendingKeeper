@@ -81,6 +81,64 @@ final class SpendingKeeperTests: XCTestCase {
         XCTAssertEqual(actualDate, expectedDate)
     }
 
+    @MainActor func testArchiveCutoffDateMidYear() throws {
+        let viewModel = SKViewModel(modelContext: testContainer.mainContext)
+
+        let date = Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 4))!
+        let expectedDate = Calendar.current.date(from: DateComponents(year: 2025, month: 1, day: 1))!
+
+        XCTAssertEqual(viewModel.archiveCutoffDate(from: date), expectedDate)
+    }
+
+    @MainActor func testArchiveCutoffDateOnDecember31() throws {
+        let viewModel = SKViewModel(modelContext: testContainer.mainContext)
+
+        let date = Calendar.current.date(from: DateComponents(year: 2026, month: 12, day: 31))!
+        let expectedDate = Calendar.current.date(from: DateComponents(year: 2025, month: 1, day: 1))!
+
+        XCTAssertEqual(viewModel.archiveCutoffDate(from: date), expectedDate)
+    }
+
+    @MainActor func testArchiveCutoffDateOnJanuary1() throws {
+        let viewModel = SKViewModel(modelContext: testContainer.mainContext)
+
+        let date = Calendar.current.date(from: DateComponents(year: 2026, month: 1, day: 1, hour: 12))!
+        let expectedDate = Calendar.current.date(from: DateComponents(year: 2025, month: 1, day: 1))!
+
+        XCTAssertEqual(viewModel.archiveCutoffDate(from: date), expectedDate)
+    }
+
+    @MainActor func testArchiveCutoffSplitsRecords() throws {
+        let context = testContainer.mainContext
+        let viewModel = SKViewModel(modelContext: context)
+
+        let now = Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 4))!
+        let cutoff = viewModel.archiveCutoffDate(from: now)
+
+        // On the cutoff (January 1 of last year): belongs to Transactions.
+        let recentRecord = SKRecord(recordDate: Calendar.current.date(from: DateComponents(year: 2025, month: 1, day: 1))!,
+                                    recordDescription: "recent")
+        // Before the cutoff: belongs to Transaction History.
+        let oldRecord = SKRecord(recordDate: Calendar.current.date(from: DateComponents(year: 2024, month: 12, day: 31))!,
+                                 recordDescription: "old")
+        context.insert(recentRecord)
+        context.insert(oldRecord)
+        defer {
+            context.delete(recentRecord)
+            context.delete(oldRecord)
+        }
+
+        let recentDescriptor = FetchDescriptor<SKRecord>(predicate: #Predicate { $0.recordDate >= cutoff })
+        let recentUids = try context.fetch(recentDescriptor).map { $0.uid }
+        XCTAssertTrue(recentUids.contains(recentRecord.uid))
+        XCTAssertFalse(recentUids.contains(oldRecord.uid))
+
+        let archivedDescriptor = FetchDescriptor<SKRecord>(predicate: #Predicate { $0.recordDate < cutoff })
+        let archivedUids = try context.fetch(archivedDescriptor).map { $0.uid }
+        XCTAssertTrue(archivedUids.contains(oldRecord.uid))
+        XCTAssertFalse(archivedUids.contains(recentRecord.uid))
+    }
+
     func testOneMonthLater() throws {
         let dateComponents = DateComponents(year: 2024, month: 1, day: 30)
         let dateComponentsOneMonthLater = DateComponents(year: 2024, month: 2, day: 29)

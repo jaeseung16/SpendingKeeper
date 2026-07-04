@@ -173,6 +173,11 @@ class SKViewModel: NSObject, ObservableObject {
     private func oneYearAgo(from date: Date) -> Date? {
         return calendar.date(byAdding: .year, value: -1, to: date)
     }
+
+    /// Records on or after this date belong to Transactions; older records belong to Transaction History.
+    func archiveCutoffDate(from date: Date = .now) -> Date {
+        return firstDayOfLastYear(from: date) ?? .distantPast
+    }
     
     private func fetchRecords(from: Date, to: Date) -> [SKRecord] {
         var records = [SKRecord]()

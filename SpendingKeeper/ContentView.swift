@@ -46,8 +46,11 @@ struct ContentView: View {
                 } content: {
                     switch navigator.menu {
                     case .transactions:
-                        RecordListView(selectedRecord: $selectedRecord)
+                        RecordListView(selectedRecord: $selectedRecord, cutoff: viewModel.archiveCutoffDate())
                             .navigationTitle(SKMenu.transactions.rawValue)
+                    case .history:
+                        HistoryListView(selectedRecord: $selectedRecord, cutoff: viewModel.archiveCutoffDate())
+                            .navigationTitle(SKMenu.history.rawValue)
                     case .accounts:
                         AccountListView(selectedAccount: $selectedAccount)
                             .navigationTitle(SKMenu.accounts.rawValue)
@@ -72,7 +75,7 @@ struct ContentView: View {
                     }
                 } detail: {
                     switch navigator.menu {
-                    case .transactions:
+                    case .transactions, .history:
                         if let record = selectedRecord {
                             RecordDetailView(record: record, account: findAccount(of: record))
                                 .id(record.uid)
