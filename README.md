@@ -11,10 +11,14 @@ The app helps a user keep the records of spendings.
 ## How to Use
 
 ### Transactions
-  - Presents a list of transactions
+  - Presents a list of transactions from January 1 of the previous calendar year onward
   - Click `+` to add a new transaction
   - transaction details
     - click `Copy` to create a duplicated transaction
+
+### Transaction History
+  - Presents older transactions, grouped by year in descending order
+  - Swipe to delete a past transaction
   
 ### Accounts
   - Presents a list of accounts
@@ -38,10 +42,17 @@ The app helps a user keep the records of spendings.
   - The list of shared transactions will be presented
   - Review individual transactions and import
 
+### Settings
+  - Toggle `Require authentication` to lock the app behind Face ID, Touch ID, or your device passcode
+  - When enabled, SpendingKeeper locks on backgrounding and requires authentication on launch and on returning to the foreground
+
 ## Support
 Email: [:email:](mailto:jaeseung@gmail.com)
 
 ## Version History
+### ver 1.6 (Jul 2026)
+  - Add Local Authentication (Face ID / Touch ID / passcode) as an opt-in app lock, with a toggle in Settings
+  - Add Transaction History menu for transactions older than the previous calendar year, grouped by year
 ### ver 1.5 (Sep 2025)
 ### ver 1.4 (Sep 2024)
 ### ver 1.3 (Sep 2024)
