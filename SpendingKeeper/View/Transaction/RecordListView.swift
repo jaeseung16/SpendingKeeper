@@ -12,9 +12,16 @@ struct RecordListView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(SKNavigator.self) private var navigator: SKNavigator
     
-    @Query(sort: \SKRecord.recordDate, order: .reverse) var records: [SKRecord]
+    @Query var records: [SKRecord]
     @Binding var selectedRecord: SKRecord?
-    
+
+    init(selectedRecord: Binding<SKRecord?>, cutoff: Date) {
+        _selectedRecord = selectedRecord
+        _records = Query(filter: #Predicate<SKRecord> { $0.recordDate >= cutoff },
+                         sort: \SKRecord.recordDate,
+                         order: .reverse)
+    }
+
     var body: some View {
         @Bindable var navigator = navigator
         

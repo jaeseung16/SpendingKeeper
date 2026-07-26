@@ -26,7 +26,6 @@
 		908592382E835CA4009B42C0 /* SpendingKeeperAppShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908592372E835C9C009B42C0 /* SpendingKeeperAppShortcuts.swift */; };
 		908598702BB36EB600208AEE /* SpendingKeeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9085986F2BB36EB600208AEE /* SpendingKeeperApp.swift */; };
 		908598722BB36EB600208AEE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908598712BB36EB600208AEE /* ContentView.swift */; };
-		908598742BB36EB600208AEE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908598732BB36EB600208AEE /* Item.swift */; };
 		908598762BB36EB700208AEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 908598752BB36EB700208AEE /* Assets.xcassets */; };
 		908598792BB36EB700208AEE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 908598782BB36EB700208AEE /* Preview Assets.xcassets */; };
 		908598832BB36EB700208AEE /* SpendingKeeperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908598822BB36EB700208AEE /* SpendingKeeperTests.swift */; };
@@ -56,6 +55,9 @@
 		90A912232E80B1F000D4356C /* ImportFromWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A912222E80B1E000D4356C /* ImportFromWallet.swift */; };
 		90A912252E80B23200D4356C /* SKNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A912242E80B22E00D4356C /* SKNavigator.swift */; };
 		90A912272E80B57F00D4356C /* SKNavigationOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A912262E80B57300D4356C /* SKNavigationOption.swift */; };
+		90AA00012E80B24000D4356C /* SKAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AA00022E80B24000D4356C /* SKAuthenticator.swift */; };
+		90AA00102E80B24000D4356C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AA00112E80B24000D4356C /* SettingsView.swift */; };
+		90AA00202E80B24000D4356C /* SKAuthenticatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AA00212E80B24000D4356C /* SKAuthenticatorTests.swift */; };
 		90B28C5C2C722470009589E2 /* SKSnapshotChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5B2C722470009589E2 /* SKSnapshotChartData.swift */; };
 		90B28C5E2C722552009589E2 /* SnapshotCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5D2C722552009589E2 /* SnapshotCharts.swift */; };
 		90B28C602C7226EB009589E2 /* SnapshotPDFFirstPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28C5F2C7226EB009589E2 /* SnapshotPDFFirstPageView.swift */; };
@@ -63,6 +65,7 @@
 		90D136372C65859100898641 /* ShareActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D136362C65859100898641 /* ShareActivityView.swift */; };
 		90D96E2F2BBCC1E300DB4C01 /* SKViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */; };
 		90EB41CB2E8842FF009046A5 /* OpenDailyTrend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EB41CA2E8842EC009046A5 /* OpenDailyTrend.swift */; };
+		A1D6CB739CF948B5BC278567 /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0975A555449F4AB5ABB3D /* HistoryListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +86,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		39A0975A555449F4AB5ABB3D /* HistoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListView.swift; sourceTree = "<group>"; };
 		900CCD842C9F458300573810 /* ImportsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportsListView.swift; sourceTree = "<group>"; };
 		900CCD862C9F45FB00573810 /* ImportsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportsRowView.swift; sourceTree = "<group>"; };
 		900CCD882C9F46C900573810 /* ImportsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportsDetailView.swift; sourceTree = "<group>"; };
@@ -92,7 +96,7 @@
 		906C9D192BB861200031139D /* SKMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKMenu.swift; sourceTree = "<group>"; };
 		906C9D1B2BB8900C0031139D /* RecordRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRowView.swift; sourceTree = "<group>"; };
 		906C9D1D2BB8902B0031139D /* RecordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailView.swift; sourceTree = "<group>"; };
-		907536522BD5B15200A2B774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		907536522BD5B15200A2B774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		907536542BD5B29700A2B774 /* BannerAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAd.swift; sourceTree = "<group>"; };
 		907536562BD5B32B00A2B774 /* BannerAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdViewController.swift; sourceTree = "<group>"; };
 		9075365B2BD5B5C400A2B774 /* SpendingKeeper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpendingKeeper.entitlements; sourceTree = "<group>"; };
@@ -104,7 +108,6 @@
 		9085986C2BB36EB600208AEE /* SpendingKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpendingKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9085986F2BB36EB600208AEE /* SpendingKeeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingKeeperApp.swift; sourceTree = "<group>"; };
 		908598712BB36EB600208AEE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		908598732BB36EB600208AEE /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		908598752BB36EB700208AEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		908598782BB36EB700208AEE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9085987E2BB36EB700208AEE /* SpendingKeeperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpendingKeeperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +139,9 @@
 		90A912222E80B1E000D4356C /* ImportFromWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportFromWallet.swift; sourceTree = "<group>"; };
 		90A912242E80B22E00D4356C /* SKNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKNavigator.swift; sourceTree = "<group>"; };
 		90A912262E80B57300D4356C /* SKNavigationOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKNavigationOption.swift; sourceTree = "<group>"; };
+		90AA00022E80B24000D4356C /* SKAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAuthenticator.swift; sourceTree = "<group>"; };
+		90AA00112E80B24000D4356C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		90AA00212E80B24000D4356C /* SKAuthenticatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAuthenticatorTests.swift; sourceTree = "<group>"; };
 		90B28C5B2C722470009589E2 /* SKSnapshotChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSnapshotChartData.swift; sourceTree = "<group>"; };
 		90B28C5D2C722552009589E2 /* SnapshotCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotCharts.swift; sourceTree = "<group>"; };
 		90B28C5F2C7226EB009589E2 /* SnapshotPDFFirstPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotPDFFirstPageView.swift; sourceTree = "<group>"; };
@@ -211,17 +217,16 @@
 		9085986E2BB36EB600208AEE /* SpendingKeeper */ = {
 			isa = PBXGroup;
 			children = (
-				90A9121D2E80AE9400D4356C /* AppIntents */,
 				9075365B2BD5B5C400A2B774 /* SpendingKeeper.entitlements */,
-				907536532BD5B28500A2B774 /* AdMob */,
 				907536522BD5B15200A2B774 /* Info.plist */,
+				907536532BD5B28500A2B774 /* AdMob */,
+				90A9121D2E80AE9400D4356C /* AppIntents */,
+				908BF7DF2BB76C4200740266 /* Model */,
 				90D96E2D2BBCC1D100DB4C01 /* ViewModel */,
 				908BF7E82BB7761800740266 /* View */,
-				908BF7DF2BB76C4200740266 /* Model */,
 				9085986F2BB36EB600208AEE /* SpendingKeeperApp.swift */,
 				908598712BB36EB600208AEE /* ContentView.swift */,
 				906C9D192BB861200031139D /* SKMenu.swift */,
-				908598732BB36EB600208AEE /* Item.swift */,
 				908598752BB36EB700208AEE /* Assets.xcassets */,
 				90534BC52E7B6D77004BFF9C /* AppIcon_1.icon */,
 				908598772BB36EB700208AEE /* Preview Content */,
@@ -241,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				908598822BB36EB700208AEE /* SpendingKeeperTests.swift */,
+				90AA00212E80B24000D4356C /* SKAuthenticatorTests.swift */,
 			);
 			path = SpendingKeeperTests;
 			sourceTree = "<group>";
@@ -257,19 +263,10 @@
 		908BF7DF2BB76C4200740266 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				908BF7E42BB76DC000740266 /* SKAccount.swift */,
-				908BF7E02BB76C7900740266 /* SKRecord.swift */,
-				908BF7E22BB76D7C00740266 /* SKTransaction.swift */,
-				908B14722BBA11F6004E53D9 /* SKTrend.swift */,
-				908BF7E62BB7748500740266 /* SKAccountHistory.swift */,
-				908B14762BBA1C7E004E53D9 /* SKStats.swift */,
-				9080C01A2BC1C70100F88FA8 /* SKPeriod.swift */,
-				909B9E3C2BCC84290053A61D /* SKAccountStatementDay.swift */,
-				9090C7052C6811C5002D704C /* SKSnapshot.swift */,
-				9090C7072C6826B6002D704C /* SKSnapshotSpending.swift */,
-				907CA3DC2C68F3730082266D /* SKSnapshotIncome.swift */,
-				9076D87D2C7127D600460146 /* SKSnapshotRecord.swift */,
-				90B28C5B2C722470009589E2 /* SKSnapshotChartData.swift */,
+				90A309EC2FF13B0D002E5A8A /* Transaction */,
+				90A309EA2FF13AAD002E5A8A /* Snapshot */,
+				90A309E92FF13A7A002E5A8A /* Trend */,
+				90A309E82FF13A70002E5A8A /* Account */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -277,31 +274,114 @@
 		908BF7E82BB7761800740266 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				908BF7E92BB7762700740266 /* AddAccountView.swift */,
-				908BF7EB2BB7773E00740266 /* AddRecordView.swift */,
-				906C9D152BB85E060031139D /* AccountListView.swift */,
-				908B146C2BB9A8B8004E53D9 /* AccountRowView.swift */,
-				908B146E2BB9A8C4004E53D9 /* AccountDetailView.swift */,
-				900CCD882C9F46C900573810 /* ImportsDetailView.swift */,
-				900CCD842C9F458300573810 /* ImportsListView.swift */,
-				900CCD862C9F45FB00573810 /* ImportsRowView.swift */,
-				906C9D172BB860700031139D /* RecordListView.swift */,
-				906C9D1B2BB8900C0031139D /* RecordRowView.swift */,
-				906C9D1D2BB8902B0031139D /* RecordDetailView.swift */,
-				908B14702BBA11CD004E53D9 /* TrendsListView.swift */,
-				908B14742BBA135D004E53D9 /* TrendsDetailView.swift */,
-				9093C6B92C6572E7008A4737 /* TrendsChartView.swift */,
+				90A309F02FF13BBA002E5A8A /* Account */,
+				90A309F12FF13BD3002E5A8A /* Import */,
+				90A309EF2FF13B8B002E5A8A /* Snapshot */,
+				90A309ED2FF13B68002E5A8A /* Transaction */,
+				90A309EE2FF13B7C002E5A8A /* Trend */,
 				90D136362C65859100898641 /* ShareActivityView.swift */,
-				9090C6FD2C681149002D704C /* SnapshotListView.swift */,
-				9090C7032C6811B5002D704C /* SnapshotRowView.swift */,
-				9090C6FF2C681169002D704C /* SnapshotDetailView.swift */,
-				9076D87F2C71480E00460146 /* SnapshotRecordView.swift */,
-				9090C7012C6811A1002D704C /* AddSnapshotView.swift */,
-				90B28C5D2C722552009589E2 /* SnapshotCharts.swift */,
-				90B28C5F2C7226EB009589E2 /* SnapshotPDFFirstPageView.swift */,
-				90B28C612C722B4E009589E2 /* SnapshotRecordPageHeaderView.swift */,
+				90AA00112E80B24000D4356C /* SettingsView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		90A309E82FF13A70002E5A8A /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				908BF7E62BB7748500740266 /* SKAccountHistory.swift */,
+				908BF7E42BB76DC000740266 /* SKAccount.swift */,
+				909B9E3C2BCC84290053A61D /* SKAccountStatementDay.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		90A309E92FF13A7A002E5A8A /* Trend */ = {
+			isa = PBXGroup;
+			children = (
+				908B14722BBA11F6004E53D9 /* SKTrend.swift */,
+				9080C01A2BC1C70100F88FA8 /* SKPeriod.swift */,
+				908B14762BBA1C7E004E53D9 /* SKStats.swift */,
+			);
+			path = Trend;
+			sourceTree = "<group>";
+		};
+		90A309EA2FF13AAD002E5A8A /* Snapshot */ = {
+			isa = PBXGroup;
+			children = (
+				90B28C5B2C722470009589E2 /* SKSnapshotChartData.swift */,
+				9076D87D2C7127D600460146 /* SKSnapshotRecord.swift */,
+				907CA3DC2C68F3730082266D /* SKSnapshotIncome.swift */,
+				9090C7072C6826B6002D704C /* SKSnapshotSpending.swift */,
+				9090C7052C6811C5002D704C /* SKSnapshot.swift */,
+			);
+			path = Snapshot;
+			sourceTree = "<group>";
+		};
+		90A309EC2FF13B0D002E5A8A /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				908BF7E22BB76D7C00740266 /* SKTransaction.swift */,
+				908BF7E02BB76C7900740266 /* SKRecord.swift */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
+		90A309ED2FF13B68002E5A8A /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				908BF7EB2BB7773E00740266 /* AddRecordView.swift */,
+				906C9D172BB860700031139D /* RecordListView.swift */,
+				39A0975A555449F4AB5ABB3D /* HistoryListView.swift */,
+				906C9D1D2BB8902B0031139D /* RecordDetailView.swift */,
+				906C9D1B2BB8900C0031139D /* RecordRowView.swift */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
+		90A309EE2FF13B7C002E5A8A /* Trend */ = {
+			isa = PBXGroup;
+			children = (
+				9093C6B92C6572E7008A4737 /* TrendsChartView.swift */,
+				908B14742BBA135D004E53D9 /* TrendsDetailView.swift */,
+				908B14702BBA11CD004E53D9 /* TrendsListView.swift */,
+			);
+			path = Trend;
+			sourceTree = "<group>";
+		};
+		90A309EF2FF13B8B002E5A8A /* Snapshot */ = {
+			isa = PBXGroup;
+			children = (
+				90B28C612C722B4E009589E2 /* SnapshotRecordPageHeaderView.swift */,
+				90B28C5F2C7226EB009589E2 /* SnapshotPDFFirstPageView.swift */,
+				9076D87F2C71480E00460146 /* SnapshotRecordView.swift */,
+				9090C7032C6811B5002D704C /* SnapshotRowView.swift */,
+				90B28C5D2C722552009589E2 /* SnapshotCharts.swift */,
+				9090C7012C6811A1002D704C /* AddSnapshotView.swift */,
+				9090C6FD2C681149002D704C /* SnapshotListView.swift */,
+				9090C6FF2C681169002D704C /* SnapshotDetailView.swift */,
+			);
+			path = Snapshot;
+			sourceTree = "<group>";
+		};
+		90A309F02FF13BBA002E5A8A /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				908B146E2BB9A8C4004E53D9 /* AccountDetailView.swift */,
+				908B146C2BB9A8B8004E53D9 /* AccountRowView.swift */,
+				906C9D152BB85E060031139D /* AccountListView.swift */,
+				908BF7E92BB7762700740266 /* AddAccountView.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		90A309F12FF13BD3002E5A8A /* Import */ = {
+			isa = PBXGroup;
+			children = (
+				900CCD862C9F45FB00573810 /* ImportsRowView.swift */,
+				900CCD842C9F458300573810 /* ImportsListView.swift */,
+				900CCD882C9F46C900573810 /* ImportsDetailView.swift */,
+			);
+			path = Import;
 			sourceTree = "<group>";
 		};
 		90A9121D2E80AE9400D4356C /* AppIntents */ = {
@@ -320,6 +400,7 @@
 			children = (
 				90A912262E80B57300D4356C /* SKNavigationOption.swift */,
 				90A912242E80B22E00D4356C /* SKNavigator.swift */,
+				90AA00022E80B24000D4356C /* SKAuthenticator.swift */,
 				90D96E2E2BBCC1E300DB4C01 /* SKViewModel.swift */,
 			);
 			path = ViewModel;
@@ -470,6 +551,7 @@
 				906C9D1E2BB8902B0031139D /* RecordDetailView.swift in Sources */,
 				908BF7EA2BB7762700740266 /* AddAccountView.swift in Sources */,
 				906C9D182BB860700031139D /* RecordListView.swift in Sources */,
+				A1D6CB739CF948B5BC278567 /* HistoryListView.swift in Sources */,
 				907536552BD5B29700A2B774 /* BannerAd.swift in Sources */,
 				900CCD872C9F45FB00573810 /* ImportsRowView.swift in Sources */,
 				908B14752BBA135D004E53D9 /* TrendsDetailView.swift in Sources */,
@@ -485,6 +567,7 @@
 				90A912232E80B1F000D4356C /* ImportFromWallet.swift in Sources */,
 				906C9D162BB85E060031139D /* AccountListView.swift in Sources */,
 				90A912252E80B23200D4356C /* SKNavigator.swift in Sources */,
+				90AA00012E80B24000D4356C /* SKAuthenticator.swift in Sources */,
 				90B28C602C7226EB009589E2 /* SnapshotPDFFirstPageView.swift in Sources */,
 				9093C6BA2C6572E7008A4737 /* TrendsChartView.swift in Sources */,
 				90A912272E80B57F00D4356C /* SKNavigationOption.swift in Sources */,
@@ -496,7 +579,6 @@
 				90B28C622C722B4E009589E2 /* SnapshotRecordPageHeaderView.swift in Sources */,
 				9090C6FE2C681149002D704C /* SnapshotListView.swift in Sources */,
 				908598722BB36EB600208AEE /* ContentView.swift in Sources */,
-				908598742BB36EB600208AEE /* Item.swift in Sources */,
 				908BF7E12BB76C7900740266 /* SKRecord.swift in Sources */,
 				90EB41CB2E8842FF009046A5 /* OpenDailyTrend.swift in Sources */,
 				908BF7EC2BB7773E00740266 /* AddRecordView.swift in Sources */,
@@ -508,6 +590,7 @@
 				907CA3DD2C68F3730082266D /* SKSnapshotIncome.swift in Sources */,
 				908B14772BBA1C7E004E53D9 /* SKStats.swift in Sources */,
 				90D136372C65859100898641 /* ShareActivityView.swift in Sources */,
+				90AA00102E80B24000D4356C /* SettingsView.swift in Sources */,
 				908B146D2BB9A8B8004E53D9 /* AccountRowView.swift in Sources */,
 				90D96E2F2BBCC1E300DB4C01 /* SKViewModel.swift in Sources */,
 				908B14712BBA11CD004E53D9 /* TrendsListView.swift in Sources */,
@@ -519,6 +602,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				908598832BB36EB700208AEE /* SpendingKeeperTests.swift in Sources */,
+				90AA00202E80B24000D4356C /* SKAuthenticatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,7 +665,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = U8VSJXRJTQ;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -600,7 +684,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -659,7 +743,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -678,7 +762,7 @@
 				CODE_SIGN_ENTITLEMENTS = SpendingKeeper/SpendingKeeper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"SpendingKeeper/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
@@ -692,12 +776,19 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-weak_framework",
+					FinanceKit,
+					"-weak_framework",
+					FinanceKitUI,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.SpendingKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -715,7 +806,7 @@
 				CODE_SIGN_ENTITLEMENTS = SpendingKeeper/SpendingKeeper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"SpendingKeeper/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -728,12 +819,19 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-weak_framework",
+					FinanceKit,
+					"-weak_framework",
+					FinanceKitUI,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.SpendingKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -750,7 +848,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.SpendingKeeperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -768,7 +866,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.resonance.SpendingKeeperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
